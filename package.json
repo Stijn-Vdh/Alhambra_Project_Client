@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "validate-nu": "java -jar node_modules/vnu-jar/build/dist/vnu.jar --skip-non-html ./src",
+    "validate-sonar": "./node_modules/sonar-scanner/bin/sonar-scanner",
+    "validate": "npm run validate-sonar && npm run validate-nu"
+  },
+  "dependencies": {
+    "sonar-scanner": "^3.1.0",
+    "vnu-jar": "^20.2.28"
+  }
+}
