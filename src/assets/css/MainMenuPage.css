@@ -1,0 +1,47 @@
+body {
+    background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg");
+}
+
+h1{
+    font-family: 'Vladimir Script', serif;
+    border-bottom: solid 1px black;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translate(0%, 0%);
+    font-size: 100px;
+    width: 22rem;
+}
+
+#fixedButtons {
+    margin-left: 1%;
+    bottom: 0;
+    position: fixed;
+}
+
+#playButtons {
+    margin: auto;
+    width: 12rem;
+}
+a {
+    padding: 8px;
+    margin-bottom: 20px ;
+    text-align: center;
+    display: block;
+    width: 12rem;
+    border: solid 1px black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    background-color: rgba(251,171,171,0.5);
+    box-shadow: 0 0 0;
+    -moz-box-shadow: 0 0 0;
+    -webkit-box-shadow: 0 0 0;
+    -o-box-shadow: 0 0 0;
+}
