@@ -1,0 +1,101 @@
+body{
+    background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+main, header{
+    text-align: center;
+}
+
+h1 {
+    font-family: "Vladimir Script", sans-serif;
+    display: inline-block;
+    font-size: 5rem;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    line-height: 0.8;
+    margin-top: 4rem;
+}
+
+table, th , td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0 auto 20px auto;
+    color: rgba(255,255,255,0.6);
+
+}
+
+th, td{
+    padding: 5px;
+}
+td{
+    text-align: center;
+}
+td:hover{
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(255, 69,0, 0.500);
+}
+table{
+    width: 25%;
+
+}
+th{
+    text-align: center;
+}
+
+
+
+form input[type=submit]{
+    margin: 0 auto 0 auto;
+    display: block;
+    width: 12rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    border: 2px solid;
+    background-color: white;
+    height: 30px;
+}
+
+form input[type=text] {
+    margin: 0 auto 10rem auto;
+    display: block;
+    width: 12rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    border: 0.06rem solid rgba(69,69,69,0.79);
+    font-size: 0.5rem;
+    height: 20px;
+    text-align: center;
+}
+
+footer{
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+}
+
+a, a:active{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin: 10px auto 10px auto;
+    display: block;
+    width: 12rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    border: 2px solid;
+    background-color: white;
+    height: 30px;
+}
