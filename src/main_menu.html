@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Menu</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/MainMenuPage.css">
 </head>
 <body>
-    <h1>Alhambra</h1>
+<h1>Alhambra</h1>
 
-    <a href="#">Quick play</a>
-    <a href="#">Host game</a>
-    <a href="#">Server list</a>
-    <br>
-    <br>
-    <a href="#">Game rules</a>
-    <br>
-    <a href="#">Logout</a>
+<nav>
+    <ul>
+        <li><a href="#" id="quickPlayButton">Quick play</a></li>
+        <li><a href="hostLobby.html" id="hostGameButton">Host game</a></li>
+        <li><a href="#" id="serverListButton">Server list</a></li>
+    </ul>
+</nav>
+
+
+<div id="fixedButtons">
+    <a href="#" id="rulesButton">Game rules</a>
+    <a href="Login.html" id="logoutButton">Logout</a>
+</div>
 </body>
 </html>
