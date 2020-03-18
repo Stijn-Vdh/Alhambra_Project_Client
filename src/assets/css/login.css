@@ -36,7 +36,7 @@ form label{
 form input[type=text], input[type=submit]{
     margin: 0 auto 0 auto;
     display: block;
-    width: 12rem;
+    width: 13rem;
     border-radius: 20px;
     box-shadow: 0 5px 5px rgba(0,0,0,0.6);
 }
@@ -46,10 +46,10 @@ form input[type=text]::placeholder{
 }
 
 form input[type=text], textarea {
+    height: 30px;
     margin-bottom: 3rem;
     border: 0.06rem solid rgba(69,69,69,0.79);
     color: black;
-    height: 20px;
     text-align: center;
     background-color: #4c4370;
 }
@@ -60,9 +60,13 @@ form input[type=submit]:active {
     background-color: rgba(251, 171, 171, 0.5);
 }
 
+form input[type=submit]:hover{
+    background-color: rgba(251, 171, 171, 0.5);
+}
+
 form input[type=submit]{
+    height: 35px;
     border: 2px solid;
-    height: 30px;
     background-color: transparent;
 }
 
