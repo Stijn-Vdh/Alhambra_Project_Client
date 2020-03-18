@@ -1,0 +1,67 @@
+body {
+    text-align: center;
+    background-image: url("../media/wallpapersden.com_desert-sun-day-minimalism_1920x1080.jpg");
+    font-family: Arial, serif;
+}
+
+h1 {
+    font-family: "Vladimir Script", sans-serif;
+    display: inline-block;
+    font-size: 5rem;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    line-height: 0.8;
+    margin-top: 4rem;
+}
+
+h2 {
+    font-family: "Arial", sans-serif;
+    font-size: 2rem;
+    font-weight: normal;
+    transform: translateY(800%);
+}
+
+#loader {
+    border: 10px solid #4c4370;
+    border-radius: 50%;
+    border-top: 10px solid rgb(251, 171, 171);
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 300px;
+    animation: spin 2s linear infinite;
+}
+
+#fixedButtons {
+    margin-left: 1%;
+    bottom: 0;
+    position: fixed;
+}
+
+a {
+    padding: 8px;
+    margin-bottom: 20px ;
+    text-align: center;
+    display: block;
+    width: 12rem;
+    border: solid 1px black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    background-color: rgba(251,171,171,0.5);
+}
+
+a:active {
+    box-shadow: 0 0 0;
+    transform: translateY(4px);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
