@@ -3,6 +3,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
 }
 
 main, header{
@@ -19,83 +21,107 @@ h1 {
     margin-top: 4rem;
 }
 
-table, th , td{
-    border: 1px solid black;
+table.scroll {
+    width: 25%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-bottom: 2px solid black;
+}
+
+table.scroll tbody,
+table.scroll thead { display: block  ; }
+
+table {
+    width: 25%;
+}
+thead tr th {
+    height: 30px;
+    line-height: 30px;
+    width: 28%;
+}
+
+tbody tr td{
+    height: 30px;
+    line-height: 30px;
+    width: 1%;
+}
+
+table.scroll tbody {
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: auto;
+}
+table, thead th , tbody td{
+    border-bottom: 1px solid black;
     border-collapse: collapse;
     margin: 0 auto 20px auto;
     color: rgba(255,255,255,0.6);
 
 }
 
-th, td{
+tbody {
+    border-top: 2px solid black;
+    text-align: center;}
+
+tbody td, thead th {
+
     padding: 5px;
 }
-td{
-    text-align: center;
-}
-td:hover{
+
+tbody td:hover {
     padding: 5px;
     text-align: center;
-    background-color: rgba(255, 69,0, 0.250);
-}
-table{
-    width: 25%;
-
-}
-th{
-    text-align: center;
+    background-color: rgba(251, 171, 171, 0.5);
 }
 
 
-
-form input[type=submit]{
+input[type=submit]{
+    padding: 8px;
     margin: 0 auto 0 auto;
     display: block;
     width: 12rem;
     border-radius: 20px;
     box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    border: 2px solid;
-    background-color: white;
-    height: 30px;
+    background-color: transparent;
+    border: solid 1px black;
+    font-size: 1rem;
+    color: black;
 }
 
-form input[type=text] {
-    margin: 0 auto 10rem auto;
-    display: block;
-    width: 12rem;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    border: 0.06rem solid rgba(69,69,69,0.79);
-    font-size: 0.5rem;
-    height: 20px;
-    text-align: center;
+form input[type=submit]:active {
+    box-shadow: 0 0 0;
+    transform: translateY(4px);
+    background-color: rgba(251, 171, 171, 0.5);
+}
+form input[type=submit]:hover{
+background-color: rgba(251, 171, 171, 0.5);
+
 }
 
 footer{
     display: inline-block;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }
 
-a, a:active{
-    text-decoration: none;
-    color: black;
+a{
+    padding: 8px;
+    margin-bottom: 20px;
     text-align: center;
-    margin: 10px auto 10px auto;
     display: block;
     width: 12rem;
+    border: solid 1px black;
     border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    border: 2px solid;
-    background-color: white;
-    height: 30px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    background-color: rgba(251, 171, 171, 0.5);
+}
+
+a:active{
+    box-shadow: 0 0 0;
+    transform: translateY(4px);
 }
