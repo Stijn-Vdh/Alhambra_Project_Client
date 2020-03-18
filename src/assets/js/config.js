@@ -1,3 +1,4 @@
+
 "use strict";
 // Feel free to extend this object with further configurables for your application
 
