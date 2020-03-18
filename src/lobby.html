@@ -3,23 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Lobby</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/LobbyPageCss.css">
 </head>
 <body>
+
 <h1>Alhambra</h1>
 <h2>Lobby</h2>
-<table>
+<table class="center">
     <tr>
         <th>
             Players
         </th>
     </tr>
+    <tr>
+        <td>Stijn</td>
+        <td>Ready</td>
+    </tr>
+    <tr>
+        <td>Robin</td>
+        <td>Not ready</td>
+    </tr>
+    <tr>
+        <td>Daniël</td>
+        <td>Ready</td>
+    </tr>
+    <tr>
+        <td>Cirdan</td>
+        <td>Not ready</td>
+    </tr>
+    <tr>
+        <td>Stav</td>
+        <td>Ready</td>
+    </tr>
 </table>
-<h4>Waiting for players</h4>
-<h5 id="playerCount">../6</h5>
+<div id="waiting">
+    <h4>Waiting for players</h4>
+    <p id="playerCount">5/6</p>
+</div>
 
 <a href="#" id="readyButton">Ready</a>
-<a href="#" id="rulesButton">Game rules</a>
-<a href="#" id="quitButton">Quit</a>
+<div id="optionalButtons">
+    <a href="#" id="rulesButton">Game rules</a>
+    <a href="main_menu.html" id="quitButton">Quit</a>
+</div>
+
 <a href="#" id="startButton">Start</a>
 
 </body>
