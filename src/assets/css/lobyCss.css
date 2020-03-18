@@ -14,7 +14,7 @@ h1{
 label{
     font-family: "Arial", sans-serif;
     border-bottom: 1px;
-
+    text-decoration: underline;
 }
 form{
     display: flex;
@@ -26,9 +26,7 @@ form{
 main{
   justify-content: center;
 }
-label{
-    text-decoration: underline;
-}
+
 
 
 
