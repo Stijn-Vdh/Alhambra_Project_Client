@@ -7,7 +7,7 @@
 * Feel free to extend the config with other variables of your choice
 *
 * Naturally, you don't need to include all JS code in this file. Create a decent folder structure to organise your JS logic
-* */
+**/
 
 
 document.addEventListener('DOMContentLoaded',init);
@@ -38,3 +38,4 @@ function testRemoteAPI(){
     });
 
 }
+
