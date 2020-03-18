@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Server list</title>
+    <link href="assets/css/serverList.css" rel="stylesheet">
 </head>
 <body>
-    <header>Alhambra</header>
-    <main>
-        <table>
+<header>
+    <h1>Alhambra</h1>
+</header>
+<main>
+    <table class="scroll">
+        <thead>
             <tr>
-                <th>Name host</th>
-                <th>Game description</th>
-                <th>Total players</th>
+                <th>Game name</th>
             </tr>
-        </table>
+        </thead>
+        <tbody>
+            <tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr><tr><td>test</td></tr>
+        </tbody>
 
-        <a href="#">Game rules</a>
-        <a href="#">Back</a>
-        <form action="#">
 
-            <input type="submit" id="join" value="join">
 
-        </form>
-    </main>
+
+    </table>
+
+    <form action="#">
+        <input id="join" type="submit" value="Join game">
+    </form>
+
+</main>
+<footer>
+        <a href="#" id="gameRules">Game rules</a>
+        <a href="#" id="back">Back</a>
+</footer>
 </body>
 </html>
