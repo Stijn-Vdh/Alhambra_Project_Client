@@ -10,7 +10,9 @@ body{
 main, header{
     text-align: center;
 }
-
+main{
+    margin-top: 6rem;
+}
 h1 {
     font-family: "Vladimir Script", sans-serif;
     display: inline-block;
@@ -33,11 +35,12 @@ table.scroll thead { display: block  ; }
 
 table {
     width: 25%;
+
 }
 thead tr th {
     height: 30px;
     line-height: 30px;
-    width: 28%;
+    width: 22%;
 }
 
 tbody tr td{
@@ -78,7 +81,7 @@ tbody td:hover {
 
 input[type=submit]{
     padding: 8px;
-    margin: 0 auto 0 auto;
+    margin: 2rem auto 0 auto;
     display: block;
     width: 12rem;
     border-radius: 20px;
