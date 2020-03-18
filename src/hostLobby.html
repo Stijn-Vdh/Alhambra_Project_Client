@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Host lobby</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/lobyCss.css">
 </head>
 <body>
 
@@ -11,12 +12,12 @@
 </header>
 <main>
     <form>
-        <label for="lobbyName">Lobby name</label><br>
-        <input type="text" id="lobbyName" name="lobbyName" value=""><br>
-        <label for="amountOfPlayers">Amount of players</label><br>
-        <input type="text" id="amountOfPlayers" name="amountOfPlayers" value="5"><br>
-        <label for="description">Description</label><br>
-        <input type="text" id="description" name="description" value="With how many players would you like to play? ">
+        <label for="lobbyName">Lobby name</label>
+        <input type="text" id="lobbyName" name="lobbyName" value="">
+        <label for="amountOfPlayers">Amount of players</label>
+        <input type="number" id="amountOfPlayers" name="amountOfPlayers" value="5">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" value="">
         <input type="submit" value="Host">
     </form>
 </main>

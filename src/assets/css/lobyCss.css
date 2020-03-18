@@ -1,0 +1,86 @@
+
+body{
+    background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg");
+}
+
+h1{
+    font-family: "Vladimir Script";
+    text-align: center;
+    font-size: 70px;
+}
+
+label{
+    font-family: Arial;
+    border-bottom: 1px;
+
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 36%;
+
+}
+main{
+  justify-content: center;
+}
+label{
+    text-decoration: underline;
+}
+
+
+
+input[type=submit]{
+    border: 1px solid;
+    border-color: black;
+    padding: 5px 40px;
+    border-radius: 30px;
+    background-color: #725981;
+    height: 30px;
+
+    box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
+input[type=text], input[type=number]{
+    border: 0.5px solid;
+    border-radius: 30px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    text-align: center;
+    height: 30px;
+    background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg");
+
+
+    border-radius: 30px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+}
+/*label,input[type=text],input[type=submit]{
+    display: block;
+}*/
+a{
+
+    color: black;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    border: 0.5px solid;
+    border-radius: 30px;
+    width: 10%;
+    margin-bottom: 5px;
+
+    border-radius: 20px;
+    box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
+
+}
+footer{
+    text-align: left;
+}
