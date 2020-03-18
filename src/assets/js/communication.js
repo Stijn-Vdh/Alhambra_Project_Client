@@ -1,4 +1,3 @@
-
 "use strict";
 
 function fetchFromServer(url, httpVerb, requestBody){
