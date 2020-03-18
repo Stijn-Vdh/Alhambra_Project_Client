@@ -12,13 +12,13 @@
     <h1>Alhambra</h1>
 </header>
 <main>
-    <form action="lobby.html">
-        <label for="lobbyName">Lobby name</label>
-        <input type="text" id="lobbyName" name="lobbyName" value="">
-        <label for="amountOfPlayers">Amount of players</label>
+    <form method="post" action="lobby.html">
+        <label for="name">Player name:</label>
+        <input type="text" id="name" name="name" value="">
+        <!--<label for="amountOfPlayers">Amount of players</label>
         <input type="number" id="amountOfPlayers" name="amountOfPlayers" value="5">
         <label for="description">Description</label>
-        <input type="text" id="description" name="description" value="">
+        <input type="text" id="description" name="description" value="">-->
         <input type="submit" value="Host">
     </form>
 </main>
@@ -27,6 +27,12 @@
     <a href="rules.html">Game Rules</a>
     <a href="main_menu.html">Back</a>
 </footer>
+
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/communication.js"></script>
+<script src="assets/js/newGame.js"></script>
+
 
 </body>
 </html>
