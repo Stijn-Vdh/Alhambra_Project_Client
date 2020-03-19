@@ -1,6 +1,9 @@
 html {
     background-image: url("../media/wallpapersden.com_desert-sun-day-minimalism_1920x1080.jpg");
 }
+body{
+    font-family: "Arial", sans-serif;
+}
 
 #TotalPlayBoard {
     background-color: beige;
@@ -278,7 +281,7 @@ h1 {
     box-shadow: 0 5px 5px rgba(0,0,0,0.6);
     text-decoration: none;
     color: black;
-    font-family: "Arial", sans-serif;
+
 }
 
 #FixedButtons a:hover{
@@ -290,8 +293,8 @@ h1 {
     transform: translateY(4px);
 }
 
-/* Dropup Button */
-.dropbtn {
+/* own player reserve tiles area */
+.ownPlayerReserveButton {
     height: 41px;
     width: 151px;
     margin-top: -1px;
@@ -300,7 +303,7 @@ h1 {
     border: 1px solid black;
     border-left: none;
 }
-#dropup{
+#ownPLayerReserveDropUp{
     grid-area: re;
     grid-column: 6/7;
     margin-top: 110px;
@@ -309,7 +312,7 @@ h1 {
 }
 
 
-#dropup-content {
+#ownPlayerReserveTiles {
     display: none;
     position: absolute;
     bottom: 50px;
@@ -320,8 +323,8 @@ h1 {
 
 }
 
-#dropup:active #dropup-content {
-    background-color:  beige;
+#ownPLayerReserveDropUp:active #ownPlayerReserveTiles {
+    background-color: beige;
     width:300px;
     height: 300px;
     margin-left: auto;
@@ -340,26 +343,27 @@ h1 {
     overflow: auto;
 }
 
-
-#dropup:hover .dropbtn {
+#ownPLayerReserveDropUp:hover .ownPlayerReserveButton {
     background-color: rgba(251,171,171,0.5);
 }
 
-#dropup-content .innerBuilding{
+#ownPlayerReserveTiles .innerBuilding{
     margin-bottom: 10px;
 }
-/*drop down button*/
+
+/*show other player's reserve tiles area*/
 .dropDownButton {
     width: 92px;
     height: 20px;
     background-color: rgba(0,0,0,0);
     border: 1px solid black;
 }
-.EnemyReserve{
-
+.dropDownButton:hover{
+    background-color: rgba(251,171,171,0.5);
 }
+
 .EnemyReserve:active #ReserveEnemy1, .EnemyReserve:active #ReserveEnemy2, .EnemyReserve:active #ReserveEnemy3, .EnemyReserve:active #ReserveEnemy4, .EnemyReserve:active #ReserveEnemy5{
-    background-color:  beige;
+    background-color: beige;
     width:300px;
     height: 300px;
     margin-left: auto;
@@ -386,36 +390,52 @@ h1 {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
 }
-/*Grid play board*/
+
+/*Grid for tiles on board and enemy players*/
 #PlayBoard{
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px 150px;
-    grid-template-rows: 120px 120px 120px 120px 120px;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto;
     grid-template-areas:
-            "mn mn mn mn mn"
-            "mn mn mn mn mn"
-            "mn mn mn mn mn"
-            "mn mn mn mn mn"
-            "mn mn mn mn mn";
+            "ti ti ti ti ti ti ti ti"
+            "ti ti ti ti ti ti ti ti"
+            "ti ti ti ti ti ti ti ti"
+            "ti ti ti ti ti ti ti ti"
+            "ti ti ti ti ti ti ti ti"
+            "ti ti ti ti ti ti ti ti"
+            "ti ti ti ti ti ti ti ti";
     text-align: center;
     overflow: auto;
 }
 .EnemyBoard{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto;
     grid-template-areas:
-            "rs rs rs rs rs"
-            "rs rs rs rs rs"
-            "rs rs rs rs rs"
-            "rs rs rs rs rs"
-            "rs rs rs rs rs"
-            ;
-    text-align: center;
+            "etl etl etl etl etl etl etl etl"
+            "etl etl etl etl etl etl etl etl"
+            "etl etl etl etl etl etl etl etl"
+            "etl etl etl etl etl etl etl etl"
+            "etl etl etl etl etl etl etl etl"
+            "etl etl etl etl etl etl etl etl"
+            "etl etl etl etl etl etl etl etl";
     overflow: auto;
 }
+#PlayBoard .plateBuilding{
+    border: 1px solid black;
+}
 #test1{
-    grid-area: mn;
+    grid-area: ti;
+    grid-column: 4;
+    grid-row: 4;
+}
+#test2{
+    grid-area: ti;
+    grid-column: 3;
+    grid-row: 4;
+}
+#test3{
+    grid-area: ti;
     grid-column: 3;
     grid-row: 3;
 }
