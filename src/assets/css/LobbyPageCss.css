@@ -102,7 +102,7 @@ table.center {
 
 table th {
     text-align: center;
-    transform: translate(55%, -50%);
+    transform: translate(0%, 0%);
     font-size: 20px;
     height: 25px;
 

@@ -7,6 +7,8 @@ function fetchFromServer(url, httpVerb, requestBody){
     options.headers = {};
     options.headers["Content-Type"] = "application/json";
 
+    options.headers["Authorization"] ="Bearer " + __playerToken;
+
     // Don't forget to add data to the body when needed
     options.body = JSON.stringify(requestBody);
 
