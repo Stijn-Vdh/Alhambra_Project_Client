@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', init);
 let __gameId = localStorage.getItem('gameID');
 let __PlayerName = localStorage.getItem('playerName');
-let __playerToken = __gameId + '+' + __PlayerName;
 let readyButton = document.querySelector('#readyButton');
 
 
@@ -19,11 +18,6 @@ function init() {
         }
     });
     loadLobby();
-}
-
-function startGame() {
-
-    window.location.href = "PlayBoard.html"
 }
 
 function readyUp() {
@@ -93,10 +87,6 @@ function loadLobby() {
                             </tr>`;
             });
             document.querySelector('#playerCount').innerHTML = players.length + "/6";
-
-            /*if (players.length !== 6) {
-                readyButton.style.display = "none";
-            }*/
 
             if (!response.started) {
                 setTimeout(() => loadLobby(), 2000)

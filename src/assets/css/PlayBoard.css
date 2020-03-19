@@ -105,18 +105,34 @@ body{
     width: 130px;
     margin-left: 10px;
     margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
 }
 
-#me .Score {
+.Score {
+    grid-area: me;
     border: 1px solid black;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     background-color: beige;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-#me .Score p {
+.Score p {
     margin-top: 10px;
+}
+
+#MyAvatar img {
+    height: 130px;
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 #Hand {
@@ -129,7 +145,7 @@ body{
     display: flex;
 }
 
-#card1, #card2, #card3 {
+.card {
     border: 1px solid black;
     width: 75px;
     height: 110px;
@@ -138,13 +154,29 @@ body{
     background-color: beige;
 }
 
-#card1 p, #card2 p, #card3 p{
+.card p{
     margin-top: 50px;
 }
 
-#card1:hover, #card2:hover, #card3:hover {
+.card:hover {
     transform: translateY(-15px) scale(1.2);
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
+
+#blue {
+    background-color: cornflowerblue;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#orange {
+    background-color: darkorange;
+}
+
+#green {
+    background-color: darkseagreen;
 }
 
 #ReserveDropUp {
