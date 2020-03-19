@@ -8,14 +8,14 @@ let readyButton = document.querySelector('#readyButton');
 
 
 function init() {
-    previousPage();
+    setPreviousPage(localStorage.getItem('currentPage'));
+    setCurrentPage();
     document.querySelectorAll('a').forEach(tag => {
         if (tag.innerHTML === 'Ready') {
             tag.addEventListener('click', readyUp);
 
         } else if (tag.innerHTML === 'Quit') {
             tag.addEventListener('click', quitLobby);
-
         }
     });
     loadLobby();
@@ -114,7 +114,9 @@ function quitLobby() {
         })
 }
 
-function previousPage() {
-    localStorage.setItem('previousPage', 'lobby.html')
+function setPreviousPage(page) {
+    localStorage.setItem('previousPage', page)
 }
-
+function setCurrentPage() {
+    localStorage.setItem('CurrentPage', 'lobby.html')
+}
