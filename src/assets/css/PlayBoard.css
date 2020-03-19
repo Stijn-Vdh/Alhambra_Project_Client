@@ -2,7 +2,7 @@ html {
     background-image: url("../media/wallpapersden.com_desert-sun-day-minimalism_1920x1080.jpg");
 }
 
-body {
+#TotalPlayBoard {
     background-color: beige;
     width: 1050px;
     height: 900px;

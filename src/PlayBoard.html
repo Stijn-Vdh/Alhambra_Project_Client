@@ -7,182 +7,184 @@
     <link rel="stylesheet" href="assets/css/PlayBoard.css">
 </head>
 <body>
-<!-- This times amount of enemyplayers -->
-<h1>Alhambra</h1>
-<div id="EnemyPlayer1">
-    <div class="EnemyBoard">
-        <!-- enemy playboard -->
+<div id="TotalPlayBoard">
+    <!-- This times amount of enemyplayers -->
+    <h1>Alhambra</h1>
+    <div id="EnemyPlayer1">
+        <div class="EnemyBoard">
+            <!-- enemy playboard -->
+        </div>
+        <div class="EnemyReserve">
+            <!-- enemy reserve stack -->
+            <div id="ReserveEnemy1">
+
+            </div>
+            <button class="dropDownButton">Reserve</button>
+        </div>
+        <div class="EnemyIcon">
+            <!-- enemy icon -->
+        </div>
+        <div class="EnemyScore">
+            <!-- enemy score -->
+            <p id="ScoreEnemy1"></p>
+        </div>
     </div>
-    <div class="EnemyReserve">
-        <!-- enemy reserve stack -->
-        <div id="ReserveEnemy1">
+    <div id="EnemyPlayer2">
+        <div class="EnemyBoard">
+            <!-- enemy playboard -->
+        </div>
+        <div class="EnemyReserve">
+            <!-- enemy reserve stack -->
+            <div id="ReserveEnemy2">
+
+            </div>
+            <button class="dropDownButton">Reserve</button>
+        </div>
+        <div class="EnemyIcon">
+            <!-- enemy icon -->
+        </div>
+        <div class="EnemyScore">
+            <!-- enemy score -->
+            <p id="ScoreEnemy2"></p>
+        </div>
+    </div>
+    <div id="EnemyPlayer3">
+        <div class="EnemyBoard">
+            <!-- enemy playboard -->
+        </div>
+        <div class="EnemyReserve">
+            <!-- enemy reserve stack -->
+            <div id="ReserveEnemy3">
+
+            </div>
+            <button class="dropDownButton">Reserve</button>
+        </div>
+        <div class="EnemyIcon">
+            <!-- enemy icon -->
+        </div>
+        <div class="EnemyScore">
+            <!-- enemy score -->
+            <p id="ScoreEnemy3"></p>
+        </div>
+    </div>
+    <div id="EnemyPlayer4">
+        <div class="EnemyBoard">
+            <!-- enemy playboard -->
+        </div>
+        <div class="EnemyReserve">
+            <!-- enemy reserve stack -->
+            <div id="ReserveEnemy4">
+
+            </div>
+            <button class="dropDownButton">Reserve</button>
+        </div>
+        <div class="EnemyIcon">
+            <!-- enemy icon -->
+        </div>
+        <div class="EnemyScore">
+            <!-- enemy score -->
+            <p id="ScoreEnemy4"></p>
+        </div>
+    </div>
+    <div id="EnemyPlayer5">
+        <div class="EnemyBoard">
+            <!-- enemy playboard -->
+        </div>
+        <div class="EnemyReserve">
+            <!-- enemy reserve stack -->
+            <div id="ReserveEnemy5">
+
+            </div>
+            <button class="dropDownButton">Reserve</button>
+        </div>
+        <div class="EnemyIcon">
+            <!-- enemy icon -->
+        </div>
+        <div class="EnemyScore">
+            <!-- enemy score -->
+            <p id="ScoreEnemy5"></p>
+        </div>
+    </div>
+    <div id="BuildingsRemaining">
+        <!-- aantal gebouwen dat nog in het dek liggen -->
+        <p id="RemainingBuildings">49 buildings remaining</p>
+    </div>
+
+    <main id="PlayBoard">
+        <!--
+            1 tile = 1 div
+            als gebouw in main gesleept word moet er een div aan gemaakt worden.
+            Als er 1 verwijderd word moet de juiste ook terug weg.
+         -->
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>
+
+
+    <!-- ANIMATIE == EXTRA -->
+    <div id="MoneyStack1">
+        <p>3 dinar</p>
+    </div>
+    <div id="MoneyStack2">
+        <p>1 dirham</p>
+    </div>
+    <div id="MoneyStack3">
+        <p>9 dukat</p>
+    </div>
+    <div id="MoneyStack4">
+        <p>4 florin</p>
+    </div>
+
+    <div class="RemainingCards">
+        <!-- cash money flappe dat je kan kope als het jouw beurt is  -->
+        <p id="RemainingCards">29 cards remaining</p>
+    </div>
+    <!-- gebouwen die je eventueel kan kopen als het je beurd is -->
+    <div id="BuildingStack1">
+        <div class="innerBuilding"></div>
+        <div class="price"><p>2</p></div>
+    </div>
+    <div id="BuildingStack2">
+        <div class="innerBuilding"></div>
+        <div class="price"><p>5</p></div>
+    </div>
+    <div id="BuildingStack3">
+        <div class="innerBuilding"></div>
+        <div class="price"><p>12</p></div>
+    </div>
+    <div id="BuildingStack4">
+        <div class="innerBuilding"></div>
+        <div class="price"><p>8</p></div>
+    </div>
+
+    <div id="Hand">
+        <!-- Cash money flappe in u hand -->
+        <div id="card1"><p>3</p></div>
+        <div id="card2"><p>6</p></div>
+        <div id="card3"><p>9</p></div>
+    </div>
+    <div id="ReserveDropUp">
+        <!-- U eige reserve stack drop up box -->
+        <div id="Reserve">
 
         </div>
-        <button class="dropDownButton">Reserve</button>
+        <button class="DropUpButton">Reserve</button>
     </div>
-    <div class="EnemyIcon">
-        <!-- enemy icon -->
-    </div>
-    <div class="EnemyScore">
-        <!-- enemy score -->
-        <p id="ScoreEnemy1"></p>
-    </div>
-</div>
-<div id="EnemyPlayer2">
-    <div class="EnemyBoard">
-        <!-- enemy playboard -->
-    </div>
-    <div class="EnemyReserve">
-        <!-- enemy reserve stack -->
-        <div id="ReserveEnemy2">
+    <div id="me">
+        <div class="Score">
+            <!-- eigen score -->
+            <p id="MyScore">55</p>
+        </div>
+        <div id="MyAvatar">
+            <!-- eigen avatar -->
 
         </div>
-        <button class="dropDownButton">Reserve</button>
-    </div>
-    <div class="EnemyIcon">
-        <!-- enemy icon -->
-    </div>
-    <div class="EnemyScore">
-        <!-- enemy score -->
-        <p id="ScoreEnemy2"></p>
     </div>
 </div>
-<div id="EnemyPlayer3">
-    <div class="EnemyBoard">
-        <!-- enemy playboard -->
-    </div>
-    <div class="EnemyReserve">
-        <!-- enemy reserve stack -->
-        <div id="ReserveEnemy3">
-
-        </div>
-        <button class="dropDownButton">Reserve</button>
-    </div>
-    <div class="EnemyIcon">
-        <!-- enemy icon -->
-    </div>
-    <div class="EnemyScore">
-        <!-- enemy score -->
-        <p id="ScoreEnemy3"></p>
-    </div>
-</div>
-<div id="EnemyPlayer4">
-    <div class="EnemyBoard">
-        <!-- enemy playboard -->
-    </div>
-    <div class="EnemyReserve">
-        <!-- enemy reserve stack -->
-        <div id="ReserveEnemy4">
-
-        </div>
-        <button class="dropDownButton">Reserve</button>
-    </div>
-    <div class="EnemyIcon">
-        <!-- enemy icon -->
-    </div>
-    <div class="EnemyScore">
-        <!-- enemy score -->
-        <p id="ScoreEnemy4"></p>
-    </div>
-</div>
-<div id="EnemyPlayer5">
-    <div class="EnemyBoard">
-        <!-- enemy playboard -->
-    </div>
-    <div class="EnemyReserve">
-        <!-- enemy reserve stack -->
-        <div id="ReserveEnemy5">
-
-        </div>
-        <button class="dropDownButton">Reserve</button>
-    </div>
-    <div class="EnemyIcon">
-        <!-- enemy icon -->
-    </div>
-    <div class="EnemyScore">
-        <!-- enemy score -->
-        <p id="ScoreEnemy5"></p>
-    </div>
-</div>
-<div id="BuildingsRemaining">
-    <!-- aantal gebouwen dat nog in het dek liggen -->
-    <p id="RemainingBuildings">49 buildings remaining</p>
-</div>
-
-<main id="PlayBoard">
-    <!--
-        1 tile = 1 div
-        als gebouw in main gesleept word moet er een div aan gemaakt worden.
-        Als er 1 verwijderd word moet de juiste ook terug weg.
-     -->
-    <div></div>
-    <div></div>
-    <div></div>
-</main>
-
-
-<!-- ANIMATIE == EXTRA -->
-<div id="MoneyStack1">
-    <p>3 dinar</p>
-</div>
-<div id="MoneyStack2">
-    <p>1 dirham</p>
-</div>
-<div id="MoneyStack3">
-    <p>9 dukat</p>
-</div>
-<div id="MoneyStack4">
-    <p>4 florin</p>
-</div>
-
-<div class="RemainingCards">
-    <!-- cash money flappe dat je kan kope als het jouw beurt is  -->
-    <p id="RemainingCards">29 cards remaining</p>
-</div>
-<!-- gebouwen die je eventueel kan kopen als het je beurd is -->
-<div id="BuildingStack1">
-    <div class="innerBuilding"></div>
-    <div class="price"><p>2</p></div>
-</div>
-<div id="BuildingStack2">
-    <div class="innerBuilding"></div>
-    <div class="price"><p>5</p></div>
-</div>
-<div id="BuildingStack3">
-    <div class="innerBuilding"></div>
-    <div class="price"><p>12</p></div>
-</div>
-<div id="BuildingStack4">
-    <div class="innerBuilding"></div>
-    <div class="price"><p>8</p></div>
-</div>
-
-<div id="Hand">
-    <!-- Cash money flappe in u hand -->
-    <div id="card1"><p>3</p></div>
-    <div id="card2"><p>6</p></div>
-    <div id="card3"><p>9</p></div>
-</div>
-<div id="ReserveDropUp">
-    <!-- U eige reserve stack drop up box -->
-    <div id="Reserve">
-
-    </div>
-    <button class="DropUpButton">Reserve</button>
-</div>
-<div id="me">
-    <div class="Score">
-        <!-- eigen score -->
-        <p id="MyScore">55</p>
-    </div>
-    <div id="MyAvatar">
-        <!-- eigen avatar -->
-
-    </div>
-</div>
-</body>
 <div id="FixedButtons">
     <a href="rules.html" id="rulesButton">Game rules</a>
     <a href="main_menu.html" id="exitButton">Exit</a>
 </div>
+</body>
 </html>
