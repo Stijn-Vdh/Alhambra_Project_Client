@@ -4,14 +4,13 @@ document.addEventListener('DOMContentLoaded', init);
 let __gameId = localStorage.getItem('gameID');
 let __PlayerName = localStorage.getItem('playerName');
 let __playerToken = __gameId + '+' + __PlayerName;
+let readyButton = document.querySelector('#readyButton');
+
 
 function init() {
     previousPage();
     document.querySelectorAll('a').forEach(tag => {
-        if (tag.innerHTML === "Start") {
-            tag.addEventListener('click', startGame);
-
-        } else if (tag.innerHTML === 'Ready') {
+        if (tag.innerHTML === 'Ready') {
             tag.addEventListener('click', readyUp);
 
         } else if (tag.innerHTML === 'Quit') {
@@ -28,44 +27,53 @@ function startGame() {
 }
 
 function readyUp() {
-    let table = document.querySelectorAll(".center tr");
-    let button = document.querySelector('#readyButton');
 
-    if (button.innerHTML === 'Ready') {
+    if (readyButton.innerHTML === 'Ready') {
         readyUpPlayer();
-        table.forEach(tag => {
-            if (tag.id === __PlayerName) {
-                tag.querySelectorAll('td').forEach(td => {
-                    if (td.innerHTML !== __PlayerName) {
-                        td.innerHTML = 'Ready'
-                    }
-                })
-            }
-        })
+        changeReadyState(true)
     } else {
         unReadyPlayer();
-        table.forEach(tag => {
-            if (tag.id === __PlayerName) {
-                tag.querySelectorAll('td').forEach(td => {
-                    if (td.innerHTML !== __PlayerName) {
-                        td.innerHTML = 'Not ready'
-                    }
-                })
-            }
-        })
+        changeReadyState(false)
     }
 }
+
 function readyUpPlayer() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}/ready`, `PUT`)
         .then(function () {
-            button.innerHTML = 'Not ready';
+            readyButton.innerHTML = 'Not ready';
         })
 }
+
 function unReadyPlayer() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}/ready`, `DELETE`)
         .then(function () {
-            button.innerHTML = 'Ready';
+            readyButton.innerHTML = 'Ready';
         })
+}
+
+function changeReadyState(ready) {
+    let table = document.querySelectorAll(".center tr");
+    table.forEach(tag => {
+        if (tag.id === __PlayerName) {
+            tag.querySelectorAll('td').forEach(td => {
+                if (td.innerHTML !== __PlayerName) {
+                    if (ready) {
+                        td.innerHTML = 'Ready'
+                    } else {
+                        td.innerHTML = 'Not ready'
+                    }
+                }
+            })
+        }
+    })
+}
+
+function getReadyState() {
+    if (readyButton.innerHTML === 'Not ready') {
+        return 'Ready'
+    }
+    return 'Not ready'
+
 }
 
 function loadLobby() {
@@ -73,27 +81,31 @@ function loadLobby() {
     let table = document.querySelector(".center");
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
-
-            console.log(response);
             players = response['players'];
             table.innerHTML = '';
-
-            console.log(players);
 
             players.forEach(player => {
                 table.innerHTML += `<tr id="${player}">
                                 <td>${player}</td>
-                                <td>Not ready</td>
+                                <td>${getReadyState()}</td>
                             </tr>`;
             });
             document.querySelector('#playerCount').innerHTML = players.length + "/6";
 
-            if (!response.started){
-                setTimeout(() => loadLobby(),3000)
+            /*if (players.length !== 6) {
+                readyButton.style.display = "none";
+            }*/
+
+            if (!response.started) {
+                setTimeout(() => loadLobby(), 2000)
+            } else if (response.started) {
+                window.location.href = "PlayBoard.html"
             }
+
         });
 }
-function quitLobby(){
+
+function quitLobby() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}`, `DELETE`)
         .then(function () {
             localStorage.removeItem('gameID');
@@ -102,7 +114,7 @@ function quitLobby(){
         })
 }
 
-function previousPage(){
+function previousPage() {
     localStorage.setItem('previousPage', 'lobby.html')
 }
 
