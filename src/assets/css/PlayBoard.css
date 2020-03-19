@@ -74,13 +74,6 @@ html {
     margin-top: 20px;
 }
 
-.dropDownButton {
-    width: 92px;
-    height: 20px;
-    background-color: rgba(0,0,0,0);
-    border: 1px solid black;
-}
-
 #MoneyMarket {
     grid-area: as1;
     grid-column: 1/2;
@@ -274,7 +267,7 @@ h1 {
     transform: rotate(-30deg);
 }
 
-a {
+#FixedButtons a {
     padding: 8px;
     margin-bottom: 20px ;
     text-align: center;
@@ -285,13 +278,144 @@ a {
     box-shadow: 0 5px 5px rgba(0,0,0,0.6);
     text-decoration: none;
     color: black;
+    font-family: "Arial", sans-serif;
 }
 
-a:hover{
+#FixedButtons a:hover{
     background-color: rgba(251,171,171,0.5);
 }
 
-a:active {
+#FixedButtons a:active {
     box-shadow: 0 0 0;
     transform: translateY(4px);
+}
+
+/* Dropup Button */
+.dropbtn {
+    height: 41px;
+    width: 151px;
+    margin-top: -1px;
+    margin-left: -1px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+    border-left: none;
+}
+#dropup{
+    grid-area: re;
+    grid-column: 6/7;
+    margin-top: 110px;
+    position: relative;
+    display: inline-block;
+}
+
+
+#dropup-content {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+
+}
+
+#dropup:active #dropup-content {
+    background-color:  beige;
+    width:300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    font-family: Arial, serif;
+    grid-template-columns: auto auto;
+    grid-auto-rows: 100px 100px;
+    grid-auto-flow: row;
+    text-align: center;
+    grid-gap: 10px;
+    margin-top: 35px;
+    padding-bottom: 35px;
+    border: 1px solid black;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+    overflow: auto;
+}
+
+
+#dropup:hover .dropbtn {
+    background-color: rgba(251,171,171,0.5);
+}
+
+#dropup-content .innerBuilding{
+    margin-bottom: 10px;
+}
+/*drop down button*/
+.dropDownButton {
+    width: 92px;
+    height: 20px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+}
+.EnemyReserve{
+
+}
+.EnemyReserve:active #ReserveEnemy1, .EnemyReserve:active #ReserveEnemy2, .EnemyReserve:active #ReserveEnemy3, .EnemyReserve:active #ReserveEnemy4, .EnemyReserve:active #ReserveEnemy5{
+    background-color:  beige;
+    width:300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    font-family: Arial, serif;
+    grid-template-columns: auto auto;
+    grid-auto-rows: 100px 100px;
+    grid-auto-flow: row;
+    text-align: center;
+    grid-gap: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+    overflow: auto;
+}
+
+#ReserveEnemy1, #ReserveEnemy2, #ReserveEnemy3, #ReserveEnemy4, #ReserveEnemy5{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+/*Grid play board*/
+#PlayBoard{
+    display: grid;
+    grid-template-columns: 150px 150px 150px 150px 150px;
+    grid-template-rows: 120px 120px 120px 120px 120px;
+    grid-template-areas:
+            "mn mn mn mn mn"
+            "mn mn mn mn mn"
+            "mn mn mn mn mn"
+            "mn mn mn mn mn"
+            "mn mn mn mn mn";
+    text-align: center;
+    overflow: auto;
+}
+.EnemyBoard{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+            "rs rs rs rs rs"
+            "rs rs rs rs rs"
+            "rs rs rs rs rs"
+            "rs rs rs rs rs"
+            "rs rs rs rs rs"
+            ;
+    text-align: center;
+    overflow: auto;
+}
+#test1{
+    grid-area: mn;
+    grid-column: 3;
+    grid-row: 3;
 }
