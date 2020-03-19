@@ -19,7 +19,7 @@ function getAvatarFromStorage(){
 }
 
 function selectAvatar(){
-    window.location.href = "AvatarSelection.html";
+    window.location.href = "avatarSelection.html";
 }
 
 function setAvatar(){
