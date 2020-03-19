@@ -30,8 +30,9 @@ function getStartingCoins(response) {
 }
 
 function setOwnStartingCoins(response) {
-    let hand = document.querySelector("#Hand").innerHTML;
-    getStartingCoins(response).forEach(coin => {
-        hand += `<div class="card" id="${coin["currency"]}"><p>${coin["amount"]}</p></div>`
+    let coins = getStartingCoins(response);
+    let hand = document.querySelector("#Hand");
+    coins.forEach(coin => {
+        hand.innerHTML += `<div class="card" id="${coin["currency"]}"><p>${coin["amount"]}</p></div>`
     });
 }
