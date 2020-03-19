@@ -14,6 +14,7 @@ function getAvatarFromStorage(){
         localStorage.setItem("avatar", "assets/media/Avatars/Avatar1.png");
         return "assets/media/Avatars/Avatar1.png"
     }
+    
     return avatarInStorage;
 }
 
