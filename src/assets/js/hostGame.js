@@ -1,8 +1,8 @@
 "use strict";
 
 let _gameId = null;
-let _playerToken = null;
-
+let _playerName = localStorage.getItem('playerName');
+let __playerToken = _gameId +'+'+_playerName;
 
 document.addEventListener('DOMContentLoaded',init);
 
@@ -11,8 +11,6 @@ function init() {
 }
 function createNewGame(e){
     e.preventDefault();
-
-    let playerName = localStorage.getItem("playerName");
 
     fetchFromServer(
         `${config.root}games`,
@@ -26,17 +24,8 @@ function createNewGame(e){
             localStorage.setItem('gameID', _gameId);
 
             // Join the game you've created
-            joinGame(_gameId,playerName);
+            joinGame(_gameId,_playerName);
         });
         
 }
 
-function joinGame(gameId,playerName){
-    fetchFromServer(`${config.root}games/${gameId}/players`,
-        'POST',
-        {playerName: `${playerName}` })
-        .then(function(response){
-            _playerToken = response;
-            console.log('%c%s','background-color: yellow;color: black','The playerToken is ' , _playerToken);
-        });
-}
