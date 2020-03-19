@@ -6,7 +6,7 @@ let __PlayerName = localStorage.getItem('playerName');
 let __playerToken = __gameId + '+' + __PlayerName;
 
 function init() {
-
+    previousPage();
     document.querySelectorAll('a').forEach(tag => {
         if (tag.innerHTML === "Start") {
             tag.addEventListener('click', startGame);
@@ -68,7 +68,6 @@ function unReadyPlayer() {
         })
 }
 
-
 function loadLobby() {
     let players;
     let table = document.querySelector(".center");
@@ -101,5 +100,9 @@ function quitLobby(){
             unReadyPlayer();
             window.location.href = "main_menu.html"
         })
+}
+
+function previousPage(){
+    localStorage.setItem('previousPage', 'lobby.html')
 }
 
