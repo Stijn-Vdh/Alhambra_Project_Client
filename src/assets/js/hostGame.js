@@ -2,7 +2,6 @@
 
 let _gameId = null;
 let _playerName = localStorage.getItem('playerName');
-let __playerToken = _gameId +'+'+_playerName;
 
 document.addEventListener('DOMContentLoaded',init);
 

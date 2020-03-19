@@ -145,7 +145,7 @@ body{
     display: flex;
 }
 
-#card1, #card2, #card3 {
+.card {
     border: 1px solid black;
     width: 75px;
     height: 110px;
@@ -154,13 +154,29 @@ body{
     background-color: beige;
 }
 
-#card1 p, #card2 p, #card3 p{
+.card p{
     margin-top: 50px;
 }
 
-#card1:hover, #card2:hover, #card3:hover {
+.card:hover {
     transform: translateY(-15px) scale(1.2);
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
+
+#blue {
+    background-color: cornflowerblue;
+}
+
+#red {
+    background-color: indianred;
+}
+
+#orange {
+    background-color: darkorange;
+}
+
+#green {
+    background-color: darkseagreen;
 }
 
 #ReserveDropUp {

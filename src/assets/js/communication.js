@@ -7,7 +7,7 @@ function fetchFromServer(url, httpVerb, requestBody){
     options.headers = {};
     options.headers["Content-Type"] = "application/json";
 
-    options.headers["Authorization"] ="Bearer " + __playerToken;
+    options.headers["Authorization"] ="Bearer " + localStorage.getItem("gameID") + '+' + localStorage.getItem("playerName");
 
     // Don't forget to add data to the body when needed
     options.body = JSON.stringify(requestBody);
