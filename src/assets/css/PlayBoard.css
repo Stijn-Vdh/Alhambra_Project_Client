@@ -1,0 +1,297 @@
+html {
+    background-image: url("../media/wallpapersden.com_desert-sun-day-minimalism_1920x1080.jpg");
+}
+
+#TotalPlayBoard {
+    background-color: beige;
+    width: 1050px;
+    height: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    font-family: Arial, serif;
+    grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px 150px 150px 150px;
+    grid-template-areas:
+            "hd1 p1 p2 p3 p4 p5 hd2"
+            "ms1 mn mn mn mn mn bs1"
+            "ms2 mn mn mn mn mn bs2"
+            "ms3 mn mn mn mn mn bs3"
+            "ms4 mn mn mn mn mn bs4"
+            "ft ha ha ha ha re me";
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 35px;
+    border: 1px solid black;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+}
+
+#BuildingsRemaining {
+    grid-area: hd2;
+    grid-column: 7/8;
+    grid-row: 1/2;
+    outline: 1px solid black;
+    width: 120px;
+    height: 80px;
+    margin-top: 40px;
+    margin-left: 15px;
+}
+
+#BuildingsRemaining p {
+    margin-top: 25px;
+}
+
+#EnemyPlayer1 {
+    grid-area: p1;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+#EnemyPlayer2 {
+    grid-area: p2;
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+#EnemyPlayer3 {
+    grid-area: p3;
+    grid-column: 4/5;
+    grid-row: 1/2;
+}
+#EnemyPlayer4 {
+    grid-area: p4;
+    grid-column: 5/6;
+    grid-row: 1/2;
+}
+#EnemyPlayer5 {
+    grid-area: p5;
+    grid-column: 6/7;
+    grid-row: 1/2;
+}
+
+.EnemyBoard {
+    outline: 1px solid black;
+    width: 120px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.dropDownButton {
+    width: 92px;
+    height: 20px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+}
+
+#MoneyMarket {
+    grid-area: as1;
+    grid-column: 1/2;
+    grid-row: 2/6;
+}
+
+.RemainingCards {
+    grid-area: ft;
+    outline: 1px solid black;
+    width: 120px;
+    height: 80px;
+    margin-top: 40px;
+    margin-left: 15px;
+}
+
+.RemainingCards p {
+    margin-top: 25px;
+}
+
+#me {
+    grid-area: me;
+    grid-column: 7/8;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 130px;
+    width: 130px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#me .Score {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: beige;
+}
+
+#me .Score p {
+    margin-top: 10px;
+}
+
+#Hand {
+    grid-area: ha;
+    grid-column: 2/6;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 10px;
+    display: flex;
+}
+
+#card1, #card2, #card3 {
+    border: 1px solid black;
+    width: 75px;
+    height: 110px;
+    margin-top: 27.5px;
+    margin-left: 5px;
+    background-color: beige;
+}
+
+#card1 p, #card2 p, #card3 p{
+    margin-top: 50px;
+}
+
+#card1:hover, #card2:hover, #card3:hover {
+    transform: translateY(-15px) scale(1.2);
+    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
+
+#ReserveDropUp {
+    grid-area: re;
+    grid-column: 6/7;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 110px;
+}
+
+.DropUpButton {
+    height: 41px;
+    width: 151px;
+    margin-top: -1px;
+    margin-left: -1px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+}
+
+#FixedButtons  {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    margin-left: 1%;
+}
+
+#MoneyStack1, #MoneyStack2, #MoneyStack3, #MoneyStack4 {
+    border: 1px solid black;
+    width: 120px;
+    height: 50px;
+    margin-left: 15px;
+    margin-top: 50px;
+}
+
+#MoneyStack1:hover, #MoneyStack2:hover, #MoneyStack3:hover, #MoneyStack4:hover {
+    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
+
+#MoneyStack1 p, #MoneyStack2 p, #MoneyStack3 p, #MoneyStack4 p {
+    margin-top: 15px;
+}
+
+#MoneyStack1 {
+    grid-area: ms1;
+}
+#MoneyStack2 {
+    grid-area: ms2;
+}
+#MoneyStack3 {
+    grid-area: ms3;
+}
+#MoneyStack4 {
+    grid-area: ms4;
+}
+
+#BuildingStack1, #BuildingStack2, #BuildingStack3, #BuildingStack4 {
+    border: 1px solid black;
+    width: 120px;
+    height: 120px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+#BuildingStack1:hover, #BuildingStack2:hover, #BuildingStack3:hover, #BuildingStack4:hover {
+    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
+
+.innerBuilding {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#BuildingStack1 {
+    grid-area: bs1;
+}
+#BuildingStack2 {
+    grid-area: bs2;
+}
+#BuildingStack3 {
+    grid-area: bs3;
+}
+#BuildingStack4 {
+    grid-area: bs4;
+}
+
+.price {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: beige;
+    margin-left: 45px;
+    margin-top: -12.5px;
+    text-align: center;
+}
+
+.price p{
+    margin-top: 6.25px;
+}
+
+main {
+    grid-area: mn;
+    grid-column: 2/7;
+    grid-row: 2/6;
+    border: 1px solid black;
+
+}
+
+h1 {
+    font-family: "Vladimir Script", sans-serif;
+    display: inline-block;
+    font-size: 2.5rem;
+    width: 175px;
+    text-decoration: none;
+    line-height: 0.8;
+    margin-top: 4rem;
+    grid-area: hd1;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    transform: rotate(-30deg);
+}
+
+a {
+    padding: 8px;
+    margin-bottom: 20px ;
+    text-align: center;
+    display: block;
+    width: 12rem;
+    border: solid 1px black;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    background-color: rgba(251,171,171,0.5);
+}
+
+a:active {
+    box-shadow: 0 0 0;
+    transform: translateY(4px);
+}
