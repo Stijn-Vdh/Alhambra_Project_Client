@@ -1,9 +1,12 @@
 "use strict";
 
+
+
 document.addEventListener('DOMContentLoaded',init);
 
 function init(){
     fetchGames();
+    document.querySelector('table').addEventListener('click', addPlayerExistingGame);
 }
 
 function fetchGames() {
@@ -17,4 +20,8 @@ function fetchGames() {
             htmlCode.innerHTML += `<tr><td>${games[i]}</td></tr>`;
         }
     });
+}
+
+function addPlayerExistingGame(e){
+    joinGame(e.target.innerText, 'test');
 }

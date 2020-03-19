@@ -3,12 +3,12 @@
 let _gameId = null;
 let _playerToken = null;
 
+
 document.addEventListener('DOMContentLoaded',init);
 
-function init(){
-    document.querySelector('form').addEventListener('submit',createNewGame);
+function init() {
+    document.querySelector('form').addEventListener('submit', createNewGame);
 }
-
 function createNewGame(e){
     e.preventDefault();
 
