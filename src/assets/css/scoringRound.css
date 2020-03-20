@@ -1,24 +1,9 @@
 body{
     background-image: url("../media/wallpapersden.com_desert-sun-day-minimalism_1920x1080.jpg") ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
 }
 
 main, header{
     text-align: center;
-}
-
-h1 {
-    font-family: "Vladimir Script", sans-serif;
-    display: inline-block;
-    font-size: 5rem;
-    text-decoration: none;
-    border-bottom: 1px solid black;
-    line-height: 0.8;
-    margin-top: 4rem;
 }
 
 h2 {
@@ -26,20 +11,18 @@ h2 {
     font-size: 2rem;
 }
 
-
 table {
     width: 50%;
 }
+
 thead tr th {
     height: 30px;
     line-height: 30px;
-
 }
 
 tbody tr td{
     height: 30px;
     line-height: 30px;
-
 }
 
 table, thead th , tbody td{
@@ -59,7 +42,6 @@ tbody tr:last-child{
 }
 
 tbody td, thead th {
-
     padding: 5px;
 }
 
@@ -69,53 +51,26 @@ tbody td, thead th {
 /*    background-color: rgba(251, 171, 171, 0.5);*/
 /*}*/
 
-footer{
-    display: inline-block;
-    position: fixed;
-    bottom: 0;
-}
-
 #blue {
     background-color: deepskyblue;
 }
+
 #red {
     background-color: rgba(231,29,18,0.78);
 }
+
 #brown{
     background-color: rgba(150,33,35,0.75);
 }
+
 #white{
     background-color: rgba(236,232,233,0.72);
 }
+
 #green{
     background-color: rgba(17,197,41,0.71);
 }
+
 #purple{
     background-color: rgba(131,17,197,0.68);
-}
-
-
-
-
-
-
-a{
-    padding: 8px;
-    margin-bottom: 20px;
-    text-align: center;
-    display: block;
-    width: 12rem;
-    border: solid 1px black;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
-    text-decoration: none;
-    color: black;
-}
-a:hover{
-    background-color: rgba(251, 171, 171, 0.5);
-}
-
-a:active{
-    box-shadow: 0 0 0;
-    transform: translateY(4px);
 }

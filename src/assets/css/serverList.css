@@ -1,25 +1,13 @@
 body{
     background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg") ;
-    height: 100%;
-    width: 100%;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
 }
 
 main, header{
     text-align: center;
 }
+
 main{
     margin-top: 6rem;
-}
-h1 {
-    font-family: "Vladimir Script", sans-serif;
-    display: inline-block;
-    font-size: 5rem;
-    text-decoration: none;
-    border-bottom: 1px solid black;
-    line-height: 0.8;
-    margin-top: 4rem;
 }
 
 table.scroll {
@@ -29,13 +17,14 @@ table.scroll {
     border-bottom: 2px solid black;
 }
 
-table.scroll tbody,
-table.scroll thead { display: block  ; }
+table.scroll tbody, table.scroll thead {
+    display: block;
+}
 
 table {
     width: 25%;
-
 }
+
 thead tr th {
     height: 30px;
     line-height: 30px;
@@ -54,20 +43,20 @@ table.scroll tbody {
     overflow-x: hidden;
     width: auto;
 }
+
 table, thead th , tbody td{
     border-bottom: 1px solid black;
     border-collapse: collapse;
     margin: 0 auto 20px auto;
     color: rgba(255,255,255,0.6);
-
 }
 
 tbody {
     border-top: 2px solid black;
-    text-align: center;}
+    text-align: center;
+}
 
 tbody td, thead th {
-
     padding: 5px;
 }
 
@@ -76,10 +65,10 @@ tbody td:hover {
     text-align: center;
     background-color: rgba(251, 171, 171, 0.5);
 }
+
 tbody td.active{
     background-color: rgba(251, 171, 171, 0.5);
 }
-
 
 input[type=submit]{
     padding: 8px;
@@ -99,34 +88,7 @@ form input[type=submit]:active {
     transform: translateY(4px);
     background-color: rgba(251, 171, 171, 0.5);
 }
+
 form input[type=submit]:hover{
 background-color: rgba(251, 171, 171, 0.5);
-
-}
-
-footer{
-    display: inline-block;
-    position: fixed;
-    bottom: 0;
-}
-
-a{
-    padding: 8px;
-    margin-bottom: 20px;
-    text-align: center;
-    display: block;
-    width: 12rem;
-    border: solid 1px black;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
-    text-decoration: none;
-    color: black;
-}
-a:hover{
-    background-color: rgba(251, 171, 171, 0.5);
-}
-
-a:active{
-    box-shadow: 0 0 0;
-    transform: translateY(4px);
 }
