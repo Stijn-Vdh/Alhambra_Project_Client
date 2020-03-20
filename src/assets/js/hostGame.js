@@ -1,7 +1,7 @@
 "use strict";
 
 let _gameId = null;
-let _playerName = localStorage.getItem('playerName');
+let _playerName = getPlayerName();
 
 document.addEventListener('DOMContentLoaded',init);
 

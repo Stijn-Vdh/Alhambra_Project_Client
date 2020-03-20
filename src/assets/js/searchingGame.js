@@ -34,7 +34,7 @@ function getOpenLobby() {
 function joinOpenLobby(openGameIDs) {
     console.log(openGameIDs);
     let firstOpenGame = openGameIDs[0];
-    localStorage.setItem("gameID", firstOpenGame);
+    setGameID(firstOpenGame);
     let gameID = getGameID();
     let playerName = getPlayerName();
 

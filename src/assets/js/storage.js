@@ -32,3 +32,6 @@ function getGameID() {
 function setGameID(gameID) {
     return localStorage.setItem("gameID",gameID)
 }
+function removeGameID() {
+    return localStorage.removeItem("gameID")
+}
