@@ -91,7 +91,7 @@ function loadLobby() {
             if (!response.started) {
                 setTimeout(() => loadLobby(), 2000)
             } else if (response.started) {
-                window.location.href = "PlayBoard.html"
+                window.location.href = "playBoard.html"
             }
 
         });
