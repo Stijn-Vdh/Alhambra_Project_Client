@@ -7,8 +7,6 @@ let readyButton = document.querySelector('#readyButton');
 
 
 function init() {
-    setPreviousPage(localStorage.getItem('currentPage'));
-    setCurrentPage();
     document.querySelectorAll('a').forEach(tag => {
         if (tag.innerHTML === 'Ready') {
             tag.addEventListener('click', readyUp);
