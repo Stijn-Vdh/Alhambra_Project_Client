@@ -1,17 +1,6 @@
 
 body{
     background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg");
-    font-family: Arial,serif;
-    width: 100%;
-    height: 100%;
-}
-
-h1{
-    font-family: "Vladimir Script", sans-serif;
-    text-align: center;
-    font-size: 5rem;
-    text-decoration: underline;
-    margin-top: 4rem;
 }
 
 label{
@@ -19,18 +8,20 @@ label{
     border-bottom: 1px;
     text-decoration: underline;
 }
+
 form{
     display: flex;
     flex-direction: column;
     width: 30%;
     margin-left: 36%;
 }
+
 main{
   justify-content: center;
 }
+
 input[type=submit]{
-    border: 1px solid;
-    border-color: black;
+    border: 1px solid black;
     padding: 5px 40px;
     border-radius: 30px;
     background-color: #725981;
@@ -39,8 +30,8 @@ input[type=submit]{
     transform: translate(0%,1000%);
     /* tot we eigen server hebben  */
     box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-
 }
+
 input[type=text], input[type=number]{
     border: 0.5px solid;
     border-radius: 30px;
@@ -49,41 +40,5 @@ input[type=text], input[type=number]{
     text-align: center;
     height: 30px;
     background-color: #4c4370;
-
     box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-}
-
-a{
-
-    color: black;
-    padding: 8px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    border: 0.5px solid;
-    border-radius: 30px;
-    width: 10%;
-    margin-bottom:20px;
-
-    box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 1.5px 1.5px rgba(0,0,0,0.6);
-
-}
-footer{
-    text-align: left;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
-}
-a:active {
-    box-shadow: 0 0 0;
-    -moz-box-shadow: 0 0 0;
-    -webkit-box-shadow: 0 0 0;
-    -o-box-shadow: 0 0 0;
-    transform: translateY(4px);
-}
-a:hover{
-background-color: rgba(251,171,171,0.5);
 }
