@@ -16,7 +16,8 @@ function getGameDetails() {
 
 function setMyAvatar() {
     let avatar = document.querySelector('#MyAvatar');
-    avatar.innerHTML = `<img src="${localStorage.getItem("avatar")}" alt="myAvatar">`;
+    let avatarURL = "../" + getAvatarFromStorage();
+    avatar.innerHTML = `<img src="${avatarURL}" alt="myAvatar">`;
 }
 
 function getStartingCoins(response) {

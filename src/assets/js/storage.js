@@ -14,7 +14,7 @@ function setAvatarInStorage(e){
     selectedAvatar = selectedAvatar.getAttribute("src");
     selectedAvatar = selectedAvatar.substring(3);
     localStorage.setItem("avatar", selectedAvatar);
-    window.location.href = ("../index.html");
+    window.history.back();
 }
 
 function getAvatarFromStorage(){
@@ -24,11 +24,4 @@ function getAvatarFromStorage(){
         return "assets/media/Avatars/Avatar1.png"
     }
     return avatarInStorage;
-}
-
-function setPreviousPage(page) {
-    localStorage.setItem('previousPage', page)
-}
-function setCurrentPage() {
-    localStorage.setItem('CurrentPage', 'lobby.html')
 }
