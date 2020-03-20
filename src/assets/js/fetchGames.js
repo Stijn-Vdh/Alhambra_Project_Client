@@ -28,8 +28,8 @@ function fetchGames() {
 function joinLobby(e) {
     e.preventDefault();
     console.log(__gameId);
-    localStorage.setItem("gameID", __gameId);
-    let playerName = localStorage.getItem("playerName");
+    setGameID(__gameId);
+    let playerName = getPlayerName();
 
     fetchFromServer(`${config.root}games/${__gameId}/players`, 'POST', {playerName: `${playerName}`})
         .then(function (response) {
@@ -44,8 +44,6 @@ function moveToLobby() {
 
 function save(e) {
     __gameId = e.target.innerText;
-    console.log(__gameId);
-    console.log(e);
 
     document.querySelectorAll('table tbody td').forEach(tag =>{
        tag.classList.remove("active")

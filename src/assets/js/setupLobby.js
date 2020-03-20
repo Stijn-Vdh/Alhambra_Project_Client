@@ -1,8 +1,8 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', init);
-let __gameId = localStorage.getItem('gameID');
-let __PlayerName = localStorage.getItem('playerName');
+let __gameId = getGameID();
+let __PlayerName = getPlayerName();
 let readyButton = document.querySelector('#readyButton');
 
 
@@ -89,7 +89,7 @@ function loadLobby() {
             if (!response.started) {
                 setTimeout(() => loadLobby(), 2000)
             } else if (response.started) {
-                window.location.href = "playBoard.html"
+                window.location.href = "../playBoard/playBoard.html"
             }
 
         });
@@ -98,9 +98,9 @@ function loadLobby() {
 function quitLobby() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}`, `DELETE`)
         .then(function () {
-            localStorage.removeItem('gameID');
+            removeGameID();
             unReadyPlayer();
-            window.location.href = "mainMenu.html"
+            window.location.href = "../mainMenu.html"
         })
 }
 
