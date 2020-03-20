@@ -20,8 +20,8 @@ function setAvatarInStorage(e){
 function getAvatarFromStorage(){
     let avatarInStorage = localStorage.getItem("avatar");
     if (avatarInStorage === null){
-        localStorage.setItem("avatar", "assets/media/Avatars/Avatar1.png");
-        return "assets/media/Avatars/Avatar1.png"
+        localStorage.setItem("avatar", "assets/media/avatars/avatar1.png");
+        return "assets/media/avatars/avatar1.png"
     }
     return avatarInStorage;
 }
