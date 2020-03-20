@@ -10,9 +10,7 @@ function init(){
 }
 
 function insertUserName(){
-    let username = getPlayerName();
-    console.log(username);
-    document.querySelector("#username").value = username;
+    document.querySelector("#username").value = getPlayerName();
 }
 
 function selectAvatar(){
