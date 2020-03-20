@@ -4,22 +4,20 @@ document.addEventListener('DOMContentLoaded', init);
 
 function init(){
     setAvatar();
+    insertUserName();
     document.querySelector("#avatar").addEventListener("click", selectAvatar);
     document.querySelector('form').addEventListener("submit", goToMainMenu);
 }
 
-function getAvatarFromStorage(){
-    let avatarInStorage = localStorage.getItem("avatar");
-    if (avatarInStorage === null){
-        localStorage.setItem("avatar", "assets/media/Avatars/Avatar1.png");
-        return "assets/media/Avatars/Avatar1.png"
-    }
-    
-    return avatarInStorage;
+function insertUserName(){
+    let username = getPlayerName();
+    console.log(username);
+    document.querySelector("#username").value = username;
 }
 
 function selectAvatar(){
-    window.location.href = "avatarSelection.html";
+    setPlayerName();
+    window.location.href = "loginPage/avatarSelection.html";
 }
 
 function setAvatar(){
@@ -29,8 +27,7 @@ function setAvatar(){
 
 function goToMainMenu(e){
     e.preventDefault();
-    let playerName = document.querySelector("#username").value;
-    localStorage.setItem("playerName", playerName);
+    setPlayerName();
     window.location.href = "mainMenu.html"
 }
 

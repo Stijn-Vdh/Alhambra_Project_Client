@@ -106,9 +106,4 @@ function quitLobby() {
         })
 }
 
-function setPreviousPage(page) {
-    localStorage.setItem('previousPage', page)
-}
-function setCurrentPage() {
-    localStorage.setItem('CurrentPage', 'lobby.html')
-}
+
