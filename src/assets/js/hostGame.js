@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded',init);
 
 function init() {
     document.querySelector('#hostGameForm').addEventListener('submit', createNewGame);
+    setPreviousPage(localStorage.getItem('currentPage'));
+    setCurrentPage();
 }
 function createNewGame(e){
     e.preventDefault();
@@ -23,8 +25,20 @@ function createNewGame(e){
             localStorage.setItem('gameID', _gameId);
 
             // Join the game you've created
-            joinGame(_gameId,_playerName);
+            joinGame(_gameId, _playerName);
+
+            setTimeout(function () {
+                window.location.href = "lobby.html"
+            }, 1500);
+
         });
-        
+
+}
+
+function setPreviousPage(page) {
+    localStorage.setItem('previousPage', page)
+}
+function setCurrentPage() {
+    localStorage.setItem('CurrentPage', 'lobby.html')
 }
 

@@ -1,6 +1,9 @@
 
 body{
     background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg");
+    font-family: Arial,serif;
+    width: 100%;
+    height: 100%;
 }
 
 h1{
@@ -21,15 +24,10 @@ form{
     flex-direction: column;
     width: 30%;
     margin-left: 36%;
-
 }
 main{
   justify-content: center;
 }
-
-
-
-
 input[type=submit]{
     border: 1px solid;
     border-color: black;
@@ -37,11 +35,11 @@ input[type=submit]{
     border-radius: 30px;
     background-color: #725981;
     height: 30px;
-    transform: translateY(4px);
+    /* tot we eigen server hebben  */
+    transform: translate(0%,1000%);
+    /* tot we eigen server hebben  */
     box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
+
 }
 input[type=text], input[type=number]{
     border: 0.5px solid;
@@ -53,9 +51,6 @@ input[type=text], input[type=number]{
     background-color: #4c4370;
 
     box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 2px 2px rgba(0,0,0,0.6);
 }
 
 a{
