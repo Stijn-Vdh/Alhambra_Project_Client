@@ -17,7 +17,7 @@ function containsPlayer(players) {
 
 function getOpenLobby() {
     let openGameIDs = [];
-    fetchFromServer(`${config.root}games?details=true&prefix=${config.groupnumber}`, 'GET')
+    fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
             for (let i = 0; i < response.length; i++) {
