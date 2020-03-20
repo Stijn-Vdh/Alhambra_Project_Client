@@ -8,7 +8,7 @@ function init() {
 
 function containsPlayer(players) {
     for (let i = 0; i < players.length; i++) {
-        if (players[i] === localStorage.getItem("playerName")) {
+        if (players[i] === getPlayerName()) {
             return true
         }
     }
@@ -17,7 +17,7 @@ function containsPlayer(players) {
 
 function getOpenLobby() {
     let openGameIDs = [];
-    fetchFromServer(`${config.root}games?details=true&prefix=${config.groupnumber}`, 'GET')
+    fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
             for (let i = 0; i < response.length; i++) {
@@ -34,9 +34,9 @@ function getOpenLobby() {
 function joinOpenLobby(openGameIDs) {
     console.log(openGameIDs);
     let firstOpenGame = openGameIDs[0];
-    localStorage.setItem("gameID", firstOpenGame);
-    let gameID = localStorage.getItem("gameID");
-    let playerName = localStorage.getItem("playerName");
+    setGameID(firstOpenGame);
+    let gameID = getGameID();
+    let playerName = getPlayerName();
 
     fetchFromServer(`${config.root}games/${gameID}/players`,'POST',{playerName: `${playerName}` })
         .then(function(response){
