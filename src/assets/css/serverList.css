@@ -1,8 +1,7 @@
 body{
     background-image: url("../media/wallpapersden.com_desert-nights-moon-5k-minimalism_1920x1080.jpg") ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
+    height: 100%;
+    width: 100%;
     font-family: Arial, sans-serif;
     font-size: 1rem;
 }
@@ -75,6 +74,9 @@ tbody td, thead th {
 tbody td:hover {
     padding: 5px;
     text-align: center;
+    background-color: rgba(251, 171, 171, 0.5);
+}
+tbody td.active{
     background-color: rgba(251, 171, 171, 0.5);
 }
 

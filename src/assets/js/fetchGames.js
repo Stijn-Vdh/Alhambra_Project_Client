@@ -1,37 +1,58 @@
 "use strict";
 
 let __gameId = null;
-let __PlayerName = localStorage.getItem('playerName');
-let __playerToken = __gameId + '+' + __PlayerName;
+let previousTag ;
+document.addEventListener('DOMContentLoaded', init);
 
-
-document.addEventListener('DOMContentLoaded',init);
-
-function init(){
+function init() {
     fetchGames();
     document.querySelector('table').addEventListener('click', save);
-    document.querySelector('#joinLobbyForm').addEventListener('submit', addPlayerExistingGame);
+    document.querySelector('#joinLobbyForm').addEventListener('submit', joinLobby);
 }
 
 function fetchGames() {
     let games = [];
-    fetchFromServer(`${config.root}games?prefix=group${config.groupnumber}`,`GET`)
-        .then(function(response) {
+    fetchFromServer(`${config.root}games?prefix=group${config.groupnumber}`, `GET`)
+        .then(function (response) {
             games = response;
-            let htmlCode = document.querySelector("tbody");
-            for(let i = 0; i < games.length;i++){
-            htmlCode.innerHTML += `<tr><td>${games[i]}</td></tr>`;
-        }
-    });
+            console.log(response);
+            let htmlCode = document.querySelector("table tbody");
+            for (let i = 0; i < games.length; i++) {
+                if (games[i]["playerCount"] < 6){
+                    htmlCode.innerHTML += `<tr><td>${games[i]}</td></tr>`;
+                }
+            }
+        });
 }
 
-function addPlayerExistingGame(e){
-    e.preventDefault();
-    joinGame(__gameId, 'stijn');
+function joinLobby() {
+    console.log(__gameId);
+    localStorage.setItem("gameID", __gameId);
+    let playerName = localStorage.getItem("playerName");
 
+    fetchFromServer(`${config.root}games/${__gameId}/players`, 'POST', {playerName: `${playerName}`})
+        .then(function (response) {
+            console.log('%c%s', 'background-color: yellow;color: black', 'The playerToken is ', response);
+        });
+    moveToLobby();
+}
+
+function moveToLobby() {
+    window.location.href = "joiningGamePage.html";
 }
 
 function save(e) {
-   __gameId = e.target.innerText;
+    __gameId = e.target.innerText;
+    console.log(__gameId);
+    console.log(e);
+
+    document.querySelectorAll('table tbody td').forEach(tag =>{
+       tag.classList.remove("active")
+    });
+
+    e.target.classList.add("active")
+
+
+
 }
 
