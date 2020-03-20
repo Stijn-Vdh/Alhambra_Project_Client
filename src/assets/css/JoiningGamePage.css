@@ -22,6 +22,7 @@ h2 {
 }
 
 #loader {
+    /* source: https://www.w3schools.com/howto/howto_css_loader.asp */
     border: 10px solid #4c4370;
     border-radius: 50%;
     border-top: 10px solid rgb(251, 171, 171);
