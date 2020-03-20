@@ -89,7 +89,7 @@ function loadLobby() {
             if (!response.started) {
                 setTimeout(() => loadLobby(), 2000)
             } else if (response.started) {
-                window.location.href = "playBoard.html"
+                window.location.href = "../playBoard/playBoard.html"
             }
 
         });
@@ -100,7 +100,7 @@ function quitLobby() {
         .then(function () {
             localStorage.removeItem('gameID');
             unReadyPlayer();
-            window.location.href = "mainMenu.html"
+            window.location.href = "../mainMenu.html"
         })
 }
 

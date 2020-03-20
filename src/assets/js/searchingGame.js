@@ -8,7 +8,7 @@ function init() {
 
 function containsPlayer(players) {
     for (let i = 0; i < players.length; i++) {
-        if (players[i] === localStorage.getItem("playerName")) {
+        if (players[i] === getPlayerName()) {
             return true
         }
     }

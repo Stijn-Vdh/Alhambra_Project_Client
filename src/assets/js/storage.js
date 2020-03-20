@@ -2,7 +2,7 @@
 
 function setPlayerName(){
     let playerName = document.querySelector("#username").value;
-    localStorage.setItem("playerName", playerName);
+    localStorage.setItem("playerName", playerName.toLowerCase());
 }
 
 function getPlayerName() {
