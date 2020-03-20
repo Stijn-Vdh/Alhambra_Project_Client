@@ -1,7 +1,7 @@
 "use strict";
 
 let __gameId = null;
-let previousTag ;
+
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
@@ -12,20 +12,21 @@ function init() {
 
 function fetchGames() {
     let games = [];
-    fetchFromServer(`${config.root}games?prefix=group${config.groupnumber}`, `GET`)
+    fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, `GET`)
         .then(function (response) {
             games = response;
             console.log(response);
             let htmlCode = document.querySelector("table tbody");
             for (let i = 0; i < games.length; i++) {
-                if (games[i]["playerCount"] < 6){
-                    htmlCode.innerHTML += `<tr><td>${games[i]}</td></tr>`;
+                if (games[i]["playerCount"] < 6) {
+                    htmlCode.innerHTML += `<tr><td>${games[i]["id"]}</td></tr>`;
                 }
             }
         });
 }
 
-function joinLobby() {
+function joinLobby(e) {
+    e.preventDefault();
     console.log(__gameId);
     localStorage.setItem("gameID", __gameId);
     let playerName = localStorage.getItem("playerName");
@@ -33,8 +34,8 @@ function joinLobby() {
     fetchFromServer(`${config.root}games/${__gameId}/players`, 'POST', {playerName: `${playerName}`})
         .then(function (response) {
             console.log('%c%s', 'background-color: yellow;color: black', 'The playerToken is ', response);
+            setTimeout(moveToLobby, 500);
         });
-    moveToLobby();
 }
 
 function moveToLobby() {
