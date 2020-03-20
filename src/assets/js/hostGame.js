@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded',init);
 
 function init() {
     document.querySelector('#hostGameForm').addEventListener('submit', createNewGame);
+    setPreviousPage(localStorage.getItem('currentPage'));
+    setCurrentPage();
 }
 function createNewGame(e){
     e.preventDefault();
@@ -31,5 +33,12 @@ function createNewGame(e){
 
         });
 
+}
+
+function setPreviousPage(page) {
+    localStorage.setItem('previousPage', page)
+}
+function setCurrentPage() {
+    localStorage.setItem('CurrentPage', 'lobby.html')
 }
 
