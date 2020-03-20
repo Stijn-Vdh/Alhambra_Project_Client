@@ -30,6 +30,6 @@ function createNewGame(e){
             }, 1500);
 
         });
-        
+
 }
 
