@@ -102,7 +102,7 @@ function quitLobby() {
         .then(function () {
             localStorage.removeItem('gameID');
             unReadyPlayer();
-            window.location.href = "main_menu.html"
+            window.location.href = "mainMenu.html"
         })
 }
 

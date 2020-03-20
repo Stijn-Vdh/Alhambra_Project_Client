@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Alhambra</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
-    <!-- Insert beautiful custom styles here :-) -->
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/reset.css"/>
+    <link rel="stylesheet" href="assets/css/login.css"/>
 </head>
+
 <body>
-<h1>Welcome to Alhambra</h1>
-<p>Please consult the console and scripts for basic connection to the API</p>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/communication.js"></script>
-<script src="assets/js/script.js"></script>
+
+<h1>Alhambra</h1>
+
+<form>
+    <label for="username">Play</label>
+    <input type="text" name="username" id="username" placeholder="Username" required>
+    <h2>Choose avatar</h2>
+        <div id="avatar"></div>
+    <input type="submit" value="Play">
+</form>
+
+<script src="assets/js/login.js"></script>
+
 </body>
 </html>

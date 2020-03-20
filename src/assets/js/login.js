@@ -31,7 +31,7 @@ function goToMainMenu(e){
     e.preventDefault();
     let playerName = document.querySelector("#username").value;
     localStorage.setItem("playerName", playerName);
-    window.location.href = "main_menu.html"
+    window.location.href = "mainMenu.html"
 }
 
 

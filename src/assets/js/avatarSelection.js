@@ -12,6 +12,6 @@ function init(){
 function setAvatarInStorage(e){
     let selectedAvatar = e.target;
     localStorage.setItem("avatar", selectedAvatar.getAttribute("src"));
-    window.location.href = ("login.html");
+    window.location.href = ("index.html");
 }
 
