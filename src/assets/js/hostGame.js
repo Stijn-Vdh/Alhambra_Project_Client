@@ -23,7 +23,12 @@ function createNewGame(e){
             localStorage.setItem('gameID', _gameId);
 
             // Join the game you've created
-            joinGame(_gameId,_playerName);
+            joinGame(_gameId, _playerName);
+
+            setTimeout(function () {
+                window.location.href = "lobby.html"
+            }, 1500);
+
         });
         
 }
