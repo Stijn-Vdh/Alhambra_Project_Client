@@ -35,8 +35,8 @@ function joinOpenLobby(openGameIDs) {
     console.log(openGameIDs);
     let firstOpenGame = openGameIDs[0];
     localStorage.setItem("gameID", firstOpenGame);
-    let gameID = localStorage.getItem("gameID");
-    let playerName = localStorage.getItem("playerName");
+    let gameID = getGameID();
+    let playerName = getPlayerName();
 
     fetchFromServer(`${config.root}games/${gameID}/players`,'POST',{playerName: `${playerName}` })
         .then(function(response){

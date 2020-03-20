@@ -25,3 +25,10 @@ function getAvatarFromStorage(){
     }
     return avatarInStorage;
 }
+
+function getGameID() {
+    return localStorage.getItem("gameID")
+}
+function setGameID(gameID) {
+    return localStorage.setItem("gameID",gameID)
+}
