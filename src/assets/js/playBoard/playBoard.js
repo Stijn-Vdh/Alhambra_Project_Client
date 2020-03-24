@@ -9,10 +9,13 @@ function init() {
     document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack);
 }
 
+
+
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
             setOwnStartingCoins(response);
+            loadEnemyPlayers(response.players);
         });
 }
 
@@ -61,6 +64,40 @@ function addMoneyCardToOwnStack(e){
                 }
             }
         });
+
+}
+function loadEnemyPlayers(players) {
+
+    let EnemyCard = `    <div id="EnemyPlayer1">
+        <div class="EnemyBoard">
+            <!-- enemy playboard -->
+
+        </div>
+        <div class="EnemyReserve">
+            <!-- enemy reserve stack -->
+            <button class="dropDownButton">Reserve</button>
+            <div id="ReserveEnemy1">
+                <div class="innerBuilding"></div>
+                <div class="innerBuilding"></div>
+                <div class="innerBuilding"></div>
+                <div class="innerBuilding"></div>
+                <div class="innerBuilding"></div>
+                <div class="innerBuilding"></div>
+                <div class="innerBuilding"></div>
+            </div>
+        </div>
+        <div class="EnemyIcon">
+            <!-- enemy icon -->
+        </div>
+        <div class="EnemyScore">
+            <!-- enemy score -->
+            <p id="ScoreEnemy1"></p>
+        </div>
+    </div>`;
+
+    players.forEach(player =>{
+
+    });
 
 }
 

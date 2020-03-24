@@ -1,7 +1,8 @@
 html {
     background-image: url("../../media/wallpapersden.com_desert-sun-day-minimalism_1920x1080.jpg");
 }
-body{
+
+body {
     font-family: "Arial", sans-serif;
 }
 
@@ -12,21 +13,19 @@ body{
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    font-family: Arial, serif;
     grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
     grid-template-rows: 150px 150px 150px 150px 150px 150px;
-    grid-template-areas:
-            "hd1 p1 p2 p3 p4 p5 hd2"
-            "ms1 mn mn mn mn mn bs1"
-            "ms2 mn mn mn mn mn bs2"
-            "ms3 mn mn mn mn mn bs3"
-            "ms4 mn mn mn mn mn bs4"
-            "ft ha ha ha ha re me";
+    grid-template-areas: "hd1 en en en en en hd2"
+                         "ms mn mn mn mn mn bs1"
+                         "ms mn mn mn mn mn bs2"
+                         "ms mn mn mn mn mn bs3"
+                         "ms mn mn mn mn mn bs4"
+                         "ft ha ha ha ha re me";
     text-align: center;
     border-radius: 20px;
     margin-top: 35px;
     border: 1px solid black;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
 }
 
 #BuildingsRemaining {
@@ -44,30 +43,18 @@ body{
     margin-top: 25px;
 }
 
-#EnemyPlayer1 {
-    grid-area: p1;
-    grid-column: 2/3;
+.EnemyPlayers {
+    grid-area: en;
+    grid-column: 2/6;
     grid-row: 1/2;
+    display: flex;
+    align-content: space-around;
+
 }
-#EnemyPlayer2 {
-    grid-area: p2;
-    grid-column: 3/4;
-    grid-row: 1/2;
-}
-#EnemyPlayer3 {
-    grid-area: p3;
-    grid-column: 4/5;
-    grid-row: 1/2;
-}
-#EnemyPlayer4 {
-    grid-area: p4;
-    grid-column: 5/6;
-    grid-row: 1/2;
-}
-#EnemyPlayer5 {
-    grid-area: p5;
-    grid-column: 6/7;
-    grid-row: 1/2;
+.EnemyCard{
+    display: block;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
 .EnemyBoard {
@@ -78,21 +65,8 @@ body{
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
     grid-template-rows: auto auto auto auto auto auto auto;
-    grid-template-areas:
-            "etl etl etl etl etl etl etl etl"
-            "etl etl etl etl etl etl etl etl"
-            "etl etl etl etl etl etl etl etl"
-            "etl etl etl etl etl etl etl etl"
-            "etl etl etl etl etl etl etl etl"
-            "etl etl etl etl etl etl etl etl"
-            "etl etl etl etl etl etl etl etl";
+    grid-template-areas: "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl";
     overflow: auto;
-}
-
-#MoneyMarket {
-    grid-area: as1;
-    grid-column: 1/2;
-    grid-row: 2/6;
 }
 
 .RemainingCards {
@@ -166,7 +140,7 @@ body{
     background-color: beige;
 }
 
-.card p{
+.card p {
     margin-top: 50px;
 }
 
@@ -175,7 +149,7 @@ body{
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
 
-.blue{
+.blue {
     background-color: cornflowerblue;
 }
 
@@ -204,17 +178,19 @@ body{
     width: 151px;
     margin-top: -1px;
     margin-left: -1px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
 }
 
-#FixedButtons  {
+#FixedButtons {
     bottom: 0;
     left: 0;
     position: fixed;
     margin-left: 1%;
 }
-
+#MoneyStacks{
+    grid-area: ms;
+}
 #MoneyStack1, #MoneyStack2, #MoneyStack3, #MoneyStack4 {
     border: 1px solid black;
     width: 120px;
@@ -231,18 +207,6 @@ body{
     margin-top: 15px;
 }
 
-#MoneyStack1 {
-    grid-area: ms1;
-}
-#MoneyStack2 {
-    grid-area: ms2;
-}
-#MoneyStack3 {
-    grid-area: ms3;
-}
-#MoneyStack4 {
-    grid-area: ms4;
-}
 
 #BuildingStack1, #BuildingStack2, #BuildingStack3, #BuildingStack4 {
     border: 1px solid black;
@@ -267,12 +231,15 @@ body{
 #BuildingStack1 {
     grid-area: bs1;
 }
+
 #BuildingStack2 {
     grid-area: bs2;
 }
+
 #BuildingStack3 {
     grid-area: bs3;
 }
+
 #BuildingStack4 {
     grid-area: bs4;
 }
@@ -288,7 +255,7 @@ body{
     text-align: center;
 }
 
-.price p{
+.price p {
     margin-top: 6.25px;
 }
 
@@ -316,20 +283,20 @@ h1 {
 
 #FixedButtons a {
     padding: 8px;
-    margin-bottom: 20px ;
+    margin-bottom: 20px;
     text-align: center;
     display: block;
     width: 12rem;
     border: solid 1px black;
     border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
     text-decoration: none;
     color: black;
 
 }
 
-#FixedButtons a:hover{
-    background-color: rgba(251,171,171,0.5);
+#FixedButtons a:hover {
+    background-color: rgba(251, 171, 171, 0.5);
 }
 
 #FixedButtons a:active {
@@ -343,11 +310,12 @@ h1 {
     width: 151px;
     margin-top: -1px;
     margin-left: -1px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
     border-left: none;
 }
-#ownPLayerReserveDropUp{
+
+#ownPLayerReserveDropUp {
     grid-area: re;
     grid-column: 6/7;
     margin-top: 110px;
@@ -362,14 +330,14 @@ h1 {
     bottom: 50px;
     background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 
 }
 
 #ownPLayerReserveDropUp:active #ownPlayerReserveTiles {
     background-color: beige;
-    width:300px;
+    width: 300px;
     height: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -383,15 +351,15 @@ h1 {
     margin-top: 35px;
     padding-bottom: 35px;
     border: 1px solid black;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
     overflow: auto;
 }
 
 #ownPLayerReserveDropUp:hover .ownPlayerReserveButton {
-    background-color: rgba(251,171,171,0.5);
+    background-color: rgba(251, 171, 171, 0.5);
 }
 
-#ownPlayerReserveTiles .innerBuilding{
+#ownPlayerReserveTiles .innerBuilding {
     margin-bottom: 10px;
 }
 
@@ -399,16 +367,18 @@ h1 {
 .dropDownButton {
     width: 92px;
     height: 20px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
-}
-.dropDownButton:hover{
-    background-color: rgba(251,171,171,0.5);
+
 }
 
-.EnemyReserve:active #ReserveEnemy1, .EnemyReserve:active #ReserveEnemy2, .EnemyReserve:active #ReserveEnemy3, .EnemyReserve:active #ReserveEnemy4, .EnemyReserve:active #ReserveEnemy5{
+.dropDownButton:hover {
+    background-color: rgba(251, 171, 171, 0.5);
+}
+
+.EnemyReserve:active #ReserveEnemy1, .EnemyReserve:active #ReserveEnemy2, .EnemyReserve:active #ReserveEnemy3, .EnemyReserve:active #ReserveEnemy4, .EnemyReserve:active #ReserveEnemy5 {
     background-color: beige;
-    width:300px;
+    width: 300px;
     height: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -422,50 +392,46 @@ h1 {
     margin-top: 10px;
     padding-bottom: 10px;
     border: 1px solid black;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.6);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
     overflow: auto;
 }
 
-#ReserveEnemy1, #ReserveEnemy2, #ReserveEnemy3, #ReserveEnemy4, #ReserveEnemy5{
+#ReserveEnemy1, #ReserveEnemy2, #ReserveEnemy3, #ReserveEnemy4, #ReserveEnemy5 {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 /*Grid for tiles on board and enemy players*/
-#PlayBoard{
+#PlayBoard {
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto auto;
     grid-template-rows: auto auto auto auto auto auto auto;
-    grid-template-areas:
-            "ti ti ti ti ti ti ti ti"
-            "ti ti ti ti ti ti ti ti"
-            "ti ti ti ti ti ti ti ti"
-            "ti ti ti ti ti ti ti ti"
-            "ti ti ti ti ti ti ti ti"
-            "ti ti ti ti ti ti ti ti"
-            "ti ti ti ti ti ti ti ti";
+    grid-template-areas: "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti";
     text-align: center;
     overflow: auto;
 }
 
-#PlayBoard .plateBuilding{
+#PlayBoard .plateBuilding {
     border: 1px solid black;
 }
-#test1{
+
+#test1 {
     grid-area: ti;
     grid-column: 4;
     grid-row: 4;
 }
-#test2{
+
+#test2 {
     grid-area: ti;
     grid-column: 3;
     grid-row: 4;
 }
-#test3{
+
+#test3 {
     grid-area: ti;
     grid-column: 3;
     grid-row: 3;
