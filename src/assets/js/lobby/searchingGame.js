@@ -17,6 +17,8 @@ function containsPlayer(players) {
 
 function getOpenLobby() {
     const openGameIDs = [];
+    const timeoutMilliseconds = 3000;
+    const maxPlayers = 6;
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
@@ -27,7 +29,7 @@ function getOpenLobby() {
                 }
             });
             joinOpenLobby(openGameIDs);
-            setTimeout(joinLobby, 3000);
+            setTimeout(joinLobby, timeoutMilliseconds);
         });
 }
 
