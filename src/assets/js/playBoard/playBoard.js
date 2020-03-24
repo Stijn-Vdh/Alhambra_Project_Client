@@ -11,6 +11,7 @@ function init() {
 
 
 
+
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
@@ -22,6 +23,8 @@ function getGameDetails() {
                 setTimeout(function(){
                     focusActivePlayer(response.currentPlayer)
                 } ,1500);
+            }else{
+                setTimeout(focusMe ,1500);
             }
         });
 }
@@ -128,11 +131,20 @@ function getBankCards(){
 }
 function focusActivePlayer(player){
     let playerCard = document.querySelector(`#${player} .EnemyBoard`);
-    console.log(playerCard);
+
     document.querySelectorAll('div').forEach(tag => {
         tag.classList.remove("currentPlayer");
     });
 
     playerCard.classList.add('currentPlayer');
 
+}
+function focusMe() {
+    let playerCard = document.querySelector(`#MyAvatar`);
+
+    document.querySelectorAll('div').forEach(tag => {
+        tag.classList.remove("currentPlayer");
+    });
+
+    playerCard.classList.add('currentPlayer');
 }
