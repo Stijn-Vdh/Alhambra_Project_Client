@@ -72,6 +72,8 @@ function getReadyState(player) {
 function loadLobby() {
     let players;
     const table = document.querySelector(".center");
+    const timeoutMilliseconds = 2000;
+    const maxPlayers = 6;
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
             players = response['players'];
@@ -83,10 +85,10 @@ function loadLobby() {
                                 <td>${getReadyState(player)}</td>
                             </tr>`;
             });
-            document.querySelector('#playerCount').innerHTML = players.length + "/6";
+            document.querySelector('#playerCount').innerHTML = players.length + "/" + maxPlayers;
 
             if (!response.started) {
-                setTimeout(() => loadLobby(), 2000);
+                setTimeout(() => loadLobby(), timeoutMilliseconds);
             } else if (response.started) {
                 window.location.href = "../playBoard/playBoard.html";
             }

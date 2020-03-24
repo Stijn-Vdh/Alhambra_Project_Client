@@ -17,17 +17,19 @@ function containsPlayer(players) {
 
 function getOpenLobby() {
     const openGameIDs = [];
+    const timeoutMilliseconds = 3000;
+    const maxPlayers = 6;
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
             for (let i = 0; i < response.length; i++) {
-                if (response[i]["started"] === false && response[i]["playerCount"] < 6 && !containsPlayer(response[i]["players"])) {
+                if (response[i]["started"] === false && response[i]["playerCount"] < maxPlayers && !containsPlayer(response[i]["players"])) {
                     openGameIDs.push(response[i]["id"]);
                     console.log(response[i]["id"]);
                 }
             }
             joinOpenLobby(openGameIDs);
-            setTimeout(joinLobby, 3000);
+            setTimeout(joinLobby, timeoutMilliseconds);
         });
 }
 

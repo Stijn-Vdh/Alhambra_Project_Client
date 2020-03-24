@@ -7,7 +7,8 @@ function init() {
 }
 
 function joinGameTimer() {
-    setTimeout(changeToNextPage, 2000);
+    const timeoutMilliseconds = 2000;
+    setTimeout(changeToNextPage, timeoutMilliseconds);
 }
 
 function changeToNextPage() {

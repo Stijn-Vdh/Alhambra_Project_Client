@@ -11,7 +11,7 @@ function init() {
 
 function createNewGame(e){
     e.preventDefault();
-
+    const timeoutMilliseconds = 1500;
     fetchFromServer(
         `${config.root}games`,
         'POST',
@@ -28,7 +28,7 @@ function createNewGame(e){
 
             setTimeout(function () {
                 window.location.href = "lobby.html";
-            }, 1500);
+            }, timeoutMilliseconds);
 
         });
 
