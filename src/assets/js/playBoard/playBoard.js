@@ -21,7 +21,7 @@ function getGameDetails() {
             if (!(response.currentPlayer === getPlayerName())){
                 setTimeout(function(){
                     focusActivePlayer(response.currentPlayer)
-                } ,3000);
+                } ,1500);
             }
         });
 }
