@@ -6,7 +6,7 @@ function fetchFromServer(url, httpVerb, requestBody) {
 
     headers: {
         ["Content-Type"]: "application/json",
-        ["Authorization"]: `Bearer + ${getGameID()} + ${getPlayerName()}`,
+        ["Authorization"]: `Bearer ${getGameID()}+${getPlayerName()}`,
 },
     // Don't forget to add data to the body when needed
     body: JSON.stringify(requestBody)
