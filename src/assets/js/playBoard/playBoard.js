@@ -14,8 +14,15 @@ function init() {
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
+            console.log(response);
             setOwnStartingCoins(response);
             loadEnemyPlayers(response.players);
+
+            if (!(response.currentPlayer === getPlayerName())){
+                setTimeout(function(){
+                    focusActivePlayer(response.currentPlayer)
+                } ,3000);
+            }
         });
 }
 
@@ -94,7 +101,7 @@ function loadEnemyPlayers(players) {
             </div>
             <div class="EnemyScore">
                 <!-- enemy score -->
-                <p id="${player.name}">${player.score}</p>
+                <p id="Score${player.name}">${player.score}</p>
             </div>
         </div>`;
             enemyPlayersHtml.innerHTML += EnemyCard;
@@ -105,7 +112,6 @@ function loadEnemyPlayers(players) {
 }
 
 function getBankCards(){
-
 
     const bank = document.querySelector("#MoneyStacks");
     bank.innerHTML = "";
@@ -118,5 +124,15 @@ function getBankCards(){
             }
         });
 
+
+}
+function focusActivePlayer(player){
+    let playerCard = document.querySelector(`#${player} .EnemyBoard`);
+    console.log(playerCard);
+    document.querySelectorAll('div').forEach(tag => {
+        tag.classList.remove("currentPlayer");
+    });
+
+    playerCard.classList.add('currentPlayer');
 
 }

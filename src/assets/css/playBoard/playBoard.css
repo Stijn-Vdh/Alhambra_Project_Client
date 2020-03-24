@@ -42,7 +42,9 @@ body {
 #BuildingsRemaining p {
     margin-top: 25px;
 }
-
+.currentPlayer{
+    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
 .EnemyPlayers {
     grid-area: en;
     grid-column: 2/6;
