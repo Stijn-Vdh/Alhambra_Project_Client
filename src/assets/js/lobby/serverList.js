@@ -5,12 +5,12 @@ let __gameId = null;
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    fetchGames();
+    serverList();
     document.querySelector('table').addEventListener('click', save);
     document.querySelector('#joinLobbyForm').addEventListener('submit', joinLobby);
 }
 
-function fetchGames() {
+function serverList() {
     let games = [];
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, `GET`)
         .then(function (response) {
