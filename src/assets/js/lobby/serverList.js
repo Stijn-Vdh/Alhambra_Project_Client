@@ -17,11 +17,14 @@ function serverList() {
             games = response;
             console.log(response);
             const htmlCode = document.querySelector("table tbody");
-            for (let i = 0; i < games.length; i++) {
+            htmlCode.innerHTML = '';
+            let i = 0;
+            games.forEach(function () {
                 if (games[i]["playerCount"] < 6) {
                     htmlCode.innerHTML += `<tr><td>${games[i]["id"]}</td></tr>`;
                 }
-            }
+                i++;
+            })
         });
 }
 

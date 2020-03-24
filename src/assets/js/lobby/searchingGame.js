@@ -7,11 +7,13 @@ function init() {
 }
 
 function containsPlayer(players) {
-    for (let i = 0; i < players.length; i++) {
+    let i = 0;
+    players.forEach(function () {
         if (players[i] === getPlayerName()) {
             return true;
         }
-    }
+        i++
+    });
     return false;
 }
 
@@ -20,12 +22,20 @@ function getOpenLobby() {
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
-            for (let i = 0; i < response.length; i++) {
+            /*for (let i = 0; i < response.length; i++) {
                 if (response[i]["started"] === false && response[i]["playerCount"] < 6 && !containsPlayer(response[i]["players"])) {
                     openGameIDs.push(response[i]["id"]);
                     console.log(response[i]["id"]);
                 }
-            }
+            }*/
+            let i = 0;
+            response.forEach(function () {
+                if (response[i]["started"] === false && response[i]["playerCount"] < 6 && !containsPlayer(response[i]["players"])) {
+                    openGameIDs.push(response[i]["id"]);
+                    console.log(response[i]["id"]);
+                }
+                i++;
+            });
             joinOpenLobby(openGameIDs);
             setTimeout(joinLobby, 3000);
         });
