@@ -16,7 +16,7 @@ function fetchGames() {
         .then(function (response) {
             games = response;
             console.log(response);
-            let htmlCode = document.querySelector("table tbody");
+            const htmlCode = document.querySelector("table tbody");
             for (let i = 0; i < games.length; i++) {
                 if (games[i]["playerCount"] < 6) {
                     htmlCode.innerHTML += `<tr><td>${games[i]["id"]}</td></tr>`;
@@ -29,7 +29,7 @@ function joinLobby(e) {
     e.preventDefault();
     console.log(__gameId);
     setGameID(__gameId);
-    let playerName = getPlayerName();
+    const playerName = getPlayerName();
 
     fetchFromServer(`${config.root}games/${__gameId}/players`, 'POST', {playerName: `${playerName}`})
         .then(function (response) {

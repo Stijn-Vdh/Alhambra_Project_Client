@@ -1,9 +1,9 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', init);
-let __gameId = getGameID();
-let __PlayerName = getPlayerName();
-let readyButton = document.querySelector('#readyButton');
+const __gameId = getGameID();
+const __PlayerName = getPlayerName();
+const readyButton = document.querySelector('#readyButton');
 
 
 function init() {
@@ -44,7 +44,7 @@ function unReadyPlayer() {
 }
 
 function changeReadyState(ready) {
-    let table = document.querySelectorAll(".center tr");
+    const table = document.querySelectorAll(".center tr");
     table.forEach(tag => {
         if (tag.id === __PlayerName) {
             tag.querySelectorAll('td').forEach(td => {
@@ -71,7 +71,7 @@ function getReadyState(player) {
 
 function loadLobby() {
     let players;
-    let table = document.querySelector(".center");
+    const table = document.querySelector(".center");
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
             players = response['players'];

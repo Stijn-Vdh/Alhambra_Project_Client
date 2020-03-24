@@ -1,7 +1,7 @@
 "use strict";
 
 let _gameId = null;
-let _playerName = getPlayerName();
+const _playerName = getPlayerName();
 
 document.addEventListener('DOMContentLoaded',init);
 

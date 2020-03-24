@@ -19,7 +19,7 @@ function selectAvatar(){
 }
 
 function setAvatar(){
-    let avatarURl = getAvatarFromStorage();
+    const avatarURl = getAvatarFromStorage();
     document.querySelector("#avatar").innerHTML = `<img src="${avatarURl}" alt="avatar" title="avatar">`;
 }
 
