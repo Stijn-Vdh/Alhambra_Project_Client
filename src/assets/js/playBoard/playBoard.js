@@ -68,35 +68,35 @@ function addMoneyCardToOwnStack(e){
 }
 function loadEnemyPlayers(players) {
 
-    let EnemyCard = `    <div id="EnemyPlayer1">
-        <div class="EnemyBoard">
-            <!-- enemy playboard -->
-
-        </div>
-        <div class="EnemyReserve">
-            <!-- enemy reserve stack -->
-            <button class="dropDownButton">Reserve</button>
-            <div id="ReserveEnemy1">
-                <div class="innerBuilding"></div>
-                <div class="innerBuilding"></div>
-                <div class="innerBuilding"></div>
-                <div class="innerBuilding"></div>
-                <div class="innerBuilding"></div>
-                <div class="innerBuilding"></div>
-                <div class="innerBuilding"></div>
-            </div>
-        </div>
-        <div class="EnemyIcon">
-            <!-- enemy icon -->
-        </div>
-        <div class="EnemyScore">
-            <!-- enemy score -->
-            <p id="ScoreEnemy1"></p>
-        </div>
-    </div>`;
-
+    let enemyPlayersHtml = document.querySelector('.EnemyPlayers');
+    enemyPlayersHtml.innerHTML = "";
     players.forEach(player =>{
-
+        let EnemyCard = `<div class="EnemyCard" id="${player.name}">
+            <div class="EnemyBoard">
+                <!-- enemy playboard -->
+            </div>
+            <div class="EnemyReserve">
+                <!-- enemy reserve stack -->
+                <button class="dropDownButton">Reserve</button>
+                <div id="ReserveEnemy1">
+                    <div class="innerBuilding"></div>
+                    <div class="innerBuilding"></div>
+                    <div class="innerBuilding"></div>
+                    <div class="innerBuilding"></div>
+                    <div class="innerBuilding"></div>
+                    <div class="innerBuilding"></div>
+                    <div class="innerBuilding"></div>
+                </div>
+            </div>
+            <div class="EnemyIcon">
+                <!-- enemy icon -->
+            </div>
+            <div class="EnemyScore">
+                <!-- enemy score -->
+                <p id="ScoreEnemy1"></p>
+            </div>
+        </div>`;
+        enemyPlayersHtml.innerHTML += EnemyCard;
     });
 
 }
