@@ -23,7 +23,7 @@ function getOpenLobby() {
         .then(function (response) {
             console.log(response);
             response.forEach(function (lobby) {
-                if (lobby["started"] === false && lobby["playerCount"] < 6 && !containsPlayer(lobby["players"])) {
+                if (lobby["started"] === false && lobby["playerCount"] < maxPlayers && !containsPlayer(lobby["players"])) {
                     openGameIDs.push(lobby["id"]);
                     console.log(lobby["id"]);
                 }

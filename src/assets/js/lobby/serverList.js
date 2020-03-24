@@ -20,7 +20,7 @@ function serverList() {
             const htmlCode = document.querySelector("table tbody");
             htmlCode.innerHTML = '';
             games.forEach(function (game) {
-                if (game["playerCount"] < 6) {
+                if (game["playerCount"] < maxPlayers) {
                     htmlCode.innerHTML += `<tr><td>${game["id"]}</td></tr>`;
                 }
             })
