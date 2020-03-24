@@ -1,9 +1,9 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', init);
-let __gameId = getGameID();
-let __PlayerName = getPlayerName();
-let readyButton = document.querySelector('#readyButton');
+const __gameId = getGameID();
+const __PlayerName = getPlayerName();
+const readyButton = document.querySelector('#readyButton');
 
 
 function init() {
@@ -22,10 +22,10 @@ function readyUp() {
 
     if (readyButton.innerHTML === 'Ready') {
         readyUpPlayer();
-        changeReadyState(true)
+        changeReadyState(true);
     } else {
         unReadyPlayer();
-        changeReadyState(false)
+        changeReadyState(false);
     }
 }
 
@@ -33,46 +33,45 @@ function readyUpPlayer() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}/ready`, `PUT`)
         .then(function () {
             readyButton.innerHTML = 'Not ready';
-        })
+        });
 }
 
 function unReadyPlayer() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}/ready`, `DELETE`)
         .then(function () {
             readyButton.innerHTML = 'Ready';
-        })
+        });
 }
 
 function changeReadyState(ready) {
-    let table = document.querySelectorAll(".center tr");
+    const table = document.querySelectorAll(".center tr");
     table.forEach(tag => {
         if (tag.id === __PlayerName) {
             tag.querySelectorAll('td').forEach(td => {
                 if (td.innerHTML !== __PlayerName) {
                     if (ready) {
-                        td.innerHTML = 'Ready'
+                        td.innerHTML = 'Ready';
                     } else {
-                        td.innerHTML = 'Not ready'
+                        td.innerHTML = 'Not ready';
                     }
                 }
-            })
+            });
         }
-    })
+    });
 }
 
 function getReadyState(player) {
     if (player === __PlayerName){
         if (readyButton.innerHTML === 'Not ready') {
-            return 'Ready'
+            return 'Ready';
         }
-        return 'Not ready'
     }
-    return 'Not ready'
+    return 'Not ready';
 }
 
 function loadLobby() {
     let players;
-    let table = document.querySelector(".center");
+    const table = document.querySelector(".center");
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
             players = response['players'];
@@ -87,9 +86,9 @@ function loadLobby() {
             document.querySelector('#playerCount').innerHTML = players.length + "/6";
 
             if (!response.started) {
-                setTimeout(() => loadLobby(), 2000)
+                setTimeout(() => loadLobby(), 2000);
             } else if (response.started) {
-                window.location.href = "../playBoard/playBoard.html"
+                window.location.href = "../playBoard/playBoard.html";
             }
 
         });
@@ -100,8 +99,8 @@ function quitLobby() {
         .then(function () {
             removeGameID();
             unReadyPlayer();
-            window.location.href = "../mainMenu.html"
-        })
+            window.location.href = "../mainMenu.html";
+        });
 }
 
 

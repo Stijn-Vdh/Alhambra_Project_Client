@@ -9,14 +9,14 @@ function init() {
 function containsPlayer(players) {
     for (let i = 0; i < players.length; i++) {
         if (players[i] === getPlayerName()) {
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 function getOpenLobby() {
-    let openGameIDs = [];
+    const openGameIDs = [];
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
@@ -33,10 +33,10 @@ function getOpenLobby() {
 
 function joinOpenLobby(openGameIDs) {
     console.log(openGameIDs);
-    let firstOpenGame = openGameIDs[0];
+    const firstOpenGame = openGameIDs[0];
     setGameID(firstOpenGame);
-    let gameID = getGameID();
-    let playerName = getPlayerName();
+    const gameID = getGameID();
+    const playerName = getPlayerName();
 
     fetchFromServer(`${config.root}games/${gameID}/players`,'POST',{playerName: `${playerName}` })
         .then(function(response){

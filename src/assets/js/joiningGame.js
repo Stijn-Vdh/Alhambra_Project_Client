@@ -11,5 +11,5 @@ function joinGameTimer() {
 }
 
 function changeToNextPage() {
-    window.location.href = "lobby.html"
+    window.location.href = "lobby.html";
 }

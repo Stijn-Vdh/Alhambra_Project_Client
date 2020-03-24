@@ -6,7 +6,7 @@ function init() {
     setMyAvatar();
     getGameDetails();
     getBankCards();
-    document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack)
+    document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack);
 }
 
 function getGameDetails() {
@@ -17,28 +17,28 @@ function getGameDetails() {
 }
 
 function setMyAvatar() {
-    let avatar = document.querySelector('#MyAvatar');
-    let avatarURL = "../" + getAvatarFromStorage();
+    const avatar = document.querySelector('#MyAvatar');
+    const avatarURL = "../" + getAvatarFromStorage();
     avatar.innerHTML = `<img src="${avatarURL}" alt="myAvatar">`;
 }
 
 function setOwnStartingCoins(response) {
-    let coins = getStartingCoins(response);
-    let hand = document.querySelector("#Hand");
+    const coins = getStartingCoins(response);
+    const hand = document.querySelector("#Hand");
     hand.innerHTML = "";
     coins.forEach(coin => {
-        hand.innerHTML += `<div class="card ${coin["currency"]}"><p>${coin["amount"]}</p></div>`
+        hand.innerHTML += `<div class="card ${coin["currency"]}"><p>${coin["amount"]}</p></div>`;
     });
 }
 
 function getStartingCoins(response) {
-    let playerDetails = response["players"];
+    const playerDetails = response["players"];
     for (let i = 0; i < playerDetails.length; i++) {
         if (playerDetails[i]["name"] === localStorage.getItem("playerName")) {
             return playerDetails[i]["coins"];
         }
     }
-
+    return null;
 }
 
 
@@ -67,7 +67,7 @@ function addMoneyCardToOwnStack(e){
 function getBankCards(){
 
 
-    let bank = document.querySelector("#MoneyStacks");
+    const bank = document.querySelector("#MoneyStacks");
     bank.innerHTML = "";
     let counter = 1;
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')

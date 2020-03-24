@@ -1,7 +1,7 @@
 "use strict";
 
 let _gameId = null;
-let _playerName = getPlayerName();
+const _playerName = getPlayerName();
 
 document.addEventListener('DOMContentLoaded',init);
 
@@ -27,7 +27,7 @@ function createNewGame(e){
             joinGame(_gameId, _playerName);
 
             setTimeout(function () {
-                window.location.href = "lobby.html"
+                window.location.href = "lobby.html";
             }, 1500);
 
         });
