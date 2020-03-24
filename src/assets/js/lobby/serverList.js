@@ -12,13 +12,14 @@ function init() {
 
 function serverList() {
     let games = [];
+    const maxPlayers = 6;
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, `GET`)
         .then(function (response) {
             games = response;
             console.log(response);
             const htmlCode = document.querySelector("table tbody");
             for (let i = 0; i < games.length; i++) {
-                if (games[i]["playerCount"] < 6) {
+                if (games[i]["playerCount"] < maxPlayers) {
                     htmlCode.innerHTML += `<tr><td>${games[i]["id"]}</td></tr>`;
                 }
             }
@@ -30,11 +31,11 @@ function joinLobby(e) {
     console.log(__gameId);
     setGameID(__gameId);
     const playerName = getPlayerName();
-
+    const timeoutMilliseconds = 500;
     fetchFromServer(`${config.root}games/${__gameId}/players`, 'POST', {playerName: `${playerName}`})
         .then(function (response) {
             console.log('%c%s', 'background-color: yellow;color: black', 'The playerToken is ', response);
-            setTimeout(moveToLobby, 500);
+            setTimeout(moveToLobby, timeoutMilliseconds);
         });
 }
 
