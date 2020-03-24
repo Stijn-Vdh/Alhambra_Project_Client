@@ -9,10 +9,10 @@ function init() {
 function containsPlayer(players) {
     for (let i = 0; i < players.length; i++) {
         if (players[i] === getPlayerName()) {
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 function getOpenLobby() {

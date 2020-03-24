@@ -45,12 +45,11 @@ function moveToLobby() {
 function save(e) {
     __gameId = e.target.innerText;
 
-    document.querySelectorAll('table tbody td').forEach(tag =>{
-       tag.classList.remove("active")
+    document.querySelectorAll('table tbody td').forEach(tag => {
+        tag.classList.remove("active");
     });
 
-    e.target.classList.add("active")
-
+    e.target.classList.add("active");
 
 
 }

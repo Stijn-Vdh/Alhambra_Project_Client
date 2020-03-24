@@ -20,13 +20,13 @@ function selectAvatar(){
 
 function setAvatar(){
     let avatarURl = getAvatarFromStorage();
-    document.querySelector("#avatar").innerHTML = `<img src="${avatarURl}" alt="avatar" title="avatar">`
+    document.querySelector("#avatar").innerHTML = `<img src="${avatarURl}" alt="avatar" title="avatar">`;
 }
 
 function goToMainMenu(e){
     e.preventDefault();
     setPlayerName();
-    window.location.href = "mainMenu.html"
+    window.location.href = "mainMenu.html";
 }
 
 

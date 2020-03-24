@@ -6,7 +6,7 @@ function init() {
     setMyAvatar();
     getGameDetails();
     getBankCards();
-    document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack)
+    document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack);
 }
 
 function getGameDetails() {
@@ -27,7 +27,7 @@ function setOwnStartingCoins(response) {
     let hand = document.querySelector("#Hand");
     hand.innerHTML = "";
     coins.forEach(coin => {
-        hand.innerHTML += `<div class="card ${coin["currency"]}"><p>${coin["amount"]}</p></div>`
+        hand.innerHTML += `<div class="card ${coin["currency"]}"><p>${coin["amount"]}</p></div>`;
     });
 }
 
@@ -38,7 +38,7 @@ function getStartingCoins(response) {
             return playerDetails[i]["coins"];
         }
     }
-
+    return null;
 }
 
 

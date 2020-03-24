@@ -21,17 +21,17 @@ function getAvatarFromStorage(){
     let avatarInStorage = localStorage.getItem("avatar");
     if (avatarInStorage === null){
         localStorage.setItem("avatar", "assets/media/avatars/avatar1.png");
-        return "assets/media/avatars/avatar1.png"
+        return "assets/media/avatars/avatar1.png";
     }
     return avatarInStorage;
 }
 
 function getGameID() {
-    return localStorage.getItem("gameID")
+    return localStorage.getItem("gameID");
 }
 function setGameID(gameID) {
-    return localStorage.setItem("gameID",gameID)
+    return localStorage.setItem("gameID",gameID);
 }
 function removeGameID() {
-    return localStorage.removeItem("gameID")
+    return localStorage.removeItem("gameID");
 }

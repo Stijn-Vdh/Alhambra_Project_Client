@@ -27,7 +27,7 @@ function createNewGame(e){
             joinGame(_gameId, _playerName);
 
             setTimeout(function () {
-                window.location.href = "lobby.html"
+                window.location.href = "lobby.html";
             }, 1500);
 
         });
