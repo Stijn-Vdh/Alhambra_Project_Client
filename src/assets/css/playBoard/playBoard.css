@@ -246,6 +246,7 @@ body {
     height: 100px;
     margin-top: 10px;
     margin-left: 10px;
+    background-size: 100px;
 }
 
 .price {
@@ -408,6 +409,32 @@ h1 {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
+
+#arcades {
+    background-image: url("../../../images/arcades.jpg");
+}
+
+#chambers {
+    background-image: url("../../../images/chambers.jpg");
+}
+
+#garden {
+    background-image: url("../../../images/garden.jpg");
+}
+
+#pavilion {
+    background-image: url("../../../images/pavilion.jpg");
+}
+
+#seraglio {
+    background-image: url("../../../images/seraglio.jpg");
+}
+
+#tower {
+    background-image: url("../../../images/tower.jpg");
+}
+
+
 
 /*Grid for tiles on board and enemy players*/
 #PlayBoard {
