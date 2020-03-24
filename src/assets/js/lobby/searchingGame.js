@@ -7,11 +7,11 @@ function init() {
 }
 
 function containsPlayer(players) {
-    for (let i = 0; i < players.length; i++) {
-        if (players[i] === getPlayerName()) {
+    players.forEach(function (player) {
+        if (player === getPlayerName()) {
             return true;
         }
-    }
+    });
     return false;
 }
 
@@ -22,12 +22,12 @@ function getOpenLobby() {
     fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, 'GET')
         .then(function (response) {
             console.log(response);
-            for (let i = 0; i < response.length; i++) {
-                if (response[i]["started"] === false && response[i]["playerCount"] < maxPlayers && !containsPlayer(response[i]["players"])) {
-                    openGameIDs.push(response[i]["id"]);
-                    console.log(response[i]["id"]);
+            response.forEach(function (lobby) {
+                if (lobby["started"] === false && lobby["playerCount"] < 6 && !containsPlayer(lobby["players"])) {
+                    openGameIDs.push(lobby["id"]);
+                    console.log(lobby["id"]);
                 }
-            }
+            });
             joinOpenLobby(openGameIDs);
             setTimeout(joinLobby, timeoutMilliseconds);
         });

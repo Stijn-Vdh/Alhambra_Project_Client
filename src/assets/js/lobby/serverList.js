@@ -18,11 +18,12 @@ function serverList() {
             games = response;
             console.log(response);
             const htmlCode = document.querySelector("table tbody");
-            for (let i = 0; i < games.length; i++) {
-                if (games[i]["playerCount"] < maxPlayers) {
-                    htmlCode.innerHTML += `<tr><td>${games[i]["id"]}</td></tr>`;
+            htmlCode.innerHTML = '';
+            games.forEach(function (game) {
+                if (game["playerCount"] < 6) {
+                    htmlCode.innerHTML += `<tr><td>${game["id"]}</td></tr>`;
                 }
-            }
+            })
         });
 }
 
