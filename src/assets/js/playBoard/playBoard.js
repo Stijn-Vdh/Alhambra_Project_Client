@@ -93,7 +93,7 @@ function loadEnemyPlayers(players) {
             </div>
             <div class="EnemyScore">
                 <!-- enemy score -->
-                <p id="ScoreEnemy1"></p>
+                <p id="${player.name}">${player.score}</p>
             </div>
         </div>`;
         enemyPlayersHtml.innerHTML += EnemyCard;
