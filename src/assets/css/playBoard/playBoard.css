@@ -16,10 +16,10 @@ body {
     grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
     grid-template-rows: 150px 150px 150px 150px 150px 150px;
     grid-template-areas: "hd1 en en en en en hd2"
-                         "ms mn mn mn mn mn bs1"
-                         "ms mn mn mn mn mn bs2"
-                         "ms mn mn mn mn mn bs3"
-                         "ms mn mn mn mn mn bs4"
+                         "ms mn mn mn mn mn bs"
+                         "ms mn mn mn mn mn bs"
+                         "ms mn mn mn mn mn bs"
+                         "ms mn mn mn mn mn bs"
                          "ft ha ha ha ha re me";
     text-align: center;
     border-radius: 20px;
@@ -222,7 +222,7 @@ body {
 }
 
 
-#BuildingStack1, #BuildingStack2, #BuildingStack3, #BuildingStack4 {
+.buildingStack {
     border: 1px solid black;
     width: 120px;
     height: 120px;
@@ -230,8 +230,14 @@ body {
     margin-top: 15px;
 }
 
-#BuildingStack1:hover, #BuildingStack2:hover, #BuildingStack3:hover, #BuildingStack4:hover {
+.buildingStack:hover {
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
+
+#buildingStack {
+    grid-area: bs;
+    grid-column: 7 / 8;
+    grid-row: 2 / 6;
 }
 
 .innerBuilding {
@@ -240,22 +246,7 @@ body {
     height: 100px;
     margin-top: 10px;
     margin-left: 10px;
-}
-
-#BuildingStack1 {
-    grid-area: bs1;
-}
-
-#BuildingStack2 {
-    grid-area: bs2;
-}
-
-#BuildingStack3 {
-    grid-area: bs3;
-}
-
-#BuildingStack4 {
-    grid-area: bs4;
+    background-size: 100px;
 }
 
 .price {
@@ -418,6 +409,32 @@ h1 {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
+
+#arcades {
+    background-image: url("../../../images/arcades.jpg");
+}
+
+#chambers {
+    background-image: url("../../../images/chambers.jpg");
+}
+
+#garden {
+    background-image: url("../../../images/garden.jpg");
+}
+
+#pavilion {
+    background-image: url("../../../images/pavilion.jpg");
+}
+
+#seraglio {
+    background-image: url("../../../images/seraglio.jpg");
+}
+
+#tower {
+    background-image: url("../../../images/tower.jpg");
+}
+
+
 
 /*Grid for tiles on board and enemy players*/
 #PlayBoard {

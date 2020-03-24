@@ -10,8 +10,6 @@ function init() {
 }
 
 
-
-
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
@@ -19,13 +17,14 @@ function getGameDetails() {
             setOwnStartingCoins(response);
             loadEnemyPlayers(response.players);
 
-            if (!(response.currentPlayer === getPlayerName())){
-                setTimeout(function(){
+            if (!(response.currentPlayer === getPlayerName())) {
+                setTimeout(function () {
                     focusActivePlayer(response.currentPlayer)
-                } ,1500);
-            }else{
-                setTimeout(focusMe ,1500);
+                }, 1500);
+            } else {
+                setTimeout(focusMe, 1500);
             }
+            getMarketBuildings(response);
         });
 }
 
@@ -55,18 +54,18 @@ function getStartingCoins(response) {
 }
 
 
-function addMoneyCardToOwnStack(e){
+function addMoneyCardToOwnStack(e) {
 
-   let index = e.target.closest('div').id.charAt(10);
-   index--;
-   console.log(index);
+    let index = e.target.closest('div').id.charAt(10);
+    index--;
+    console.log(index);
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
             for (let i = 0; i < response["bank"].length; i++) {
-                if (i === index){
+                if (i === index) {
                     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}/players/${localStorage.getItem("playerName")}/money`,
                         'POST',
-                        [{currency: `${response["bank"][i]["currency"]}`,amount: `${response["bank"][i]["amount"]}`}])
+                        [{currency: `${response["bank"][i]["currency"]}`, amount: `${response["bank"][i]["amount"]}`}])
                         .then(function () {
                             getBankCards();
                             getGameDetails();
@@ -76,12 +75,13 @@ function addMoneyCardToOwnStack(e){
         });
 
 }
+
 function loadEnemyPlayers(players) {
 
     let enemyPlayersHtml = document.querySelector('.EnemyPlayers');
     enemyPlayersHtml.innerHTML = "";
-    players.forEach(player =>{
-        if (player.name !== getPlayerName()){
+    players.forEach(player => {
+        if (player.name !== getPlayerName()) {
             let EnemyCard = `<div class="EnemyCard" id="${player.name}">
             <div class="EnemyBoard">
                 <!-- enemy playboard -->
@@ -114,7 +114,7 @@ function loadEnemyPlayers(players) {
 
 }
 
-function getBankCards(){
+function getBankCards() {
 
     const bank = document.querySelector("#MoneyStacks");
     bank.innerHTML = "";
@@ -122,14 +122,15 @@ function getBankCards(){
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
             for (let i = 0; i < response["bank"].length; i++) {
-                    bank.innerHTML += `<div class="${response["bank"][i]["currency"]}" id="MoneyStack${counter}"><p>${response["bank"][i]["amount"]}</p></div>`;
-                    counter++;
+                bank.innerHTML += `<div class="${response["bank"][i]["currency"]}" id="MoneyStack${counter}"><p>${response["bank"][i]["amount"]}</p></div>`;
+                counter++;
             }
         });
 
 
 }
-function focusActivePlayer(player){
+
+function focusActivePlayer(player) {
     let playerCard = document.querySelector(`#${player} .EnemyBoard`);
 
     document.querySelectorAll('div').forEach(tag => {
@@ -139,6 +140,7 @@ function focusActivePlayer(player){
     playerCard.classList.add('currentPlayer');
 
 }
+
 function focusMe() {
     let playerCard = document.querySelector(`#MyAvatar`);
 
@@ -147,4 +149,23 @@ function focusMe() {
     });
 
     playerCard.classList.add('currentPlayer');
+}
+
+function getMarketBuildings(response) {
+    let buildingStack = document.querySelector('#buildingStack');
+
+    buildingStack.innerHTML = "";
+
+    let buildings = response["market"];
+
+    Object.keys(buildings).forEach(building => {
+
+        let buildingContent = `<div class="buildingStack ${building}">
+            <div class="innerBuilding" id="${buildings[building]["type"]}"></div>
+            <div class="price"><p>${buildings[building]["cost"]}</p></div>
+        </div>`;
+
+        buildingStack.innerHTML += buildingContent;
+    });
+
 }
