@@ -71,7 +71,8 @@ function loadEnemyPlayers(players) {
     let enemyPlayersHtml = document.querySelector('.EnemyPlayers');
     enemyPlayersHtml.innerHTML = "";
     players.forEach(player =>{
-        let EnemyCard = `<div class="EnemyCard" id="${player.name}">
+        if (player.name !== getPlayerName()){
+            let EnemyCard = `<div class="EnemyCard" id="${player.name}">
             <div class="EnemyBoard">
                 <!-- enemy playboard -->
             </div>
@@ -96,7 +97,9 @@ function loadEnemyPlayers(players) {
                 <p id="${player.name}">${player.score}</p>
             </div>
         </div>`;
-        enemyPlayersHtml.innerHTML += EnemyCard;
+            enemyPlayersHtml.innerHTML += EnemyCard;
+        }
+
     });
 
 }
