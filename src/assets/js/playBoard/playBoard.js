@@ -38,8 +38,14 @@ function setOwnStartingCoins(response) {
     const coins = getStartingCoins(response);
     const hand = document.querySelector("#Hand");
     hand.innerHTML = "";
+    let i = 0;
     coins.forEach(coin => {
-        hand.innerHTML += `<div class="card ${coin["currency"]}"><p>${coin["amount"]}</p></div>`;
+        hand.innerHTML += `<div class="card ${coin["currency"]}" id="${i}"><p>${coin["amount"]}</p></div>`;
+
+        document.querySelectorAll('.card').forEach(card =>{
+            card.addEventListener('click',selectCard);
+        });
+        i++;
     });
 }
 

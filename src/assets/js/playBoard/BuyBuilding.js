@@ -15,5 +15,20 @@ function buyBuilding(e){
             console.log(response.market[currency]);
 
         });
+}
+
+function selectCard(e){
+    let id = (e.target.closest('div').id);
+
+    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+        .then(function (response) {
+            let playerCoins = getStartingCoins(response);
+            console.log(playerCoins);
+
+            console.log(playerCoins[id])
+
+
+        });
+
 
 }
