@@ -18,7 +18,7 @@ function buyBuilding(e) {
             coins: selectedCoins
         })
         .then(function () {
-            console.log("tis gelukt")
+
         });
 
 }
