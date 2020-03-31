@@ -468,3 +468,79 @@ h1 {
     grid-row: 3;
 }
 
+.Popup {
+    display: none;
+    position: fixed;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.Popup-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-duration: 0.4s;
+    text-align: center;
+    height: 35%;
+}
+
+.popup-body {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+
+
+figure{
+    text-align: center;
+    margin-top: 2em;
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+.Popup-content img{
+    height: 70%;
+    width: 70%;
+}
+figcaption{
+    margin-top: 1em;
+    background-color: #ff7858;
+    color: white;
+    padding: 10px;
+}
+
+.popup-header {
+    padding: 2px 16px;
+    background-color: #ff7858;
+    color: white;
+    height: 3em;
+}
+.popup-header h2{
+    padding-top: 1em;
+}
+
+.popup-body {padding: 2px 16px;}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
