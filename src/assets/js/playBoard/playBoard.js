@@ -38,8 +38,14 @@ function setOwnStartingCoins(response) {
     const coins = getStartingCoins(response);
     const hand = document.querySelector("#Hand");
     hand.innerHTML = "";
+    let i = 0;
     coins.forEach(coin => {
-        hand.innerHTML += `<div class="card ${coin["currency"]}"><p>${coin["amount"]}</p></div>`;
+        hand.innerHTML += `<div class="card ${coin["currency"]}" id="${i}"><p>${coin["amount"]}</p></div>`;
+
+        document.querySelectorAll('.card').forEach(card =>{
+            card.addEventListener('click',selectCard);
+        });
+        i++;
     });
 }
 
@@ -157,15 +163,20 @@ function getMarketBuildings(response) {
     buildingStack.innerHTML = "";
 
     let buildings = response["market"];
+    console.log(buildings);
 
     Object.keys(buildings).forEach(building => {
-
-        let buildingContent = `<div class="buildingStack ${building}">
-            <div class="innerBuilding" id="${buildings[building]["type"]}"></div>
+        if (buildings[building] != null){
+            let buildingContent = `<div class="buildingStackMarket" id="${building}">
+            <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
             <div class="price"><p>${buildings[building]["cost"]}</p></div>
         </div>`;
+            buildingStack.innerHTML += buildingContent;
 
-        buildingStack.innerHTML += buildingContent;
+            document.querySelectorAll('.innerBuildingMarket').forEach(building =>{
+                building.addEventListener('click',buyBuilding);
+            })
+        }
     });
 
 }
