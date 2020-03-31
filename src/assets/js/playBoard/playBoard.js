@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', init);
 function init() {
     setMyAvatar();
     getGameDetails();
-    getBankCards();
     document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack);
 }
 
@@ -16,15 +15,16 @@ function getGameDetails() {
             console.log(response);
             setOwnStartingCoins(response);
             loadEnemyPlayers(response.players);
+            getBankCards();
+            getMarketBuildings(response);
+            focusActivePlayer(response.currentPlayer);
 
             if (!(response.currentPlayer === getPlayerName())) {
-                setTimeout(function () {
-                    focusActivePlayer(response.currentPlayer)
-                }, 1500);
+                setTimeout(function () { getGameDetails(); }, 1500);
             } else {
                 setTimeout(focusMe, 1500);
             }
-            getMarketBuildings(response);
+
         });
 }
 
