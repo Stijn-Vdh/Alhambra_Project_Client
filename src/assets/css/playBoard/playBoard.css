@@ -43,7 +43,7 @@ body {
     margin-top: 25px;
 }
 .currentPlayer{
-    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+    box-shadow: 0 0 5px 5px black;
 }
 .EnemyPlayers {
     grid-area: en;
