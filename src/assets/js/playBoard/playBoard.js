@@ -21,10 +21,7 @@ function getGameDetails() {
 
             if (!(response.currentPlayer === getPlayerName())) {
                 setTimeout(function () { getGameDetails(); }, 1500);
-            } else {
-                setTimeout(focusMe, 1500);
             }
-
         });
 }
 
@@ -131,23 +128,21 @@ function getBankCards() {
 }
 
 function focusActivePlayer(player) {
-    let playerCard = document.querySelector(`#${player} .EnemyBoard`);
+    let playerCard;
 
-    document.querySelectorAll('div').forEach(tag => {
-        tag.classList.remove("currentPlayer");
-    });
+    if (player === getPlayerName()){
+        playerCard = document.querySelector(`#me`);
+    } else {
+        playerCard = document.querySelector(`#${player} .EnemyBoard`);
+    }
 
-    playerCard.classList.add('currentPlayer');
-
+    addCurrentPlayerTag(playerCard);
 }
 
-function focusMe() {
-    let playerCard = document.querySelector(`#MyAvatar`);
-
+function addCurrentPlayerTag(playerCard) {
     document.querySelectorAll('div').forEach(tag => {
         tag.classList.remove("currentPlayer");
     });
-
     playerCard.classList.add('currentPlayer');
 }
 
