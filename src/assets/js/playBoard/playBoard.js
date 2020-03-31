@@ -163,20 +163,20 @@ function getMarketBuildings(response) {
     buildingStack.innerHTML = "";
 
     let buildings = response["market"];
+    console.log(buildings);
 
     Object.keys(buildings).forEach(building => {
-
-        let buildingContent = `<div class="buildingStackMarket" id="${building}">
+        if (buildings[building] != null){
+            let buildingContent = `<div class="buildingStackMarket" id="${building}">
             <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
             <div class="price"><p>${buildings[building]["cost"]}</p></div>
         </div>`;
+            buildingStack.innerHTML += buildingContent;
 
-        buildingStack.innerHTML += buildingContent;
-
-        document.querySelectorAll('.innerBuildingMarket').forEach(building =>{
-            building.addEventListener('click',buyBuilding);
-        })
-
+            document.querySelectorAll('.innerBuildingMarket').forEach(building =>{
+                building.addEventListener('click',buyBuilding);
+            })
+        }
     });
 
 }
