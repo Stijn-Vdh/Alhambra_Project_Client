@@ -18,15 +18,18 @@ function buyBuilding(e){
 }
 
 function selectCard(e){
-    let id = (e.target.closest('div').id);
+    let selectedCard = (e.target.closest('div'));
 
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
             let playerCoins = getStartingCoins(response);
-            console.log(playerCoins);
 
-            console.log(playerCoins[id])
-
+            console.log(playerCoins[selectedCard.id]);
+            if (!selectedCard.classList.contains('selectedCard')){
+                selectedCard.classList.add('selectedCard');
+            }else{
+                selectedCard.classList.remove('selectedCard')
+            }
 
         });
 
