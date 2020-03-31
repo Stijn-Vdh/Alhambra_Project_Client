@@ -160,7 +160,7 @@ function getMarketBuildings(response) {
 
     Object.keys(buildings).forEach(building => {
 
-        let buildingContent = `<div class="buildingStackMarket ${building}">
+        let buildingContent = `<div class="buildingStackMarket" id="${building}">
             <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
             <div class="price"><p>${buildings[building]["cost"]}</p></div>
         </div>`;

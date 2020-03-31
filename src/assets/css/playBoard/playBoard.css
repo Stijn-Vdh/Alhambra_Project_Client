@@ -163,19 +163,19 @@ body {
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
 
-.blue {
+.blue, #blue {
     background-color: cornflowerblue;
 }
 
-.yellow {
+.yellow, #yellow {
     background-color: yellow;
 }
 
-.orange {
+.orange, #orange {
     background-color: darkorange;
 }
 
-.green {
+.green, #green {
     background-color: darkseagreen;
 }
 
