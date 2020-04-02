@@ -26,8 +26,7 @@ function loadCity(){
             for (let i = 0;i<response['players'].length;i++){
                 if (response['players'][i]['name'] === getPlayerName()){
 
-                    city = response['players'][0]["city"];
-                    console.log(city[0][0]);
+                    city = response['players'][i]["city"];
                     for (let i = 0; i<city.length; i++){
                         for (let j = 0; j < city[i].length;j++){
                             if (city[i][j] != null){
