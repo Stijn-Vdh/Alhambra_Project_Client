@@ -77,9 +77,9 @@ body {
     height: 100px;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto;
     grid-template-rows: auto auto auto auto auto auto auto;
-    grid-template-areas: "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl etl";
+    grid-template-areas: "etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl" "etl etl etl etl etl etl etl";
     overflow: auto;
 }
 
@@ -247,7 +247,11 @@ body {
      margin-top: 10px;
      margin-left: 10px;
      background-size: 100px;
- }
+}
+
+.innerBuildingCity{
+    background-size: 100%;
+}
 
 
 .price {
@@ -435,20 +439,23 @@ h1 {
     background-image: url("../../../images/tower.jpg");
 }
 
+#null{
+    background-image: url("../../../images/fountain.jpg");
+}
 
 
 /*Grid for tiles on board and enemy players*/
 #PlayBoard {
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto;
     grid-template-rows: auto auto auto auto auto auto auto;
-    grid-template-areas: "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti ti";
+    grid-template-areas: "ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti" "ti ti ti ti ti ti ti";
     text-align: center;
     overflow: auto;
 }
 
 #PlayBoard .plateBuilding {
-    border: 1px solid black;
+    border: 1px dotted black;
 }
 
 #test1 {

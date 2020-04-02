@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', init);
 function init() {
     setMyAvatar();
     getGameDetails();
+    loadCity();
     document.querySelector('#MoneyStacks').addEventListener('click', addMoneyCardToOwnStack);
+    document.querySelector("#PlayBoard").addEventListener('click', placeBuilding)
 }
 
 
