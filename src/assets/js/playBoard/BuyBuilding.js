@@ -19,6 +19,27 @@ function buyBuilding(e) {
         })
         .then(function () {
 
+            fetchFromServer(`${config.root}games/${getGameID()}`,
+                'GET')
+                .then(function (response) {
+                    for (let i = 0;i<response['players'].length;i++){
+                        if (response['players'][i]['name'] === getPlayerName()) {
+
+                            let walls = response['players'][i]['buildings-in-hand'][0]['walls'];
+
+                            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
+                                'GET')
+                                .then(function (response) {
+                                    for (let i = 0; i < response.length; i++) {
+                                        document.querySelector(`.vak${response[i]['row'] + 3}${response[i]['col'] + 3}`).classList.add('highlight');
+                                    }
+                                });
+
+                        }
+                    }
+
+
+                });
         });
 
 }
