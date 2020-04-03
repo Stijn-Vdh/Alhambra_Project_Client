@@ -458,23 +458,10 @@ h1 {
     border: 1px dotted black;
 }
 
-#test1 {
-    grid-area: ti;
-    grid-column: 4;
-    grid-row: 4;
+.highlight{
+    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
 
-#test2 {
-    grid-area: ti;
-    grid-column: 3;
-    grid-row: 4;
-}
-
-#test3 {
-    grid-area: ti;
-    grid-column: 3;
-    grid-row: 3;
-}
 
 .Popup {
     display: none;
