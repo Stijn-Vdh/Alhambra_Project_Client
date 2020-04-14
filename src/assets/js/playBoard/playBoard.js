@@ -20,7 +20,7 @@ function getGameDetails() {
             getBankCards();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
-
+            loadCity();
             if (!(response.currentPlayer === getPlayerName())) {
                 setTimeout(function () { getGameDetails(); }, 1500);
             }
