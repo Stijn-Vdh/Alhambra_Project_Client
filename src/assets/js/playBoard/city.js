@@ -64,7 +64,8 @@ function placeBuilding(e) {
                             }
                         })
                         .then(function () {
-                            getGameDetails()
+                            loadCity();
+                            getGameDetails();
                         });
                 }
             }
