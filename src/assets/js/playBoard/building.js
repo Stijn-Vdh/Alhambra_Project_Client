@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', init);
 
-let selectedCoins;
 let selectedBuilding;
 
 function init() {

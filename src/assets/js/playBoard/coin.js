@@ -1,4 +1,5 @@
 "use strict";
+let selectedCoins;
 
 function setHandCoins(response) {
     const coins = getCoins(response);
