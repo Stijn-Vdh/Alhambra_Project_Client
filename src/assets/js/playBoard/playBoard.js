@@ -16,17 +16,19 @@ function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
 
-
             setHandCoins(response);
             loadOpponents(response.players);
             getBankCoins();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
+
             if (!(response.currentPlayer === getPlayerName())) {
                 document.querySelectorAll('.card').forEach(card => {
                     card.removeEventListener('click', selectHandCoin);
                 });
-                setTimeout(function () {getGameDetails();}, 1500);
+                setTimeout(function () {
+                    getGameDetails();
+                }, 1500);
             } else {
                 document.querySelectorAll('.card').forEach(card => {
                     card.addEventListener('click', selectHandCoin);
