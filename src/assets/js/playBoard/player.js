@@ -34,10 +34,13 @@ function loadOpponents(players) {
             </div>
             <div class="EnemyScore">
                 <!-- enemy score -->
-                <p id="Score${player.name}">${player.score}</p>
+                <p id="Score${player.name}">${player['virtual-score']}</p>
             </div>
         </div>`;
             enemyPlayersHtml.innerHTML += EnemyCard;
+        }
+        else{
+            document.querySelector('.Score #MyScore').innerHTML = player['virtual-score'];
         }
 
     });

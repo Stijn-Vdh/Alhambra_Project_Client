@@ -18,6 +18,7 @@ function getGameDetails() {
 
             setHandCoins(response);
             loadOpponents(response.players);
+            console.log(response.players[1]['virtual-score']);
             getBankCoins();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
