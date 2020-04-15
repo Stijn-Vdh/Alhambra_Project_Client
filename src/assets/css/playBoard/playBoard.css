@@ -209,6 +209,17 @@ body {
 #MoneyStacks{
     grid-area: ms;
 }
+.confirmButton{
+    transform: translate(-735px, 600px);
+    text-decoration: none;
+    color: black;
+    border: 1px black solid;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+}
+
 #Coin1, #Coin2, #Coin3, #Coin4 {
     border: 1px solid black;
     width: 120px;
