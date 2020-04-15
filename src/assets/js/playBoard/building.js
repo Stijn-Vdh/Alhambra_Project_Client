@@ -1,12 +1,10 @@
 "use strict";
 
-document.addEventListener('DOMContentLoaded', init);
+
 
 let selectedBuilding;
 
-function init() {
-    selectedCoins = [];
-}
+
 
 function getMarketBuildings(response) {
     let buildingStack = document.querySelector('#buildingStack');

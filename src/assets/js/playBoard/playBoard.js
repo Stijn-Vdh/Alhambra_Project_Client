@@ -8,9 +8,9 @@ function init() {
     setMyAvatar();
     getGameDetails();
     loadCity();
-    document.querySelector('#MoneyStacks').addEventListener('click', addCoinsToHand);
-    document.querySelector("#PlayBoard").addEventListener('click', placeBuildingInCity);
-
+    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+    document.querySelector("#PlayBoard").addEventListener('click', placeBuilding);
+    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand)
 }
 
 function getGameDetails() {
@@ -19,7 +19,7 @@ function getGameDetails() {
 
             setHandCoins(response);
             loadOpponents(response.players);
-            getBankCoins();
+            setBankCoins();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
 
@@ -27,6 +27,8 @@ function getGameDetails() {
                 document.querySelectorAll('.card').forEach(card => {
                     card.removeEventListener('click', selectHandCoin);
                 });
+                document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
+                document.querySelector('#MoneyStacks').removeEventListener('click', selectBankCoin);
                 setTimeout(function () {
                     getGameDetails();
                 }, 1500);
@@ -34,6 +36,8 @@ function getGameDetails() {
                 document.querySelectorAll('.card').forEach(card => {
                     card.addEventListener('click', selectHandCoin);
                 });
+                document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+                document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
             }
         });
 }
