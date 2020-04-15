@@ -10,7 +10,7 @@ function init() {
     loadCity();
     document.querySelector('#MoneyStacks').addEventListener('click', addCoinsToHand);
     document.querySelector("#PlayBoard").addEventListener('click', placeBuildingInCity);
-    // document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
+
 }
 
 function getGameDetails() {
