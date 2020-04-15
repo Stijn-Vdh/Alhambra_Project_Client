@@ -18,7 +18,7 @@ function buyBuilding(e) {
             coins: selectedCoins
         })
         .then(function () {
-
+            selectedCoins = [];
             fetchFromServer(`${config.root}games/${getGameID()}`,
                 'GET')
                 .then(function (response) {
@@ -38,8 +38,8 @@ function buyBuilding(e) {
                         }
                     }
 
-
                 });
+
         });
 
 }
@@ -53,7 +53,7 @@ function selectBuilding(e) {
 
 
         });
-    console.log(currency);
+
     return currency;
 }
 

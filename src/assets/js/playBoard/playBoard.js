@@ -10,19 +10,25 @@ function init() {
     document.querySelector("#PlayBoard").addEventListener('click', placeBuilding)
 }
 
-
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
-            console.log(response);
+
+            let coins = document.querySelectorAll('div .card');
             setOwnStartingCoins(response);
             loadEnemyPlayers(response.players);
             getBankCards();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
-
             if (!(response.currentPlayer === getPlayerName())) {
+                coins.forEach(coin => {
+                    coin.disabled = true;
+                });
                 setTimeout(function () { getGameDetails(); }, 1500);
+            }else{
+                coins.forEach(coin => {
+                    coin.disabled = false;
+                });
             }
         });
 }
@@ -63,7 +69,7 @@ function addMoneyCardToOwnStack(e) {
 
     let index = e.target.closest('div').id.charAt(10);
     index--;
-    console.log(index);
+
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
             for (let i = 0; i < response["bank"].length; i++) {
@@ -73,6 +79,7 @@ function addMoneyCardToOwnStack(e) {
                         [{currency: `${response["bank"][i]["currency"]}`, amount: `${response["bank"][i]["amount"]}`}])
                         .then(function () {
                             getBankCards();
+                            decrAmountOfCards();
                             getGameDetails();
                         });
                 }
@@ -160,7 +167,7 @@ function getMarketBuildings(response) {
     buildingStack.innerHTML = "";
 
     let buildings = response["market"];
-    console.log(buildings);
+
 
     Object.keys(buildings).forEach(building => {
         if (buildings[building] != null){
@@ -172,6 +179,7 @@ function getMarketBuildings(response) {
 
             document.querySelectorAll('.innerBuildingMarket').forEach(building =>{
                 building.addEventListener('click',buyBuilding);
+
             })
         }
     });
