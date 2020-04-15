@@ -162,6 +162,10 @@ body {
     transform: translateY(-15px) scale(1.2);
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
+.selectedBankCoin{
+    transform: scale(1.05);
+    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+}
 
 .blue, #blue {
     background-color: cornflowerblue;
@@ -205,7 +209,7 @@ body {
 #MoneyStacks{
     grid-area: ms;
 }
-#MoneyStack1, #MoneyStack2, #MoneyStack3, #MoneyStack4 {
+#Coin1, #Coin2, #Coin3, #Coin4 {
     border: 1px solid black;
     width: 120px;
     height: 50px;
@@ -213,11 +217,11 @@ body {
     margin-top: 50px;
 }
 
-#MoneyStack1:hover, #MoneyStack2:hover, #MoneyStack3:hover, #MoneyStack4:hover {
+#Coin1:hover, #Coin2:hover, #Coin3:hover, #Coin4:hover {
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
 
-#MoneyStack1 p, #MoneyStack2 p, #MoneyStack3 p, #MoneyStack4 p {
+#Coin1 p, #Coin2 p, #Coin3 p, #Coin4 p {
     margin-top: 15px;
 }
 

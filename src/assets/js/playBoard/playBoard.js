@@ -8,7 +8,7 @@ function init() {
     setMyAvatar();
     getGameDetails();
     loadCity();
-    document.querySelector('#MoneyStacks').addEventListener('click', addCoinsToHand);
+    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
     document.querySelector("#PlayBoard").addEventListener('click', placeBuilding)
 }
 
@@ -18,7 +18,7 @@ function getGameDetails() {
 
             setHandCoins(response);
             loadOpponents(response.players);
-            getBankCoins();
+            setBankCoins();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
 
