@@ -54,7 +54,9 @@ function buyBuilding(e) {
                                 .then(function (response) {
                                     for (let i = 0; i < response.length; i++) {
                                         document.querySelector(`.vak${response[i]['row'] + 3}${response[i]['col'] + 3}`).classList.add('highlight');
+
                                     }
+                                    // document.querySelector(".ownPlayerReserveButton").classList.add('highlight');
                                 });
 
                         }

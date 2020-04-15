@@ -18,8 +18,7 @@ function loadOpponents(players) {
             </div>
             <div class="EnemyReserve">
                 <!-- enemy reserve stack -->
-                <button class="dropDownButton">Reserve</button>
-                <div id="ReserveEnemy1">
+                    <div class="ReserveEnemy" id="reserveHidden">
                     <div class="innerBuilding"></div>
                     <div class="innerBuilding"></div>
                     <div class="innerBuilding"></div>
@@ -28,6 +27,7 @@ function loadOpponents(players) {
                     <div class="innerBuilding"></div>
                     <div class="innerBuilding"></div>
                 </div>
+                <button class="dropDownButton">Reserve</button>
             </div>
             <div class="EnemyIcon">
                 <!-- enemy icon -->

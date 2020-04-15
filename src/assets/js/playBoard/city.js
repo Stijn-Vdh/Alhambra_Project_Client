@@ -40,7 +40,7 @@ function loadCity(){
 
 }
 
-function placeBuilding(e) {
+function placeBuildingInCity(e) {
 
     let selectedSpaceHTML = (e.target.closest('div'));
 
