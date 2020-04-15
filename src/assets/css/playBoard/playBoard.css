@@ -334,18 +334,11 @@ h1 {
 }
 
 
-#ownPlayerReserveTiles {
-    display: none;
+.ownPlayerReserveTiles {
     position: absolute;
     bottom: 50px;
-    background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-
-}
-
-#ownPLayerReserveDropUp:active #ownPlayerReserveTiles {
     background-color: beige;
     width: 300px;
     height: 300px;
@@ -365,11 +358,15 @@ h1 {
     overflow: auto;
 }
 
+#reserveHidden {
+display: none;
+}
+
 #ownPLayerReserveDropUp:hover .ownPlayerReserveButton {
     background-color: rgba(251, 171, 171, 0.5);
 }
 
-#ownPlayerReserveTiles .innerBuilding {
+.ownPlayerReserveTiles .innerBuilding {
     margin-bottom: 10px;
 }
 
@@ -386,7 +383,10 @@ h1 {
     background-color: rgba(251, 171, 171, 0.5);
 }
 
-.EnemyReserve:active #ReserveEnemy1, .EnemyReserve:active #ReserveEnemy2, .EnemyReserve:active #ReserveEnemy3, .EnemyReserve:active #ReserveEnemy4, .EnemyReserve:active #ReserveEnemy5 {
+.reserveEnemy1 {
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
     background-color: beige;
     width: 300px;
     height: 300px;
@@ -404,15 +404,6 @@ h1 {
     border: 1px solid black;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
     overflow: auto;
-}
-
-#ReserveEnemy1, #ReserveEnemy2, #ReserveEnemy3, #ReserveEnemy4, #ReserveEnemy5 {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    z-index: 1;
 }
 
 #arcades {

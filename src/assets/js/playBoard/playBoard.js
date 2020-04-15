@@ -9,7 +9,8 @@ function init() {
     getGameDetails();
     loadCity();
     document.querySelector('#MoneyStacks').addEventListener('click', addCoinsToHand);
-    document.querySelector("#PlayBoard").addEventListener('click', placeBuilding)
+    document.querySelector("#PlayBoard").addEventListener('click', placeBuilding);
+    document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
 }
 
 function getGameDetails() {
@@ -18,7 +19,6 @@ function getGameDetails() {
 
             setHandCoins(response);
             loadOpponents(response.players);
-            console.log(response.players[1]['virtual-score']);
             getBankCoins();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
