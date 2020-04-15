@@ -72,11 +72,11 @@ function selectCard(e) {
 function isIllegalCardSelection(selectedCard) {
     let res = false;
     selectedCoins.forEach(card => {
-        if (card.currency !== selectedCard.currency) {
+        if (selectedCard.currency !== card.currency) {
             res = true;
         }
     });
-    return false;
+    return res;
 }
 
 function findCoinIndex(selectedCoin) {

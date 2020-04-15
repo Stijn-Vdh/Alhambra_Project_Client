@@ -2,7 +2,9 @@
 
 document.addEventListener('DOMContentLoaded', init);
 
+
 function init() {
+
     setMyAvatar();
     getGameDetails();
     loadCity();
@@ -14,20 +16,20 @@ function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
 
-            let coins = document.querySelectorAll('div .card');
-            setOwnStartingCoins(response);
+
+            setHandCoins(response);
             loadEnemyPlayers(response.players);
             getBankCards();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
             if (!(response.currentPlayer === getPlayerName())) {
-                coins.forEach(coin => {
-                    coin.disabled = true;
+                document.querySelectorAll('.card').forEach(card => {
+                    card.removeEventListener('click', selectCard);
                 });
-                setTimeout(function () { getGameDetails(); }, 1500);
-            }else{
-                coins.forEach(coin => {
-                    coin.disabled = false;
+                setTimeout(function () {getGameDetails();}, 1500);
+            } else {
+                document.querySelectorAll('.card').forEach(card => {
+                    card.addEventListener('click', selectCard);
                 });
             }
         });
@@ -39,7 +41,7 @@ function setMyAvatar() {
     avatar.innerHTML = `<img src="${avatarURL}" alt="myAvatar">`;
 }
 
-function setOwnStartingCoins(response) {
+function setHandCoins(response) {
     const coins = getStartingCoins(response);
     const hand = document.querySelector("#Hand");
     hand.innerHTML = "";
@@ -47,8 +49,8 @@ function setOwnStartingCoins(response) {
     coins.forEach(coin => {
         hand.innerHTML += `<div class="card ${coin["currency"]}" id="${i}"><p>${coin["amount"]}</p></div>`;
 
-        document.querySelectorAll('.card').forEach(card =>{
-            card.addEventListener('click',selectCard);
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', selectCard);
         });
         i++;
     });
@@ -64,7 +66,6 @@ function getStartingCoins(response) {
     return null;
 }
 
-
 function addMoneyCardToOwnStack(e) {
 
     let index = e.target.closest('div').id.charAt(10);
@@ -76,10 +77,14 @@ function addMoneyCardToOwnStack(e) {
                 if (i === index) {
                     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}/players/${localStorage.getItem("playerName")}/money`,
                         'POST',
-                        [{currency: `${response["bank"][i]["currency"]}`, amount: `${response["bank"][i]["amount"]}`}])
+                        [
+                            {
+                                currency: `${response["bank"][i]["currency"]}`,
+                                amount: `${response["bank"][i]["amount"]}`
+                            }
+                        ])
                         .then(function () {
                             getBankCards();
-                            decrAmountOfCards();
                             getGameDetails();
                         });
                 }
@@ -145,7 +150,7 @@ function getBankCards() {
 function focusActivePlayer(player) {
     let playerCard;
 
-    if (player === getPlayerName()){
+    if (player === getPlayerName()) {
         playerCard = document.querySelector(`#me`);
     } else {
         playerCard = document.querySelector(`#${player} .EnemyBoard`);
@@ -170,15 +175,15 @@ function getMarketBuildings(response) {
 
 
     Object.keys(buildings).forEach(building => {
-        if (buildings[building] != null){
+        if (buildings[building] != null) {
             let buildingContent = `<div class="buildingStackMarket" id="${building}">
             <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
             <div class="price"><p>${buildings[building]["cost"]}</p></div>
         </div>`;
             buildingStack.innerHTML += buildingContent;
 
-            document.querySelectorAll('.innerBuildingMarket').forEach(building =>{
-                building.addEventListener('click',buyBuilding);
+            document.querySelectorAll('.innerBuildingMarket').forEach(building => {
+                building.addEventListener('click', buyBuilding);
 
             })
         }
