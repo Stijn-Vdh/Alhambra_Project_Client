@@ -9,6 +9,31 @@ function init() {
     selectedCoins = [];
 }
 
+function getMarketBuildings(response) {
+    let buildingStack = document.querySelector('#buildingStack');
+
+    buildingStack.innerHTML = "";
+
+    let buildings = response["market"];
+
+
+    Object.keys(buildings).forEach(building => {
+        if (buildings[building] != null) {
+            let buildingContent = `<div class="buildingStackMarket" id="${building}">
+            <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
+            <div class="price"><p>${buildings[building]["cost"]}</p></div>
+        </div>`;
+            buildingStack.innerHTML += buildingContent;
+
+            document.querySelectorAll('.innerBuildingMarket').forEach(building => {
+                building.addEventListener('click', buyBuilding);
+
+            })
+        }
+    });
+
+}
+
 function buyBuilding(e) {
 
     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/buildings-in-hand`,
@@ -57,62 +82,7 @@ function selectBuilding(e) {
     return currency;
 }
 
-function selectCard(e) {
-    let selectedCardHTML = (e.target.closest('div'));
 
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
-        .then(function (response) {
-            let playerCoins = getStartingCoins(response);
-            let selectedCoin = playerCoins[selectedCardHTML.id];
-            processSelectedCard(selectedCardHTML, selectedCoin);
-
-        });
-}
-
-function isIllegalCardSelection(selectedCard) {
-    let res = false;
-    selectedCoins.forEach(card => {
-        if (selectedCard.currency !== card.currency) {
-            res = true;
-        }
-    });
-    return res;
-}
-
-function findCoinIndex(selectedCoin) {
-    let i = 0;
-    let index = 0;
-    selectedCoins.forEach(coin => {
-        if (coin["currency"] === selectedCoin["currency"] && coin["amount"] === selectedCoin["amount"]) {
-            index = i;
-        }
-        i++;
-    });
-    return index;
-}
-
-function processSelectedCard(selectedCardHTML, selectedCoin) {
-
-    if (!selectedCardHTML.classList.contains('selectedCard')) {
-        if (!isIllegalCardSelection(selectedCoin)) {
-            selectedCardHTML.classList.add('selectedCard');
-
-            let coin = {
-                currency: selectedCoin.currency,
-                amount: selectedCoin.amount
-            };
-
-
-            selectedCoins.push(coin);
-
-        }
-    } else {
-        selectedCardHTML.classList.remove('selectedCard');
-
-        selectedCoins.splice(findCoinIndex(selectedCoin), 1);
-    }
-    console.log(selectedCoins)
-}
 
 
 
