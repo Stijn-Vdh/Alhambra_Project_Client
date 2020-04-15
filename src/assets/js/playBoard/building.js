@@ -18,7 +18,7 @@ function buyBuilding(e) {
             coins: selectedCoins
         })
         .then(function () {
-
+            selectedCoins = [];
             fetchFromServer(`${config.root}games/${getGameID()}`,
                 'GET')
                 .then(function (response) {
@@ -38,8 +38,8 @@ function buyBuilding(e) {
                         }
                     }
 
-
                 });
+
         });
 
 }
@@ -53,7 +53,7 @@ function selectBuilding(e) {
 
 
         });
-    console.log(currency);
+
     return currency;
 }
 
@@ -72,11 +72,11 @@ function selectCard(e) {
 function isIllegalCardSelection(selectedCard) {
     let res = false;
     selectedCoins.forEach(card => {
-        if (card.currency !== selectedCard.currency) {
+        if (selectedCard.currency !== card.currency) {
             res = true;
         }
     });
-    return false;
+    return res;
 }
 
 function findCoinIndex(selectedCoin) {
