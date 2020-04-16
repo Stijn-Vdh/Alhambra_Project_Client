@@ -17,28 +17,31 @@ function init() {
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
-
             setHandCoins(response);
             loadOpponents(response.players);
             setBankCoins();
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
 
-            if (!(response.currentPlayer === getPlayerName())) {
-                document.querySelectorAll('.card').forEach(card => {
-                    card.removeEventListener('click', selectHandCoin);
-                });
-                document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
-                document.querySelector('#MoneyStacks').removeEventListener('click', selectBankCoin);
-                setTimeout(function () {
-                    getGameDetails();
-                }, 1500);
-            } else {
-                document.querySelectorAll('.card').forEach(card => {
-                    card.addEventListener('click', selectHandCoin);
-                });
-                document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
-                document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+            if (!response.ended){
+                if (!(response.currentPlayer === getPlayerName())) {
+                    document.querySelectorAll('.card').forEach(card => {
+                        card.removeEventListener('click', selectHandCoin);
+                    });
+                    document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
+                    document.querySelector('#MoneyStacks').removeEventListener('click', selectBankCoin);
+                    setTimeout(function () {
+                        getGameDetails();
+                    }, 1500);
+                } else {
+                    document.querySelectorAll('.card').forEach(card => {
+                        card.addEventListener('click', selectHandCoin);
+                    });
+                    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+                    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+                }
+            }else{
+                window.location.href = "playBoard/endScreen.html";
             }
         });
 }
