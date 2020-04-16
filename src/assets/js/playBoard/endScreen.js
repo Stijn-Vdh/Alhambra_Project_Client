@@ -21,16 +21,18 @@ function setScoreBoard(response){
 
     let firstPlace = document.querySelector('.first-place .player-name');
     let secondPlace = document.querySelector('.second-place .player-name');
-    let thirdPlace = document.querySelector('.third-place .player-name');
 
     let indexFirst = 0;
     let indexSecond = 1;
-    let indexThird = 2;
 
     firstPlace.innerHTML = players[indexFirst].name;
-
     secondPlace.innerHTML = players[indexSecond].name;
-    thirdPlace.innerHTML = players[indexThird].name;
+
+    if (players.length > 2){
+        let thirdPlace = document.querySelector('.third-place .player-name');
+        let indexThird = 2;
+        thirdPlace.innerHTML = players[indexThird].name;
+    }
 
 }
 
