@@ -37,6 +37,7 @@ function loadCity(){
                 }
         });
 
+    loadReserve();
 
 }
 
@@ -66,6 +67,9 @@ function placeBuildingInCity(e) {
                         .then(function () {
                             loadCity();
                             getGameDetails();
+                            document.querySelector(".ownPlayerReserveButton").removeEventListener('click', placeBuildingInReserve);
+                            document.querySelector(".ownPlayerReserveButton").classList.remove('highlight');
+                            document.querySelector("#PlayBoard").removeEventListener('click', placeBuildingInCity);
                         });
                 }
             }

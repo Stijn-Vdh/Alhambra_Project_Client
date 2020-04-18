@@ -35,3 +35,15 @@ function setGameID(gameID) {
 function removeGameID() {
     return localStorage.removeItem("gameID");
 }
+
+function setSelectedReserveInStorage(selectedReserve){
+    localStorage.setItem("selectedReserve", JSON.stringify(selectedReserve));
+    //window.history.back();
+}
+
+function getSelectedReserveFromStorage(){
+    const selectedBuildingInStorage = JSON.parse(localStorage.getItem("selectedReserve"));
+    if (selectedBuildingInStorage !== null){
+        return selectedBuildingInStorage;
+    }
+}
