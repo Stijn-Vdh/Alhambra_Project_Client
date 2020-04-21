@@ -41,6 +41,9 @@ function buyBuilding(e) {
         })
         .then(function () {
             selectedCoins = [];
+
+            document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
+
             fetchFromServer(`${config.root}games/${getGameID()}`,
                 'GET')
                 .then(function (response) {
@@ -54,10 +57,12 @@ function buyBuilding(e) {
                                 .then(function (response) {
                                     for (let i = 0; i < response.length; i++) {
                                         document.querySelector(`.vak${response[i]['row'] + 3}${response[i]['col'] + 3}`).classList.add('highlight');
-
                                     }
-                                    // document.querySelector(".ownPlayerReserveButton").classList.add('highlight');
                                 });
+
+                            document.querySelector(".ownPlayerReserveButton").addEventListener('click', placeBuildingInReserve);
+                            document.querySelector(".ownPlayerReserveButton").classList.add('highlight');
+                            document.querySelector("#PlayBoard").addEventListener('click', placeBuildingInCity);
 
                         }
                     }
@@ -74,8 +79,6 @@ function selectBuilding(e) {
     fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
             selectedBuilding = response.market[currency];
-
-
         });
 
     return currency;

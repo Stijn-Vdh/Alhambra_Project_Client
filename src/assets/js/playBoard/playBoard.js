@@ -9,9 +9,10 @@ function init() {
     getGameDetails();
     loadCity();
     document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
-    document.querySelector("#PlayBoard").addEventListener('click', placeBuildingInCity);
     document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+    document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
     document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
+    document.querySelector(".ownPlayerReserveTiles").addEventListener('click', selectedReserveBuilding);
 }
 
 function getGameDetails() {
