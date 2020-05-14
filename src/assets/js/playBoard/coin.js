@@ -72,7 +72,7 @@ function selectBankCoin(e) {
     let selectedCoinHTML = (e.target.closest('div'));
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
-            let bankCoins = response["bank"];
+            let bankCoins = response["bank"]["coinsOnBoard"];
             let coinIndex = selectedCoinHTML.id.slice(4);
             let selectedCoin = bankCoins[coinIndex - 1];
 
