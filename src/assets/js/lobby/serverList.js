@@ -14,7 +14,6 @@ function serverList() {
     let games = [];
     fetchFromServer(`${config.root}games`, `GET`)
         .then(function (response) {
-            console.log(response);
             games = response;
             const htmlCode = document.querySelector("table tbody");
             htmlCode.innerHTML = '';
@@ -28,7 +27,6 @@ function serverList() {
 
 function joinLobby(e) {
     e.preventDefault();
-    console.log(__gameId);
     setGameID(__gameId);
     const playerName = getPlayerName();
     const timeoutMilliseconds = 500;

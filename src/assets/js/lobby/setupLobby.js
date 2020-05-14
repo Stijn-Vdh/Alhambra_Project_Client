@@ -75,9 +75,7 @@ function loadLobby() {
     const maxPlayers = 6;
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
-            console.log(response);
             players = response['players'];
-            console.log(players);
             table.innerHTML = '';
 
             players.forEach(player => {
