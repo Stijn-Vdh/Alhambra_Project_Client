@@ -11,7 +11,7 @@ function getMarketBuildings(response) {
 
     buildingStack.innerHTML = "";
 
-    let buildings = response["market"];
+    let buildings = response["market"]["buildingsOnBoard"];
 
 
     Object.keys(buildings).forEach(building => {
