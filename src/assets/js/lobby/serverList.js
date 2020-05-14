@@ -12,17 +12,16 @@ function init() {
 
 function serverList() {
     let games = [];
-    const maxPlayers = 6;
-    fetchFromServer(`${config.root}games?details=true&prefix=group${config.groupnumber}`, `GET`)
+    fetchFromServer(`${config.root}games`, `GET`)
         .then(function (response) {
-            games = response;
             console.log(response);
+            games = response;
             const htmlCode = document.querySelector("table tbody");
             htmlCode.innerHTML = '';
             games.forEach(function (game) {
-                if (game["playerCount"] < maxPlayers) {
-                    htmlCode.innerHTML += `<tr><td>${game["id"]}</td></tr>`;
-                }
+
+                htmlCode.innerHTML += `<tr><td>${game}</td></tr>`;
+
             })
         });
 }

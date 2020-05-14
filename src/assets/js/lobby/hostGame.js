@@ -17,7 +17,7 @@ function createNewGame(e){
         'POST',
         {prefix: `group${config.groupnumber}` })
         .then(function(response){
-
+            console.log(response);
             // The reply here is the game ID, keep it secret, keep it safe!
             _gameId = response; // In case of error you **should** handle this properly
             console.log('%c%s','background-color: cyan;color: blue','The game ID is ' , _gameId);

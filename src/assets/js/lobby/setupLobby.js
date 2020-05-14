@@ -61,12 +61,11 @@ function changeReadyState(ready) {
 }
 
 function getReadyState(player) {
-    if (player === __PlayerName){
-        if (readyButton.innerHTML === 'Not ready') {
-            return 'Ready';
-        }
+    if (player['ready']){
+        return 'ready'
+    }else{
+        return 'not ready'
     }
-    return 'Not ready';
 }
 
 function loadLobby() {
@@ -76,12 +75,14 @@ function loadLobby() {
     const maxPlayers = 6;
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
+            console.log(response);
             players = response['players'];
+            console.log(players);
             table.innerHTML = '';
 
             players.forEach(player => {
                 table.innerHTML += `<tr id="${player}">
-                                <td>${player}</td>
+                                <td>${player['name']}</td>
                                 <td>${getReadyState(player)}</td>
                             </tr>`;
             });

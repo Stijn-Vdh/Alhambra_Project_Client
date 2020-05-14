@@ -18,6 +18,7 @@ function init() {
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
+            console.log(response);
             setHandCoins(response);
             loadOpponents(response.players);
             setBankCoins();
