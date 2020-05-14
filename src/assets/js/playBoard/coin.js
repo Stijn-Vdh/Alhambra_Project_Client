@@ -3,6 +3,7 @@ let selectedCoins = [];
 let selectedBankCoins = [];
 
 function setHandCoins(response) {
+
     const coins = getHandCoins(response);
     const hand = document.querySelector("#Hand");
     hand.innerHTML = "";
@@ -21,7 +22,7 @@ function getHandCoins(response) {
     const playerDetails = response["players"];
     for (let i = 0; i < playerDetails.length; i++) {
         if (playerDetails[i]["name"] === localStorage.getItem("playerName")) {
-            return playerDetails[i]["coins"];
+            return playerDetails[i]["bag"]["coinsInBag"];
         }
     }
     return null;
@@ -48,8 +49,8 @@ function setBankCoins() {
     let counter = 1;
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
-            for (let i = 0; i < response["bank"].length; i++) {
-                bank.innerHTML += `<div class="${response["bank"][i]["currency"]}" id="Coin${counter}"><p>${response["bank"][i]["amount"]}</p></div>`;
+            for (let i = 0; i < response["bank"]["coinsOnBoard"].length; i++) {
+                bank.innerHTML += `<div class="${response["bank"]["coinsOnBoard"][i]["currency"]}" id="Coin${counter}"><p>${response["bank"]["coinsOnBoard"][i]["amount"]}</p></div>`;
                 counter++;
             }
         });
@@ -71,7 +72,7 @@ function selectBankCoin(e) {
     let selectedCoinHTML = (e.target.closest('div'));
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
-            let bankCoins = response["bank"];
+            let bankCoins = response["bank"]["coinsOnBoard"];
             let coinIndex = selectedCoinHTML.id.slice(4);
             let selectedCoin = bankCoins[coinIndex - 1];
 
