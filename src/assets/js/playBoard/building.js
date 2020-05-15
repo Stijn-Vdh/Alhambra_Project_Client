@@ -50,15 +50,16 @@ function buyBuilding(e) {
                     for (let i = 0;i<response['players'].length;i++){
                         if (response['players'][i]['name'] === getPlayerName()) {
 
-                            let walls = response['players'][i]['buildings-in-hand'][0]['walls'];
+                            let walls = response['players'][i]['buildingsInHand'][0]['walls'];
 
-                            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
+                            /*fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
                                 'GET')
                                 .then(function (response) {
                                     for (let i = 0; i < response.length; i++) {
                                         document.querySelector(`.vak${response[i]['row'] + 3}${response[i]['col'] + 3}`).classList.add('highlight');
                                     }
                                 });
+                            */
 
                             document.querySelector(".ownPlayerReserveButton").addEventListener('click', placeBuildingInReserve);
                             document.querySelector(".ownPlayerReserveButton").classList.add('highlight');
@@ -74,8 +75,9 @@ function buyBuilding(e) {
 }
 
 function selectBuilding(e) {
-    let currency = e.path[1].id;
-
+    console.log(e);
+    let currency = e.target.parentNode.id;
+    console.log(currency);
     fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
             selectedBuilding = response.market[currency];
