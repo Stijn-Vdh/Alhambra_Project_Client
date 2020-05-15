@@ -84,6 +84,10 @@ function selectBuilding(e) {
     return currency;
 }
 
+function getAmountOfBuildingsRemaining(response){
+    return response["market"]["amountOfBuildings"]
+}
+
 
 
 

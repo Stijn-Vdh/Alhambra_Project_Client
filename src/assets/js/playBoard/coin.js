@@ -41,7 +41,6 @@ function addCoinsToHand() {
 
 }
 
-
 function setBankCoins() {
 
     const bank = document.querySelector("#MoneyStacks");
@@ -139,4 +138,8 @@ function processSelectedBankCoin(selectedCoinHTML, selectedCoin) {
         selectedBankCoins.splice(findCoinIndex(selectedCoin, selectedBankCoins), 1);
     }
 
+}
+
+function getAmountOfCoinsRemaining(response){
+    return response["coinsRemaining"]
 }
