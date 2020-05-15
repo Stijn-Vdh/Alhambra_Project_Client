@@ -26,7 +26,7 @@ function placeBuildingInReserve() {
                     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city`,
                         'POST',
                         {
-                            "building": response['players'][i]["buildings-in-hand"][0],
+                            "building": response['players'][i]["buildingsInHand"][0],
                             "location": null
 
                         })
