@@ -25,6 +25,11 @@ function getGameDetails() {
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
 
+            let amountOfCoins = getAmountOfCoinsRemaining(response);
+            let amountOfBuildings = getAmountOfBuildingsRemaining(response);
+            document.querySelector('#RemainingBuildings').innerHTML = amountOfBuildings + "buildings remaining";
+            document.querySelector('#RemainingCards').innerHTML = amountOfCoins + "coins remaining";
+
             if (!response.ended){
                 if (!(response.currentPlayer === getPlayerName())) {
                     document.querySelectorAll('.card').forEach(card => {
