@@ -75,9 +75,7 @@ function buyBuilding(e) {
 }
 
 function selectBuilding(e) {
-    console.log(e);
     let currency = e.target.parentNode.id;
-    console.log(currency);
     fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
             selectedBuilding = response.market[currency];
