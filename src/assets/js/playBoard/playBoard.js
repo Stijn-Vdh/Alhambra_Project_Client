@@ -58,6 +58,7 @@ function leaveGame() {
     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}`, `DELETE`)
         .then(function () {
             removeGameID();
+            localStorage.removeItem('selectedReserve');
             window.location.href = "../mainMenu.html";
         });
 }
