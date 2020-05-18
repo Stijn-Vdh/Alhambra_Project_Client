@@ -1,13 +1,9 @@
 "use strict";
 
-let __gameId = null;
-
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
     serverList();
-    document.querySelector('table').addEventListener('click', save);
-    document.querySelector('#joinLobbyForm').addEventListener('submit', joinLobby);
 }
 
 function serverList() {
@@ -23,14 +19,15 @@ function serverList() {
 
             })
         });
+    document.querySelector('table').addEventListener('click', joinLobby);
     setTimeout(function () {
         serverList();
-    }, 100);
+    }, 1000);
 }
 
 function joinLobby(e) {
     e.preventDefault();
-    setGameID(__gameId);
+    setGameID(e.target.innerText);
     const playerName = getPlayerName();
     const timeoutMilliseconds = 500;
     joinGame(getGameID(), playerName);
@@ -41,15 +38,4 @@ function moveToLobby() {
     window.location.href = "joiningGamePage.html";
 }
 
-function save(e) {
-    __gameId = e.target.innerText;
-
-    document.querySelectorAll('table tbody td').forEach(tag => {
-        tag.classList.remove("active");
-    });
-
-    e.target.classList.add("active");
-
-
-}
 
