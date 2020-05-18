@@ -7,24 +7,18 @@ const readyButton = document.querySelector('#readyButton');
 
 
 function init() {
-    document.querySelectorAll('a').forEach(tag => {
-        if (tag.innerHTML === 'Ready') {
-            tag.addEventListener('click', readyUp);
 
-        } else if (tag.innerHTML === 'Quit') {
-            tag.addEventListener('click', quitLobby);
-        }
-    });
+    readyButton.addEventListener('click', readyUp);
+    document.querySelector('#quitButton').addEventListener('click', quitLobby);
+
     loadLobby();
 }
 
 function readyUp() {
     if (readyButton.innerHTML === 'Ready') {
         readyUpPlayer();
-        changeReadyState(true);
     } else {
         unReadyPlayer();
-        changeReadyState(false);
     }
 }
 
@@ -42,27 +36,10 @@ function unReadyPlayer() {
         });
 }
 
-function changeReadyState(ready) {
-    const table = document.querySelectorAll(".center tr");
-    table.forEach(tag => {
-        if (tag.id === __PlayerName) {
-            tag.querySelectorAll('td').forEach(td => {
-                if (td.innerHTML !== __PlayerName) {
-                    if (ready) {
-                        td.innerHTML = 'Ready';
-                    } else {
-                        td.innerHTML = 'Not ready';
-                    }
-                }
-            });
-        }
-    });
-}
-
 function getReadyState(player) {
-    if (player['ready']){
+    if (player['ready']) {
         return 'Ready'
-    }else{
+    } else {
         return 'Not ready'
     }
 }
@@ -75,6 +52,7 @@ function loadLobby() {
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
             players = response['players'];
+            console.log(players);
             table.innerHTML = '';
 
             players.forEach(player => {
@@ -98,7 +76,6 @@ function quitLobby() {
     fetchFromServer(`${config.root}games/${__gameId}/players/${__PlayerName}`, `DELETE`)
         .then(function () {
             removeGameID();
-            unReadyPlayer();
             window.location.href = "../mainMenu.html";
         });
 }

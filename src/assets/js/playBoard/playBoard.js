@@ -13,6 +13,7 @@ function init() {
     document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
     document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
     document.querySelector(".ownPlayerReserveTiles").addEventListener('click', selectedReserveBuilding);
+    document.querySelector("#exitButton").addEventListener('click', leaveGame);
 }
 
 function getGameDetails() {
@@ -53,5 +54,12 @@ function getGameDetails() {
         });
 }
 
+function leaveGame() {
+    fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}`, `DELETE`)
+        .then(function () {
+            removeGameID();
+            window.location.href = "../mainMenu.html";
+        });
+}
 
 
