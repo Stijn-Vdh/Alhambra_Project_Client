@@ -141,5 +141,5 @@ function processSelectedBankCoin(selectedCoinHTML, selectedCoin) {
 }
 
 function getAmountOfCoinsRemaining(response){
-    return response["coinsRemaining"]
+    return response["bank"]["amountOfCoins"];
 }
