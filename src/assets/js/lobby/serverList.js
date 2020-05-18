@@ -30,11 +30,8 @@ function joinLobby(e) {
     setGameID(__gameId);
     const playerName = getPlayerName();
     const timeoutMilliseconds = 500;
-    fetchFromServer(`${config.root}games/${__gameId}/players`, 'POST', {playerName: `${playerName}`})
-        .then(function (response) {
-            console.log('%c%s', 'background-color: yellow;color: black', 'The playerToken is ', response);
-            setTimeout(moveToLobby, timeoutMilliseconds);
-        });
+    joinGame(getGameID(), playerName);
+    setTimeout(moveToLobby, timeoutMilliseconds);
 }
 
 function moveToLobby() {

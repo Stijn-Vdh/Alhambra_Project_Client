@@ -1,13 +1,12 @@
 "use strict";
 
 function fetchFromServer(url, httpVerb, requestBody) {
-    const TKN_SALT = "$Sm3lly_3lli3$TKN.";
     const options = {
     method: httpVerb,
 
-    headers: {
+        headers: {
         ["Content-Type"]: "application/json",
-        ["Authorization"]: `Bearer ${TKN_SALT}${getGameID()}+${getPlayerName()}`,
+        ["Authorization"]: `Bearer ${atob(localStorage.getItem("token"))}`,
 },
     // Don't forget to add data to the body when needed
     body: JSON.stringify(requestBody)

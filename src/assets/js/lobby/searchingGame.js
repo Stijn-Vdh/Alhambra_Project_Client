@@ -26,10 +26,7 @@ function joinOpenLobby(openGameIDs) {
     const gameID = getGameID();
     const playerName = getPlayerName();
 
-    fetchFromServer(`${config.root}games/${gameID}/players`,'POST',{playerName: `${playerName}` })
-        .then(function(response){
-            console.log('%c%s','background-color: yellow;color: black','The playerToken is ' , response);
-        });
+    joinGame(gameID, playerName);
 }
 
 function joinLobby() {
