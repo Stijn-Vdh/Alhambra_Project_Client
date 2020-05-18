@@ -23,6 +23,9 @@ function serverList() {
 
             })
         });
+    setTimeout(function () {
+        serverList();
+    }, 100);
 }
 
 function joinLobby(e) {
