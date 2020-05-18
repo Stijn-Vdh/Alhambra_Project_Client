@@ -6,12 +6,12 @@ const _playerName = getPlayerName();
 document.addEventListener('DOMContentLoaded',init);
 
 function init() {
-    document.querySelector('#hostGameForm').addEventListener('submit', createNewGame);
+    document.querySelector('#hostGameButton').addEventListener('click', createNewGame);
 }
 
 function createNewGame(e){
     e.preventDefault();
-    const timeoutMilliseconds = 1500;
+    const timeoutMilliseconds = 100;
     fetchFromServer(
         `${config.root}games`,
         'POST',
@@ -27,7 +27,7 @@ function createNewGame(e){
             joinGame(_gameId, _playerName);
 
             setTimeout(function () {
-                window.location.href = "lobby.html";
+                window.location.href = "lobby/lobby.html";
             }, timeoutMilliseconds);
 
         });
