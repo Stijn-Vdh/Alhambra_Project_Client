@@ -19,7 +19,6 @@ function init() {
 }
 
 function readyUp() {
-
     if (readyButton.innerHTML === 'Ready') {
         readyUpPlayer();
         changeReadyState(true);
@@ -62,9 +61,9 @@ function changeReadyState(ready) {
 
 function getReadyState(player) {
     if (player['ready']){
-        return 'ready'
+        return 'Ready'
     }else{
-        return 'not ready'
+        return 'Not ready'
     }
 }
 
@@ -79,7 +78,7 @@ function loadLobby() {
             table.innerHTML = '';
 
             players.forEach(player => {
-                table.innerHTML += `<tr id="${player}">
+                table.innerHTML += `<tr id="${player['name']}">
                                 <td>${player['name']}</td>
                                 <td>${getReadyState(player)}</td>
                             </tr>`;
