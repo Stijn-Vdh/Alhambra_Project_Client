@@ -53,12 +53,12 @@ function placeBuildingInCity(e) {
         .then(function (response) {
             for (let i = 0;i<response['players'].length;i++){
                 if (response['players'][i]['name'] === getPlayerName()){
-                    selectedSpaceHTML.setAttribute('id', `${response['players'][i]["buildings-in-hand"][0]["type"]}`);
+                    selectedSpaceHTML.setAttribute('id', `${response['players'][i]["buildingsInHand"][0]["type"]}`);
 
                     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city`,
                         'POST',
                         {
-                            "building": response['players'][i]["buildings-in-hand"][0],
+                            "building": response['players'][i]["buildingsInHand"][0],
                             "location": {
                                 "row": row,
                                 "col": col
