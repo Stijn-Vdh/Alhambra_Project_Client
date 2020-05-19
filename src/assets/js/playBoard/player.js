@@ -13,6 +13,7 @@ function loadOpponents(players) {
     players.forEach(player => {
         if (player.name !== getPlayerName()) {
             let EnemyCard = `<div class="EnemyCard" id="${player.name}">
+            
             <div class="EnemyBoard">
                 <!-- enemy playboard -->
             </div>
@@ -27,10 +28,7 @@ function loadOpponents(players) {
                     <div class="innerBuilding"></div>
                     <div class="innerBuilding"></div>
                 </div>
-                <button class="dropDownButton">Reserve</button>
-            </div>
-            <div class="EnemyIcon">
-                <!-- enemy icon -->
+                <button class="dropDownButton">${player.name}</button>
             </div>
             <div class="EnemyScore">
                 <!-- enemy score -->
