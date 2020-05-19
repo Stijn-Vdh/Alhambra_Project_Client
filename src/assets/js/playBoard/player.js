@@ -13,28 +13,12 @@ function loadOpponents(players) {
     players.forEach(player => {
         if (player.name !== getPlayerName()) {
             let EnemyCard = `<div class="EnemyCard" id="${player.name}">
-            <div class="EnemyBoard" id="alhambra${player.name}">
-            <div class="EnemyBoard">
-                <!-- enemy playboard -->
-            </div>
-            <div class="EnemyReserve">
-                <!-- enemy reserve stack -->
-                    <div class="ReserveEnemy" id="reserveHidden">
-                    <div class="innerBuilding"></div>
-                    <div class="innerBuilding"></div>
-                    <div class="innerBuilding"></div>
-                    <div class="innerBuilding"></div>
-                    <div class="innerBuilding"></div>
-                    <div class="innerBuilding"></div>
-                    <div class="innerBuilding"></div>
-                </div>
-                <button class="dropDownButton">${player.name}</button>
-            </div>
-            <div class="EnemyScore">
-                <!-- enemy score -->
-                <p id="Score${player.name}">${player['score']}</p>
-            </div>
-        </div>`;
+                                <div class="EnemyBoard" id="alhambra${player.name}"></div>
+                                <p class="nameTag">${player.name}</p>
+                                <div class="EnemyScore">
+                                    <p id="Score${player.name}">${player['score']}</p>
+                                </div>
+                            </div>`;
             enemyPlayersHtml.innerHTML += EnemyCard;
             loadOpponentAlhambra(player);
         }
@@ -75,7 +59,7 @@ function loadOpponentAlhambra(player){
 
     for(let r = 0; r < sizeBoard; r++){
         for (let  c= 0; c < sizeBoard; c++){
-            let html = `<div class="plateBuilding grid${r}${c}"></div>`;
+            let html = `<div class="plateBuilding ${player.name}grid${r}${c}"></div>`;
             alhambra.innerHTML += html;
         }
     }
@@ -84,7 +68,7 @@ function loadOpponentAlhambra(player){
     for (let i = 0; i<city.length; i++){
         for (let j = 0; j < city[i].length;j++){
             if (city[i][j] !== null){
-                document.querySelector(`.grid${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`).setAttribute('class', `${getColorFromImage(city[i][j])}`);
+                document.querySelector(`.${player.name}grid${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`).setAttribute('class', `${getColorFromImage(city[i][j])}`);
             }
         }
     }
