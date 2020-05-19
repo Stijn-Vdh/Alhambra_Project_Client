@@ -22,7 +22,7 @@ function getHandCoins(response) {
     const playerDetails = response["players"];
     for (let i = 0; i < playerDetails.length; i++) {
         if (playerDetails[i]["name"] === localStorage.getItem("playerName")) {
-            return playerDetails[i]["bag"]["coinsInBag"];
+            return playerDetails[i]["money"]["coinsInBag"];
         }
     }
     return null;
