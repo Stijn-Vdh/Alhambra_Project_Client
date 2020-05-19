@@ -183,6 +183,21 @@ body {
     background-color: darkseagreen;
 }
 
+.purple{
+    background-color: rebeccapurple;
+}
+
+.brown{
+    background-color: saddlebrown;
+}
+
+.white{
+    background-color: whitesmoke;
+}
+.grey{
+    background-color: slategrey;
+}
+
 #ReserveDropUp {
     grid-area: re;
     grid-column: 6/7;
@@ -460,14 +475,13 @@ display: none;
     overflow: auto;
 }
 
-#PlayBoard .plateBuilding {
+.plateBuilding {
     border: 1px dotted black;
 }
 
 .highlight{
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
-
 
 .Popup {
     display: none;

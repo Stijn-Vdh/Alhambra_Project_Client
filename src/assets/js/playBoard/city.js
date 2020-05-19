@@ -5,11 +5,11 @@ let city = [];
 function loadCity(){
 
     let city = document.querySelector("#PlayBoard");
-
+    let sizeBoard = 7;
     city.innerHTML = "";
 
-    for(let r = 0; r < 7; r++){
-        for (let  c= 0; c < 7; c++){
+    for(let r = 0; r < sizeBoard; r++){
+        for (let  c= 0; c < sizeBoard; c++){
             let html = `<div class="plateBuilding innerBuildingCity vak${r}${c}"></div>`;
             city.innerHTML += html;
         }
@@ -20,7 +20,7 @@ function loadCity(){
         'GET')
         .then(function (response) {
 
-            let sizeBoard = 7;
+
             console.log(response["players"][1]["city"]["board"]);
             for (let i = 0;i<response['players'].length;i++){
                 if (response['players'][i]['name'] === getPlayerName()){
