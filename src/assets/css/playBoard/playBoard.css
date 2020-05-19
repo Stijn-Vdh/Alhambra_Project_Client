@@ -197,6 +197,9 @@ body {
 .grey{
     background-color: slategrey;
 }
+.red{
+    background-color: darkred;
+}
 
 #ReserveDropUp {
     grid-area: re;
