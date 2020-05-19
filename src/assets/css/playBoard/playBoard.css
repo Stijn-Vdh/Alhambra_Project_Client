@@ -401,16 +401,12 @@ display: none;
 }
 
 /*show other player's reserve tiles area*/
-.dropDownButton {
-    width: 92px;
+.nameTag{
+    width: 99.2%;
     height: 20px;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid black;
 
-}
-
-.dropDownButton:hover {
-    background-color: rgba(251, 171, 171, 0.5);
 }
 
 .reserveEnemy1 {
