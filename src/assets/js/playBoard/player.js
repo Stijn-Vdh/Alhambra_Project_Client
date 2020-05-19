@@ -14,6 +14,7 @@ function loadOpponents(players) {
         if (player.name !== getPlayerName()) {
             let EnemyCard = `<div class="EnemyCard" id="${player.name}">
             <div class="EnemyBoard" id="alhambra${player.name}">
+            <div class="EnemyBoard">
                 <!-- enemy playboard -->
             </div>
             <div class="EnemyReserve">
@@ -27,10 +28,7 @@ function loadOpponents(players) {
                     <div class="innerBuilding"></div>
                     <div class="innerBuilding"></div>
                 </div>
-                <button class="dropDownButton">Reserve</button>
-            </div>
-            <div class="EnemyIcon">
-                <!-- enemy icon -->
+                <button class="dropDownButton">${player.name}</button>
             </div>
             <div class="EnemyScore">
                 <!-- enemy score -->
@@ -85,7 +83,7 @@ function loadOpponentAlhambra(player){
 
     for (let i = 0; i<city.length; i++){
         for (let j = 0; j < city[i].length;j++){
-            if (city[i][j] != null){
+            if (city[i][j] !== null){
                 document.querySelector(`.grid${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`).setAttribute('class', `${getColorFromImage(city[i][j])}`);
             }
         }
