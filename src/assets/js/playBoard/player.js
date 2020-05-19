@@ -84,7 +84,7 @@ function getColorFromImage(image){
             return 'green';
         case 'pavilion':
             return 'blue';
-        case 'serglio':
+        case 'seraglio':
             return 'red';
         case 'tower':
             return 'purple';
