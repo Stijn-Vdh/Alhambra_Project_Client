@@ -15,8 +15,12 @@ function getOpenLobby() {
                 openGameIDs.push(lobby);
 
             });
-            joinOpenLobby(openGameIDs);
-            setTimeout(joinLobby, timeoutMilliseconds);
+            if (openGameIDs.length === 0) {
+                setTimeout(getOpenLobby, timeoutMilliseconds) ;
+            } else {
+                joinOpenLobby(openGameIDs);
+                setTimeout(goToLobby, timeoutMilliseconds);
+            }
         });
 }
 
@@ -29,6 +33,6 @@ function joinOpenLobby(openGameIDs) {
     joinGame(gameID, playerName);
 }
 
-function joinLobby() {
+function goToLobby() {
     window.location.href = "lobby.html";
 }
