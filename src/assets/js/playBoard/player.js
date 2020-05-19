@@ -13,7 +13,7 @@ function loadOpponents(players) {
     players.forEach(player => {
         if (player.name !== getPlayerName()) {
             let EnemyCard = `<div class="EnemyCard" id="${player.name}">
-            <div class="EnemyBoard">
+            <div class="EnemyBoard" id="alhambra${player.name}">
                 <!-- enemy playboard -->
             </div>
             <div class="EnemyReserve">
@@ -38,6 +38,7 @@ function loadOpponents(players) {
             </div>
         </div>`;
             enemyPlayersHtml.innerHTML += EnemyCard;
+            loadOpponentAlhambra(player);
         }
         else{
             document.querySelector('.Score #MyScore').innerHTML = player['score'];
@@ -64,4 +65,17 @@ function addCurrentPlayerTag(playerCard) {
         tag.classList.remove("currentPlayer");
     });
     playerCard.classList.add('currentPlayer');
+}
+
+function loadOpponentAlhambra(player){
+    let alhambra = document.querySelector(`#alhambra${player.name}`);
+
+    alhambra.innerHTML = "";
+
+    for(let r = 0; r < 7; r++){
+        for (let  c= 0; c < 7; c++){
+            let html = `<div class="plateBuilding grid${r}${c}"></div>`;
+            alhambra.innerHTML += html;
+        }
+    }
 }
