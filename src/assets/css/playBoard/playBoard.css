@@ -183,6 +183,21 @@ body {
     background-color: darkseagreen;
 }
 
+.purple{
+    background-color: rebeccapurple;
+}
+
+.brown{
+    background-color: saddlebrown;
+}
+
+.white{
+    background-color: whitesmoke;
+}
+.grey{
+    background-color: slategrey;
+}
+
 #ReserveDropUp {
     grid-area: re;
     grid-column: 6/7;

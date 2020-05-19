@@ -69,13 +69,44 @@ function addCurrentPlayerTag(playerCard) {
 
 function loadOpponentAlhambra(player){
     let alhambra = document.querySelector(`#alhambra${player.name}`);
+    let sizeBoard = 7;
+    let city = player["city"]["board"];
+
 
     alhambra.innerHTML = "";
 
-    for(let r = 0; r < 7; r++){
-        for (let  c= 0; c < 7; c++){
+    for(let r = 0; r < sizeBoard; r++){
+        for (let  c= 0; c < sizeBoard; c++){
             let html = `<div class="plateBuilding grid${r}${c}"></div>`;
             alhambra.innerHTML += html;
         }
+    }
+
+
+    for (let i = 0; i<city.length; i++){
+        for (let j = 0; j < city[i].length;j++){
+            if (city[i][j] != null){
+                document.querySelector(`.grid${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`).setAttribute('class', `${getColorFromImage(city[i][j])}`);
+            }
+        }
+    }
+}
+
+function getColorFromImage(image){
+    switch (image["type"]) {
+        case 'arcades':
+            return 'brown';
+        case 'chambers':
+            return 'white';
+        case 'garden':
+            return 'green';
+        case 'pavilion':
+            return 'blue';
+        case 'serglio':
+            return 'red';
+        case 'tower':
+            return 'purple';
+        default:
+            return 'grey';
     }
 }
