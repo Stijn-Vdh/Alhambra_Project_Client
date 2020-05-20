@@ -42,35 +42,38 @@ function buyBuilding(e) {
 
             document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
         });
-    highlightBuildSpot();
+    getHighlightedBuildPositions();
 }
 
-function highlightBuildSpot() {
+function getHighlightedBuildPositions() {
+    let player;
+    let buildingsInHand;
     fetchFromServer(`${config.root}games/${getGameID()}`,
         'GET')
         .then(function (response) {
             for (let i = 0; i < response['players'].length; i++) {
                 if (response['players'][i]['name'] === getPlayerName()) {
-                    let player = response['players'][i];
-                    let buildingsInHand = player['buildingsInHand'];
-                    console.log(player);
-                    console.log(buildingsInHand);
-                    let walls = buildingsInHand['walls'];
-
-                    /*fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
-                        'GET')
-                        .then(function (response) {
-                            for (let i = 0; i < response.length; i++) {
-                                document.querySelector(`.vak${response[i]['row'] + 3}${response[i]['col'] + 3}`).classList.add('highlight');
-                            }
-                        });
-                    */
+                    player = response['players'][i];
+                    buildingsInHand = player['buildingsInHand'];
+                    let walls = buildingsInHand[0]['walls'];
 
                     document.querySelector(".ownPlayerReserveButton").addEventListener('click', placeBuildingInReserve);
                     document.querySelector(".ownPlayerReserveButton").classList.add('highlight');
 
                     document.querySelector("#PlayBoard").addEventListener('click', placeBuildingInCity);
+                    highlightBuildPlaces(walls);
                 }
+            }
+        });
+
+}
+
+function highlightBuildPlaces(walls){
+    fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
+        'GET')
+        .then(function (response) {
+            for (let i = 0; i < response.length; i++) {
+                document.querySelector(`.vak${response[i]['row'] + 3}${response[i]['col'] + 3}`).classList.add('highlight');
             }
         });
 }
