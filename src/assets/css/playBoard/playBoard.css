@@ -488,7 +488,6 @@ h1 {
 }
 
 .Popup {
-    display: none;
     position: fixed;
     padding-top: 100px;
     left: 0;
@@ -518,7 +517,9 @@ h1 {
     flex-direction: row;
     text-align: center;
 }
-
+.hidden{
+    display: none;
+}
 
 figure {
     text-align: center;

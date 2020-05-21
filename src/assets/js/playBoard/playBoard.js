@@ -1,10 +1,11 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', init);
-
+let scoringRoundOnePassed = false;
+let scoringRoundTwoPassed = false;
 
 function init() {
-
+    document.querySelector('span.close').addEventListener('click',closePopup);
     setMyAvatar();
     getGameDetails();
     loadCity();
@@ -16,9 +17,11 @@ function init() {
     document.querySelector("#exitButton").addEventListener('click', leaveGame);
 }
 
+
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
+
             console.log(response);
             setHandCoins(response);
             loadOpponents(response.players);
@@ -51,7 +54,19 @@ function getGameDetails() {
             }else{
                 window.location.href = "playBoard/endScreen.html";
             }
+
+            if (response.scoringRound1 && !scoringRoundOnePassed){
+                scoringRoundOnePassed = true;
+                document.querySelector('.Popup').classList.remove('hidden');
+            }
+            if (response.scoringRound2 && !scoringRoundTwoPassed){
+                scoringRoundTwoPassed = true;
+                document.querySelector('.Popup').classList.remove('hidden');
+            }
         });
+}
+function closePopup() {
+    document.querySelector('.Popup').classList.add('hidden');
 }
 
 function leaveGame() {
