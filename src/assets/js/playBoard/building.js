@@ -6,9 +6,7 @@ let selectedBuilding;
 
 function getMarketBuildings(response) {
     let buildingStack = document.querySelector('#buildingStack');
-
-    buildingStack.innerHTML = "";
-
+    buildingStack.innerHTML =  "";
     let buildings = response["market"]["buildingsOnBoard"];
 
 
@@ -18,13 +16,20 @@ function getMarketBuildings(response) {
             <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
             <div class="price"><p>${buildings[building]["cost"]}</p></div>
         </div>`;
+
             buildingStack.innerHTML += buildingContent;
+
+            let html = document.querySelector(`#${building}`);
+            html = html.querySelector(`#${buildings[building]["type"]}`);
+
+            loadWalls(html, buildings[building]);
 
             document.querySelectorAll('.innerBuildingMarket').forEach(building => {
                 building.addEventListener('click', buyBuilding);
 
             })
         }
+
     });
 }
 

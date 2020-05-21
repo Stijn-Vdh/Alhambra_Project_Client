@@ -15,12 +15,7 @@ body {
     display: grid;
     grid-template-columns: 150px 150px 150px 150px 150px 150px 150px;
     grid-template-rows: 150px 150px 150px 150px 150px 150px;
-    grid-template-areas: "hd1 en en en en en hd2"
-                         "ms mn mn mn mn mn bs"
-                         "ms mn mn mn mn mn bs"
-                         "ms mn mn mn mn mn bs"
-                         "ms mn mn mn mn mn bs"
-                         "ft ha ha ha ha re me";
+    grid-template-areas: "hd1 en en en en en hd2" "ms mn mn mn mn mn bs" "ms mn mn mn mn mn bs" "ms mn mn mn mn mn bs" "ms mn mn mn mn mn bs" "ft ha ha ha ha re me";
     text-align: center;
     border-radius: 20px;
     margin-top: 35px;
@@ -42,30 +37,35 @@ body {
 #BuildingsRemaining p {
     margin-top: 25px;
 }
-.currentPlayer{
+
+.currentPlayer {
     box-shadow: 0 0 5px 5px black;
 }
+
 .EnemyPlayers {
     grid-area: en;
     grid-column: 2/6;
     grid-row: 1/2;
     display: flex;
 }
-.EnemyCard{
+
+.EnemyCard {
     display: inline-block;
     margin-left: 2.5%;
     margin-right: 2.5%;
 }
-.EnemyScore{
+
+.EnemyScore {
     height: 25px;
     width: 25px;
 
     border: solid 1px black;
     border-radius: 50%;
     margin-right: 80%;
-    transform: translate(-50%,-140%);
+    transform: translate(-50%, -140%);
     background-color: beige;
 }
+
 .EnemyScore p {
     margin-top: 5px;
     text-align: center;
@@ -162,7 +162,8 @@ body {
     transform: translateY(-15px) scale(1.2);
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
-.selectedBankCoin{
+
+.selectedBankCoin {
     transform: scale(1.05);
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
@@ -183,21 +184,23 @@ body {
     background-color: darkseagreen;
 }
 
-.purple{
+.purple {
     background-color: rebeccapurple;
 }
 
-.brown{
+.brown {
     background-color: saddlebrown;
 }
 
-.white{
+.white {
     background-color: whitesmoke;
 }
-.grey{
+
+.grey {
     background-color: slategrey;
 }
-.red{
+
+.red {
     background-color: darkred;
 }
 
@@ -224,10 +227,12 @@ body {
     position: fixed;
     margin-left: 1%;
 }
-#MoneyStacks{
+
+#MoneyStacks {
     grid-area: ms;
 }
-.confirmButton{
+
+.confirmButton {
     transform: translate(-735px, 600px);
     text-decoration: none;
     color: black;
@@ -274,15 +279,15 @@ body {
 }
 
 .innerBuilding, .innerBuildingMarket {
-     border: 1px solid black;
-     width: 100px;
-     height: 100px;
-     margin-top: 10px;
-     margin-left: 10px;
-     background-size: 100px;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin-top: 8%;
+    margin-left: 8%;
+    background-size: 100px;
 }
 
-.innerBuildingCity{
+.innerBuildingCity {
     background-size: 100%;
 }
 
@@ -392,7 +397,7 @@ h1 {
 }
 
 #reserveHidden {
-display: none;
+    display: none;
 }
 
 #ownPLayerReserveDropUp:hover .ownPlayerReserveButton {
@@ -404,7 +409,7 @@ display: none;
 }
 
 /*show other player's reserve tiles area*/
-.nameTag{
+.nameTag {
     width: 99.2%;
     height: 20px;
     background-color: rgba(0, 0, 0, 0);
@@ -459,7 +464,7 @@ display: none;
     background-image: url("../../../images/tower.jpg");
 }
 
-#null{
+#null {
     background-image: url("../../../images/fountain.jpg");
 }
 
@@ -478,7 +483,7 @@ display: none;
     border: 1px dotted black;
 }
 
-.highlight{
+.highlight {
     box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
 }
 
@@ -491,8 +496,8 @@ display: none;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .Popup-content {
@@ -502,7 +507,7 @@ display: none;
     padding: 0;
     border: 1px solid #888;
     width: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     animation-duration: 0.4s;
     text-align: center;
     height: 35%;
@@ -515,18 +520,19 @@ display: none;
 }
 
 
-figure{
+figure {
     text-align: center;
     margin-top: 2em;
     margin-right: 1em;
     margin-left: 1em;
 }
 
-.Popup-content img{
+.Popup-content img {
     height: 70%;
     width: 70%;
 }
-figcaption{
+
+figcaption {
     margin-top: 1em;
     background-color: #ff7858;
     color: white;
@@ -539,11 +545,14 @@ figcaption{
     color: white;
     height: 3em;
 }
-.popup-header h2{
+
+.popup-header h2 {
     padding-top: 1em;
 }
 
-.popup-body {padding: 2px 16px;}
+.popup-body {
+    padding: 2px 16px;
+}
 
 .close {
     color: white;
@@ -557,4 +566,21 @@ figcaption{
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+/*Walls---------------------------------------------*/
+.north {
+    border-top: 5px black solid;
+}
+
+.east {
+    border-right: 5px black solid;
+}
+
+.south {
+    border-bottom: 5px black solid;
+}
+
+.west {
+    border-left: 5px black solid;
 }
