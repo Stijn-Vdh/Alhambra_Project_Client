@@ -558,3 +558,16 @@ figcaption{
     text-decoration: none;
     cursor: pointer;
 }
+/*Walls---------------------------------------------*/
+.north{
+    border-top: 5px black solid;
+}
+.east{
+    border-right: 5px black solid;
+}
+.south{
+    border-bottom: 5px black solid;
+}
+.west{
+    border-left: 5px black solid;
+}

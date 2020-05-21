@@ -11,6 +11,7 @@ function loadCity(){
     for(let r = 0; r < sizeBoard; r++){
         for (let  c= 0; c < sizeBoard; c++){
             let html = `<div class="plateBuilding innerBuildingCity vak${r}${c}"></div>`;
+
             city.innerHTML += html;
         }
     }
@@ -28,7 +29,10 @@ function loadCity(){
                     for (let i = 0; i<city.length; i++){
                         for (let j = 0; j < city[i].length;j++){
                             if (city[i][j] != null){
-                                document.querySelector(`.vak${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`).setAttribute('id', `${city[i][j]['type']}`);
+                                let building = city[i][j];
+                                let html = document.querySelector(`.vak${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`);
+                                html.setAttribute('id', `${building['type']}`);
+                                html = loadWalls(html, building);
                             }
                         }
                     }
@@ -53,8 +57,8 @@ function placeBuildingInCity(e) {
         .then(function (response) {
             for (let i = 0;i<response['players'].length;i++){
                 if (response['players'][i]['name'] === getPlayerName()){
-                    selectedSpaceHTML.setAttribute('id', `${response['players'][i]["buildingsInHand"][0]["type"]}`);
-
+                    let building = response['players'][i]["buildingsInHand"][0];
+                    selectedSpaceHTML.setAttribute('id', `${building["type"]}`);
                     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city`,
                         'POST',
                         {
@@ -73,8 +77,21 @@ function placeBuildingInCity(e) {
                         });
                 }
             }
-
-
         });
-
+}
+function loadWalls(html, building){
+    let walls = building['walls'];
+    if (walls['north']){
+        html.classList.add('north');
+    }
+    if (walls['south']){
+        html.classList.add('south');
+    }
+    if (walls['east']){
+        html.classList.add('east');
+    }
+    if (walls['west']){
+        html.classList.add('west');
+    }
+    return html;
 }
