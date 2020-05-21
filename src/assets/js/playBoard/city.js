@@ -21,8 +21,6 @@ function loadCity(){
         'GET')
         .then(function (response) {
 
-
-            console.log(response["players"][1]["city"]["board"]);
             for (let i = 0;i<response['players'].length;i++){
                 if (response['players'][i]['name'] === getPlayerName()){
                     city = response['players'][i]["city"]["board"];
