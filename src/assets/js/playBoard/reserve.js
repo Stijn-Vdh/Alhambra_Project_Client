@@ -58,11 +58,13 @@ function placeBuildingInReserve() {
                  if (response['players'][i]['name'] === getPlayerName()) {
 
                      for (let r = 0;r < response['players'][i]['reserve'].length;r++){
-                         htmlOwnReserve.innerHTML += `<div class="innerBuilding reserve${r+1}" id="${response['players'][i]['reserve'][r]['type']}"></div>`;
+                         let building = response['players'][i]['reserve'][r];
+                         htmlOwnReserve.innerHTML += `<div class="innerBuilding reserve${r+1}" id="${building['type']}"></div>`;
+                         let html = htmlOwnReserve.querySelector(`.reserve${r+1}`);
+                         html = loadWalls(html, building);
                      }
                  }
              }
-
          });
  }
 
