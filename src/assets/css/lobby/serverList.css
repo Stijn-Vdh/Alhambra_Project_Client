@@ -11,7 +11,7 @@ main{
 }
 
 table.scroll {
-    width: 25%;
+    width: 50%;
     border-collapse: collapse;
     border-spacing: 0;
     border-bottom: 2px solid black;
@@ -22,13 +22,13 @@ table.scroll tbody, table.scroll thead {
 }
 
 table {
-    width: 25%;
+    width: 30%;
 }
 
 thead tr th {
     height: 30px;
     line-height: 30px;
-    width: 22%;
+    width: 1%;
 }
 
 tbody tr td{
@@ -38,14 +38,13 @@ tbody tr td{
 }
 
 table.scroll tbody {
-    height: 250px;
+    height: 500px;
     overflow-y: auto;
     overflow-x: hidden;
     width: auto;
 }
 
 table, thead th , tbody td{
-    border-bottom: 1px solid black;
     border-collapse: collapse;
     margin: 0 auto 20px auto;
     color: rgba(255,255,255,0.6);
@@ -68,27 +67,4 @@ tbody td:hover {
 
 tbody td.active{
     background-color: rgba(251, 171, 171, 0.5);
-}
-
-input[type=submit]{
-    padding: 8px;
-    margin: 2rem auto 0 auto;
-    display: block;
-    width: 12rem;
-    border-radius: 20px;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.6);
-    background-color: transparent;
-    border: solid 1px black;
-    font-size: 1rem;
-    color: black;
-}
-
-form input[type=submit]:active {
-    box-shadow: 0 0 0;
-    transform: translateY(4px);
-    background-color: rgba(251, 171, 171, 0.5);
-}
-
-form input[type=submit]:hover{
-background-color: rgba(251, 171, 171, 0.5);
 }
