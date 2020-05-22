@@ -79,6 +79,7 @@ function placeBuildingInCity(e) {
 }
 function loadWalls(html, building){
     let walls = building['walls'];
+
     if (walls['north']){
         html.classList.add('north');
     }
