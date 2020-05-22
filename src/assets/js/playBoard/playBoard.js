@@ -1,10 +1,11 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', init);
-
+let scoringRoundOnePassed = false;
+let scoringRoundTwoPassed = false;
 
 function init() {
-
+    document.querySelector('span.close').addEventListener('click',closePopup);
     setMyAvatar();
     getGameDetails();
     loadCity();
@@ -16,9 +17,13 @@ function init() {
     document.querySelector("#exitButton").addEventListener('click', leaveGame);
 }
 
+
+
+
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
+
             console.log(response);
             setHandCoins(response);
             loadOpponents(response.players);
@@ -51,7 +56,20 @@ function getGameDetails() {
             }else{
                 window.location.href = "playBoard/endScreen.html";
             }
+
+            if (response.scoringRound1 && !scoringRoundOnePassed){
+                scoringRoundOnePassed = true;
+                document.querySelector('.Popup').classList.remove('hidden');
+                loadScoringRound1(response);
+            }
+            if (response.scoringRound2 && !scoringRoundTwoPassed){
+                scoringRoundTwoPassed = true;
+                document.querySelector('.Popup').classList.remove('hidden');
+            }
         });
+}
+function closePopup() {
+    document.querySelector('.Popup').classList.add('hidden');
 }
 
 function leaveGame() {
@@ -63,4 +81,16 @@ function leaveGame() {
         });
 }
 
-
+function loadScoringRound1(response) {
+    let popup = document.querySelector('.Popup');
+    let popupBody = popup.querySelector('.popup-body');
+    popupBody.innerHTML = "";
+    let players = response['players'];
+    players.forEach(player => {
+        let roundCard = `<div class="scoringCard">
+                            <h3>${player.name}</h3><br>
+                            <p>scored ${player['virtualScore']} points</p><br>
+                         </div>`;
+        popupBody.innerHTML += roundCard;
+    });
+}
