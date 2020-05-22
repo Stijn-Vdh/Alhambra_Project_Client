@@ -289,14 +289,12 @@ body {
     background-repeat: no-repeat;
 }
 .innerBuilding{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 }
 .innerBuildingCity {
-    background-size: 100%;
-
+    background-size: 90%;
 }
-
 
 .price {
     border: 1px solid black;
