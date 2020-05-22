@@ -18,6 +18,8 @@ function init() {
 }
 
 
+
+
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
@@ -58,6 +60,7 @@ function getGameDetails() {
             if (response.scoringRound1 && !scoringRoundOnePassed){
                 scoringRoundOnePassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
+                loadScoringRound1(response);
             }
             if (response.scoringRound2 && !scoringRoundTwoPassed){
                 scoringRoundTwoPassed = true;
@@ -78,4 +81,16 @@ function leaveGame() {
         });
 }
 
-
+function loadScoringRound1(response) {
+    let popup = document.querySelector('.Popup');
+    let popupBody = popup.querySelector('.popup-body');
+    popupBody.innerHTML = "";
+    let players = response['players'];
+    players.forEach(player => {
+        let roundCard = `<div class="scoringCard">
+                            <h3>${player.name}</h3><br>
+                            <p>scored ${player['virtualScore']} points</p><br>
+                         </div>`;
+        popupBody.innerHTML += roundCard;
+    });
+}

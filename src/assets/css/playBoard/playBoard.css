@@ -501,7 +501,7 @@ h1 {
 
 .Popup-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: beige;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
@@ -516,6 +516,10 @@ h1 {
     display: flex;
     flex-direction: row;
     text-align: center;
+}
+.popup-body div{
+    margin-left: 20px;
+    margin-top: 10px;
 }
 .hidden{
     display: none;
@@ -539,11 +543,14 @@ figcaption {
     color: white;
     padding: 10px;
 }
-
+.scoringCard{
+    border-right: 2px black solid;
+    padding-right: 20px;
+}
 .popup-header {
     padding: 2px 16px;
     background-color: #ff7858;
-    color: white;
+    color: beige;
     height: 3em;
 }
 
