@@ -5,6 +5,13 @@ html {
 body {
     font-family: "Arial", sans-serif;
 }
+#scoringCard img{
+    height: 190px;
+    position: absolute;
+    transform: translate(3%, 150%);
+    border: 3px solid black;
+}
+
 
 #TotalPlayBoard {
     background-color: beige;
@@ -18,7 +25,7 @@ body {
     grid-template-areas: "hd1 en en en en en hd2" "ms mn mn mn mn mn bs" "ms mn mn mn mn mn bs" "ms mn mn mn mn mn bs" "ms mn mn mn mn mn bs" "ft ha ha ha ha re me";
     text-align: center;
     border-radius: 20px;
-    margin-top: 35px;
+    margin-top: 15px;
     border: 1px solid black;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.6);
 }
@@ -27,7 +34,9 @@ body {
     grid-area: hd2;
     grid-column: 7/8;
     grid-row: 1/2;
-    outline: 1px solid black;
+    border: 1px solid black;
+    border-radius: 10%;
+
     width: 120px;
     height: 80px;
     margin-top: 40px;
@@ -85,7 +94,8 @@ body {
 
 .RemainingCards {
     grid-area: ft;
-    outline: 1px solid black;
+    border: 1px solid black;
+    border-radius: 10%;
     width: 120px;
     height: 80px;
     margin-top: 40px;
@@ -237,12 +247,15 @@ body {
     text-decoration: none;
     color: black;
     border: 1px black solid;
+    border-radius: 10%;
     width: 120px;
     height: 50px;
     line-height: 50px;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
 }
-
+.confirmButton:hover{
+    background-color: rgba(251, 171, 171, 0.5);
+}
 #Coin1, #Coin2, #Coin3, #Coin4 {
     border: 1px solid black;
     width: 120px;
