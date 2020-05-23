@@ -17,9 +17,6 @@ function init() {
     document.querySelector("#exitButton").addEventListener('click', leaveGame);
 }
 
-
-
-
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
@@ -89,8 +86,18 @@ function loadScoringRound1(response) {
     players.forEach(player => {
         let roundCard = `<div class="scoringCard">
                             <h3>${player.name}</h3><br>
-                            <p>has ${player['score']} points now</p><br>
-                         </div>`;
-        popupBody.innerHTML += roundCard;
+                            <p>scored ${player['virtualScore']} points</p><br>`;
+
+        let buildings = `<hr>
+                         <p>Pavilion: ${player['buildingTypesInCity']['pavilion']}</p>
+                         <p>Seraglio: ${player['buildingTypesInCity']['seraglio']}</p>
+                         <p>Arcades: ${player['buildingTypesInCity']['arcades']}</p>
+                         <p>Chambers: ${player['buildingTypesInCity']['chambers']}</p>
+                         <p>Garden: ${player['buildingTypesInCity']['garden']}</p>
+                         <p>Tower: ${player['buildingTypesInCity']['tower']}</p></div>
+`;
+
+        popupBody.innerHTML += roundCard + buildings;
     });
+
 }
