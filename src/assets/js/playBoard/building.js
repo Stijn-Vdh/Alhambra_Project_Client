@@ -51,8 +51,8 @@ function buyBuilding(e) {
                 selectedCoins = [];
 
                 document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
+                getHighlightedBuildPositions();
             });
-        getHighlightedBuildPositions();
     }
 }
 
@@ -64,8 +64,13 @@ function getHighlightedBuildPositions() {
         .then(function (response) {
             for (let i = 0; i < response['players'].length; i++) {
                 if (response['players'][i]['name'] === getPlayerName()) {
+
                     player = response['players'][i];
                     buildingsInHand = player['buildingsInHand'];
+
+                    console.log(player);
+                    console.log(buildingsInHand);
+
                     let walls = buildingsInHand[0]['walls'];
 
                     document.querySelector(".ownPlayerReserveButton").addEventListener('click', placeBuildingInReserve);
