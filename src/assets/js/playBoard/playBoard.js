@@ -57,11 +57,16 @@ function getGameDetails() {
             if (response.scoringRound1 && !scoringRoundOnePassed){
                 scoringRoundOnePassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
-                loadScoringRound1(response);
+                loadScoringRound(response);
+            }else{
+                document.querySelector('.Popup').classList.add('hidden');
             }
             if (response.scoringRound2 && !scoringRoundTwoPassed){
                 scoringRoundTwoPassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
+                loadScoringRound(response);
+            }else{
+                document.querySelector('.Popup').classList.add('hidden');
             }
         });
 }
@@ -78,7 +83,7 @@ function leaveGame() {
         });
 }
 
-function loadScoringRound1(response) {
+function loadScoringRound(response) {
     let popup = document.querySelector('.Popup');
     let popupBody = popup.querySelector('.popup-body');
     popupBody.innerHTML = "";
@@ -86,15 +91,28 @@ function loadScoringRound1(response) {
     players.forEach(player => {
         let roundCard = `<div class="scoringCard">
                             <h3>${player.name}</h3><br>
-                            <p>scored ${player['virtualScore']} points</p><br>`;
+                            <p>scored ${player['virtualScore']} points</p><br>
+                            <p class="popupContentLine">current score : ${player['score']}</p><br>`;
 
-        let buildings = `<hr>
-                         <p>Pavilion: ${player['buildingTypesInCity']['pavilion']}</p>
-                         <p>Seraglio: ${player['buildingTypesInCity']['seraglio']}</p>
-                         <p>Arcades: ${player['buildingTypesInCity']['arcades']}</p>
-                         <p>Chambers: ${player['buildingTypesInCity']['chambers']}</p>
-                         <p>Garden: ${player['buildingTypesInCity']['garden']}</p>
-                         <p>Tower: ${player['buildingTypesInCity']['tower']}</p></div>
+        let buildings = `
+                        <p>Buildings bought:</p>
+                         <div id="buildTypes">
+                            <p>Pavilion:</p>
+                            <p>Seraglio:</p>
+                            <p>Arcades:</p>
+                            <p>Chambers:</p>
+                            <p>Garden:</p>
+                            <p>Tower:</p>
+                         </div>
+                         <div class="buildingAmount">
+                            <p> ${player['buildingTypesInCity']['pavilion']}</p>
+                            <p> ${player['buildingTypesInCity']['seraglio']}</p>
+                            <p> ${player['buildingTypesInCity']['arcades']}</p>
+                            <p> ${player['buildingTypesInCity']['chambers']}</p>
+                            <p> ${player['buildingTypesInCity']['garden']}</p>
+                            <p> ${player['buildingTypesInCity']['tower']}</p>
+                        </div>
+                       </div>
 `;
 
         popupBody.innerHTML += roundCard + buildings;

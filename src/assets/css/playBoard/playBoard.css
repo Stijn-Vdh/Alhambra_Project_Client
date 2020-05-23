@@ -538,10 +538,25 @@ h1 {
     margin-left: 20px;
     margin-top: 10px;
 }
+#buildTypes{
+    float: left;
+    width: 30%;
+    text-align: left;
+    line-height: 22px;
+}
+.buildingAmount{
+    float: left;
+    width: 50px;
+    text-align: right;
+    line-height: 22px;
+}
 .hidden{
     display: none;
 }
-
+.popupContentLine{
+    padding-bottom: 5px;
+    border-bottom: 2px black solid;
+}
 figure {
     text-align: center;
     margin-top: 2em;
