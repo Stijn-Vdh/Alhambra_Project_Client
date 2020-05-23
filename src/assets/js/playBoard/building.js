@@ -34,20 +34,26 @@ function getMarketBuildings(response) {
 }
 
 function buyBuilding(e) {
-    console.log(selectBuilding(e));
-    console.log(selectedCoins);
-    fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/buildings-in-hand`,
-        'POST',
-        {
-            currency: `${selectBuilding(e)}`,
-            coins: selectedCoins
-        })
-        .then(function () {
-            selectedCoins = [];
+    let correctCurrency = false;
+    selectedCoins.forEach(coin => {
+        if (coin['currency'] === selectBuilding(e)){
+            correctCurrency = true;
+        }
+    });
+    if (correctCurrency){
+        fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/buildings-in-hand`,
+            'POST',
+            {
+                currency: `${selectBuilding(e)}`,
+                coins: selectedCoins
+            })
+            .then(function () {
+                selectedCoins = [];
 
-            document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
-        });
-    getHighlightedBuildPositions();
+                document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
+                getHighlightedBuildPositions();
+            });
+    }
 }
 
 function getHighlightedBuildPositions() {
@@ -58,8 +64,13 @@ function getHighlightedBuildPositions() {
         .then(function (response) {
             for (let i = 0; i < response['players'].length; i++) {
                 if (response['players'][i]['name'] === getPlayerName()) {
+
                     player = response['players'][i];
                     buildingsInHand = player['buildingsInHand'];
+
+                    console.log(player);
+                    console.log(buildingsInHand);
+
                     let walls = buildingsInHand[0]['walls'];
 
                     document.querySelector(".ownPlayerReserveButton").addEventListener('click', placeBuildingInReserve);
@@ -70,7 +81,6 @@ function getHighlightedBuildPositions() {
                 }
             }
         });
-
 }
 
 function highlightBuildPlaces(walls){
