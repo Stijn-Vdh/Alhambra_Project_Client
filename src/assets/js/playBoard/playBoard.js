@@ -17,9 +17,6 @@ function init() {
     document.querySelector("#exitButton").addEventListener('click', leaveGame);
 }
 
-
-
-
 function getGameDetails() {
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
