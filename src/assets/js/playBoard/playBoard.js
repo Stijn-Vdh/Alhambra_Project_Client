@@ -89,7 +89,7 @@ function loadScoringRound1(response) {
     players.forEach(player => {
         let roundCard = `<div class="scoringCard">
                             <h3>${player.name}</h3><br>
-                            <p>scored ${player['virtualScore']} points</p><br>
+                            <p>scored ${player['score']} points</p><br>
                          </div>`;
         popupBody.innerHTML += roundCard;
     });
