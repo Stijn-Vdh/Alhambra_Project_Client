@@ -1,9 +1,5 @@
 "use strict";
 
-
-let selectedBuilding;
-
-
 function getMarketBuildings(response) {
     let buildingStack = document.querySelector('#buildingStack');
     buildingStack.innerHTML =  "";
@@ -36,23 +32,28 @@ function getMarketBuildings(response) {
 function buyBuilding(e) {
     let correctCurrency = false;
     selectedCoins.forEach(coin => {
-        if (coin['currency'] === selectBuilding(e)){
+        if (coin['currency'] === selectBuildingCurrency(e)){
             correctCurrency = true;
         }
     });
     if (correctCurrency){
-        fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/buildings-in-hand`,
-            'POST',
-            {
-                currency: `${selectBuilding(e)}`,
-                coins: selectedCoins
-            })
-            .then(function () {
-                selectedCoins = [];
+        try{
+            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/buildings-in-hand`,
+                'POST',
+                {
+                    currency: `${selectBuildingCurrency(e)}`,
+                    coins: selectedCoins
+                })
+                .then(function () {
+                    selectedCoins = [];
 
-                document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
-                getHighlightedBuildPositions();
-            });
+                    document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
+                    getHighlightedBuildPositions();
+                });
+        }catch(err)
+        {
+            alert(err.message);
+        }
     }
 }
 
@@ -93,15 +94,8 @@ function highlightBuildPlaces(walls){
         });
 }
 
-function selectBuilding(e) {
-    let currency = e.target.parentNode.id;
-
-    fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
-        .then(function (response) {
-            selectedBuilding = response.market[currency];
-        });
-
-    return currency;
+function selectBuildingCurrency(e) {
+    return e.target.parentNode.id;
 }
 
 function getAmountOfBuildingsRemaining(response) {
