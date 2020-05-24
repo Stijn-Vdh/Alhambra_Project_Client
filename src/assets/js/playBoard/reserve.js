@@ -1,5 +1,7 @@
 "use strict";
 
+const playBoardId = "#PlayBoard";
+
 function showReserveOwnPlayer(e) {
     const riseUp = e.target.closest("div").firstChild.nextElementSibling;
 
@@ -8,8 +10,8 @@ function showReserveOwnPlayer(e) {
     } else {
         riseUp.setAttribute("id", "reserveHidden");
         loadCity();
-        document.querySelector("#PlayBoard").removeEventListener('click', addReserveTileToCity);
-        document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
+        document.querySelector(playBoardId).removeEventListener('click', addReserveTileToCity);
+        document.querySelector(playBoardId).addEventListener('click', removeCardFromCity);
     }
 }
 
@@ -33,7 +35,7 @@ function placeBuildingInReserve() {
                             getGameDetails();
                             document.querySelector(".ownPlayerReserveButton").removeEventListener('click', placeBuildingInReserve);
                             document.querySelector(".ownPlayerReserveButton").classList.remove('highlight');
-                            document.querySelector("#PlayBoard").removeEventListener('click', placeBuildingInCity);
+                            document.querySelector(playBoardId).removeEventListener('click', placeBuildingInCity);
                         });
                 }
             }
@@ -43,7 +45,7 @@ function placeBuildingInReserve() {
 }
 
 function loadReserve() {
-    let htmlOwnReserve = document.querySelector(".ownPlayerReserveTiles");
+    const htmlOwnReserve = document.querySelector(".ownPlayerReserveTiles");
 
     htmlOwnReserve.innerHTML = "";
 
@@ -54,10 +56,10 @@ function loadReserve() {
                 if (response['players'][i]['name'] === getPlayerName()) {
 
                     for (let r = 0; r < response['players'][i]['reserve'].length; r++) {
-                        let building = response['players'][i]['reserve'][r];
+                        const building = response['players'][i]['reserve'][r];
                         htmlOwnReserve.innerHTML += `<div class="innerBuilding reserve${r + 1}" id="${building['type']}"></div>`;
-                        let buildingHTML = htmlOwnReserve.querySelector(`.reserve${r + 1}`);
-                        buildingHTML = loadWalls(buildingHTML, building);
+                        const buildingHTML = htmlOwnReserve.querySelector(`.reserve${r + 1}`);
+                        loadWalls(buildingHTML, building);
                     }
                 }
             }
@@ -65,11 +67,11 @@ function loadReserve() {
 }
 
 function selectedReserveBuilding(e) {
-    document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
-    document.querySelector("#PlayBoard").addEventListener('click', addReserveTileToCity);
+    document.querySelector(playBoardId).removeEventListener('click', removeCardFromCity);
+    document.querySelector(playBoardId).addEventListener('click', addReserveTileToCity);
     loadCity();
 
-    let building = e.target.closest('div').className.charAt(21) - 1;
+    const building = e.target.closest('div').className.charAt(21) - 1;
 
     let walls = '';
 
@@ -83,11 +85,15 @@ function selectedReserveBuilding(e) {
                 }
             }
 
-            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
+            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations
+            ?north=${walls['north'] === true ? 'true' : 'false'}
+            &east=${walls['east'] === true ? 'true' : 'false'}
+            &south=${walls['south'] === true ? 'true' : 'false'}
+            &west=${walls['west'] === true ? 'true' : 'false'}`,
                 'GET')
                 .then(function (response) {
                     for (let i = 0; i < response.length; i++) {
-                        let offset = 3;
+                        const offset = 3;
                         document.querySelector(`.vak${response[i]['row'] + offset}${response[i]['col'] + offset}`).classList.add('highlight');
                     }
                 });
@@ -98,9 +104,9 @@ function selectedReserveBuilding(e) {
 }
 
 function addReserveTileToCity(e) {
-    let selectedSpaceHTML = (e.target.closest('div'));
-    let row = selectedSpaceHTML.classList[2].charAt(3) - 3;
-    let col = selectedSpaceHTML.classList[2].charAt(4) - 3;
+    const selectedSpaceHTML = (e.target.closest('div'));
+    const row = selectedSpaceHTML.classList[2].charAt(3) - 3;
+    const col = selectedSpaceHTML.classList[2].charAt(4) - 3;
 
     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city`,
         'PATCH',
@@ -119,10 +125,10 @@ function addReserveTileToCity(e) {
 }
 
 function removeCardFromCity(e) {
-    let selectedSpaceHTML = (e.target.closest('div'));
-    let offset = 3;
-    let row = selectedSpaceHTML.classList[2].charAt(3) - offset;
-    let col = selectedSpaceHTML.classList[2].charAt(4) - offset;
+    const selectedSpaceHTML = (e.target.closest('div'));
+    const offset = 3;
+    const row = selectedSpaceHTML.classList[2].charAt(3) - offset;
+    const col = selectedSpaceHTML.classList[2].charAt(4) - offset;
 
     fetchFromServer(`${config.root}games/${getGameID()}`,
         'GET')

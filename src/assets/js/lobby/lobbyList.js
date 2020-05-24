@@ -17,7 +17,7 @@ function getLobbyList() {
 
                 htmlCode.innerHTML += `<tr><td>${game}</td></tr>`;
 
-            })
+            });
         });
     document.querySelector('table').addEventListener('click', joinLobby);
     setTimeout(function () {

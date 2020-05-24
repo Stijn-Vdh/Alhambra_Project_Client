@@ -533,6 +533,7 @@ h1 {
     display: flex;
     flex-direction: row;
     text-align: center;
+    padding: 2px 16px;
 }
 .popup-body div{
     margin-left: 20px;
@@ -588,10 +589,6 @@ figcaption {
 
 .popup-header h2 {
     padding-top: 1em;
-}
-
-.popup-body {
-    padding: 2px 16px;
 }
 
 .close {
