@@ -9,32 +9,11 @@ function init(){
 function loadScoreBoard(){
     fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
         .then(function (response) {
-            setScoreBoard(response);
+
+            loadFinalScoring(response);
         });
 }
 
-function setScoreBoard(response){
-    console.log(response);
-    let players = response.players;
-    players = sortPlayers(players);
-    console.log(players);
-
-    let firstPlace = document.querySelector('.first-place .player-name');
-    let secondPlace = document.querySelector('.second-place .player-name');
-
-    let indexFirst = 0;
-    let indexSecond = 1;
-
-    firstPlace.innerHTML = players[indexFirst].name;
-    secondPlace.innerHTML = players[indexSecond].name;
-
-    if (players.length > 2){
-        let thirdPlace = document.querySelector('.third-place .player-name');
-        let indexThird = 2;
-        thirdPlace.innerHTML = players[indexThird].name;
-    }
-
-}
 
 function sortPlayers(players){
     players.sort(function(p1, p2){
@@ -42,6 +21,65 @@ function sortPlayers(players){
     });
     return players;
 }
+function loadFinalScoring(response) {
 
-//voor rematch zelfe principe als ready in een lobby als ierdereen 'ready is voor een rematch' start je een rematch anders niet.
+    let scoreBoard = document.querySelector('.scoreboard');
+    scoreBoard.innerHTML = "";
+    let players = response['players'];
+    players = sortPlayers(players);
+    players.forEach(player => {
+        let roundCard = `<div class="scoringCard">
+                            <h3>${player.name}</h3><br>
+                            <p class="popupContentLine">final score : ${player['score']}</p><br>`;
+
+        let buildings = `
+                        <p>Buildings on board:</p><br>
+                         <div id="buildTypes">
+                            <p>Pavilion:</p>
+                            <p>Seraglio:</p>
+                            <p>Arcades:</p>
+                            <p>Chambers:</p>
+                            <p>Garden:</p>
+                            <p>Tower:</p>
+                         </div>
+                         <div class="buildingAmount">
+                            <p>${player['buildingTypesInCity']['pavilion']}</p>
+                            <p>${player['buildingTypesInCity']['seraglio']}</p>
+                            <p>${player['buildingTypesInCity']['arcades']}</p>
+                            <p>${player['buildingTypesInCity']['chambers']}</p>
+                            <p>${player['buildingTypesInCity']['garden']}</p>
+                            <p>${player['buildingTypesInCity']['tower']}</p>
+                        </div>
+                       
+`;
+        let place;
+        if (player.name === players[0].name){
+            place = `<div class="place"><p>1st</p></div></div>`;
+            document.querySelector('#endOfGameText').innerHTML = "Winner winner camel dinner";
+        }else if (player.name === players[1].name){
+            place = `<div class="place"><p>2nd</p></div></div>`;
+            document.querySelector('#endOfGameText').innerHTML = "Winner winner almost camel dinner";
+        }else if (player.name === players[2].name){
+            place = `<div class="place"><p>3rd</p></div></div>`;
+            document.querySelector('#endOfGameText').innerHTML = "Winner winner smell the camel dinner";
+        }else{
+            place = `</div>`;
+            document.querySelector('#endOfGameText').innerHTML = "You're the camel dinner";
+        }
+
+
+        scoreBoard.innerHTML += roundCard + buildings + place;
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
 

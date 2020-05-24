@@ -51,7 +51,7 @@ function getGameDetails() {
                     document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
                 }
             }else{
-                window.location.href = "playBoard/endScreen.html";
+                window.location.href = "endScreen.html";
             }
 
             if (response.scoringRound1 && !scoringRoundOnePassed){
