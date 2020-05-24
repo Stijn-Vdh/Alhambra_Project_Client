@@ -17,13 +17,10 @@ function createNewGame(e){
         'POST',
         {prefix: `group${config.groupNumber}` })
         .then(function(response){
-            console.log(response);
-            // The reply here is the game ID, keep it secret, keep it safe!
-            _gameId = response; // In case of error you **should** handle this properly
-            console.log('%c%s','background-color: cyan;color: blue','The game ID is ' , _gameId);
+
+            _gameId = response;
             localStorage.setItem('gameID', _gameId);
 
-            // Join the game you've created
             joinGame(_gameId, _playerName);
 
             setTimeout(function () {
