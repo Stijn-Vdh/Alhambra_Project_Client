@@ -58,7 +58,7 @@ function loadReserve() {
                     for (let r = 0; r < response['players'][i]['reserve'].length; r++) {
                         const building = response['players'][i]['reserve'][r];
                         htmlOwnReserve.innerHTML += `<div class="innerBuilding reserve${r + 1}" id="${building['type']}"></div>`;
-                        let buildingHTML = htmlOwnReserve.querySelector(`.reserve${r + 1}`);
+                        const buildingHTML = htmlOwnReserve.querySelector(`.reserve${r + 1}`);
                         loadWalls(buildingHTML, building);
                     }
                 }

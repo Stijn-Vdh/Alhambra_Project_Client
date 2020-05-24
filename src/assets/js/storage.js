@@ -47,5 +47,5 @@ function getSelectedReserveFromStorage(){
     if (selectedBuildingInStorage !== null){
         return selectedBuildingInStorage;
     }
-    return null
+    return null;
 }
