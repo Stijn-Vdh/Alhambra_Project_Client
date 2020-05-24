@@ -58,20 +58,17 @@ function getGameDetails() {
                 scoringRoundOnePassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
                 loadScoringRound(response);
-            }else{
-                document.querySelector('.Popup').classList.add('hidden');
             }
             if (response.scoringRound2 && !scoringRoundTwoPassed){
                 scoringRoundTwoPassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
                 loadScoringRound(response);
-            }else{
-                document.querySelector('.Popup').classList.add('hidden');
             }
         });
 }
 function closePopup() {
     document.querySelector('.Popup').classList.add('hidden');
+
 }
 
 function leaveGame() {
