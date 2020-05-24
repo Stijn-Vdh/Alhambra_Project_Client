@@ -51,27 +51,24 @@ function getGameDetails() {
                     document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
                 }
             }else{
-                window.location.href = "playBoard/endScreen.html";
+                window.location.href = "endScreen.html";
             }
 
             if (response.scoringRound1 && !scoringRoundOnePassed){
                 scoringRoundOnePassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
                 loadScoringRound(response);
-            }else{
-                document.querySelector('.Popup').classList.add('hidden');
             }
             if (response.scoringRound2 && !scoringRoundTwoPassed){
                 scoringRoundTwoPassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
                 loadScoringRound(response);
-            }else{
-                document.querySelector('.Popup').classList.add('hidden');
             }
         });
 }
 function closePopup() {
     document.querySelector('.Popup').classList.add('hidden');
+
 }
 
 function leaveGame() {
