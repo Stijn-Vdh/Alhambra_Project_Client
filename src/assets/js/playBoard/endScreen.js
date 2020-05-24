@@ -55,18 +55,25 @@ function loadFinalScoring(response) {
         let place;
         if (player.name === players[0].name){
             place = `<div class="place"><p>1st</p></div></div>`;
-            document.querySelector('#endOfGameText').innerHTML = "Winner winner camel dinner";
+
         }else if (player.name === players[1].name){
             place = `<div class="place"><p>2nd</p></div></div>`;
-            document.querySelector('#endOfGameText').innerHTML = "Winner winner almost camel dinner";
+
         }else if (player.name === players[2].name){
             place = `<div class="place"><p>3rd</p></div></div>`;
-            document.querySelector('#endOfGameText').innerHTML = "Winner winner smell the camel dinner";
         }else{
             place = `</div>`;
-            document.querySelector('#endOfGameText').innerHTML = "You're the camel dinner";
         }
 
+        if (players[0].name === getPlayerName()){
+            document.querySelector('#endOfGameText').innerHTML = "Winner winner camel dinner";
+        }else if (players[1].name === getPlayerName()){
+            document.querySelector('#endOfGameText').innerHTML = "Winner winner almost camel dinner";
+        }else if (players[2].name === getPlayerName()){
+            document.querySelector('#endOfGameText').innerHTML = "Winner winner smell the camel dinner";
+        }else{
+            document.querySelector('#endOfGameText').innerHTML = "You're the camel dinner";
+        }
 
         scoreBoard.innerHTML += roundCard + buildings + place;
     });
