@@ -27,7 +27,7 @@ function loadOwnAlhambra(city, sizeBoard) {
         for (let col = 0; col < city[row].length; col++) {
             if (city[row][col] != null) {
                 const building = city[row][col];
-                let html = document.querySelector(`.vak${row + ((sizeBoard - city.length) / 2)}${col + ((sizeBoard - city.length) / 2)}`);
+                const html = document.querySelector(`.vak${row + ((sizeBoard - city.length) / 2)}${col + ((sizeBoard - city.length) / 2)}`);
                 html.setAttribute('id', `${building['type']}`);
                 loadWalls(html, building);
             }
@@ -66,7 +66,7 @@ function placeBuildingInCity(e) {
                                 "col": col
                             }
                         })
-                        .then(function () {
+                        .then(() => {
                             loadCity();
                             getGameDetails();
                             selectedSpaceHTML.setAttribute('id', `${building["type"]}`);
