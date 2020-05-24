@@ -1,13 +1,13 @@
 "use strict";
 
 function getMarketBuildings(response) {
-    let buildingStack = document.querySelector('#buildingStack');
+    const buildingStack = document.querySelector('#buildingStack');
     buildingStack.innerHTML = "";
-    let buildings = response["market"]["buildingsOnBoard"];
+    const buildings = response["market"]["buildingsOnBoard"];
 
     Object.keys(buildings).forEach(building => {
         if (buildings[building] != null) {
-            let buildingContent = ` <div class="buildingStackMarket" id="${building}">
+            const buildingContent = ` <div class="buildingStackMarket" id="${building}">
                                         <div class="innerBuildingMarket" id="${buildings[building]["type"]}"></div>
                                         <div class="price"><p>${buildings[building]["cost"]}</p></div>
                                     </div>`;
@@ -18,12 +18,10 @@ function getMarketBuildings(response) {
             buildingHTML = buildingHTML.querySelector(`#${buildings[building]["type"]}`);
 
             loadWalls(buildingHTML, buildings[building]);
-
-            document.querySelectorAll('.innerBuildingMarket').forEach(building => {
-                building.addEventListener('click', buyBuilding);
-            })
         }
-
+    });
+    document.querySelectorAll('.innerBuildingMarket').forEach(building => {
+        building.addEventListener('click', buyBuilding);
     });
 }
 
@@ -48,7 +46,6 @@ function buyBuilding(e) {
                 document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
                 highlightAvailableBuildPositions();
             });
-
     }
 }
 
@@ -64,7 +61,7 @@ function highlightAvailableBuildPositions() {
                     player = response['players'][i];
                     buildingsInHand = player['buildingsInHand'];
 
-                    let walls = buildingsInHand[0]['walls'];
+                    const walls = buildingsInHand[0]['walls'];
 
                     document.querySelector(".ownPlayerReserveButton").addEventListener('click', placeBuildingInReserve);
                     document.querySelector(".ownPlayerReserveButton").classList.add('highlight');
@@ -77,11 +74,15 @@ function highlightAvailableBuildPositions() {
 }
 
 function highlightBuildPlaces(walls) {
-    fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
+    fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations
+    ?north=${walls['north'] === true ? 'true' : 'false'}
+    &east=${walls['east'] === true ? 'true' : 'false'}
+    &south=${walls['south'] === true ? 'true' : 'false'}
+    &west=${walls['west'] === true ? 'true' : 'false'}`,
         'GET')
         .then(function (response) {
             for (let i = 0; i < response.length; i++) {
-                let offset = 3;
+                const offset = 3;
                 document.querySelector(`.vak${response[i]['row'] + offset}${response[i]['col'] + offset}`).classList.add('highlight');
             }
         });
@@ -92,12 +93,5 @@ function selectBuildingCurrency(e) {
 }
 
 function getAmountOfBuildingsRemaining(response) {
-    return response["market"]["amountOfBuildings"]
+    return response["market"]["amountOfBuildings"];
 }
-
-
-
-
-
-
-

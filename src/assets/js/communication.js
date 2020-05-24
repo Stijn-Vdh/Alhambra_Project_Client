@@ -38,7 +38,7 @@ function fetchFromServer(url, httpVerb, requestBody) {
                 default:
                     return null;
             }
-            return null
+            return null;
         })
         .then((jsonResponseYouAreLookingFor) => {
             return jsonResponseYouAreLookingFor;
