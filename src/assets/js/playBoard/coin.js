@@ -21,7 +21,7 @@ function setHandCoins(response) {
 function getHandCoins(response) {
     const playerDetails = response["players"];
     for (let i = 0; i < playerDetails.length; i++) {
-        if (playerDetails[i]["name"] === localStorage.getItem("playerName")) {
+        if (playerDetails[i]["name"] === getPlayerName()) {
             return playerDetails[i]["money"]["coinsInBag"];
         }
     }
@@ -30,14 +30,14 @@ function getHandCoins(response) {
 
 function addCoinsToHand() {
 
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}/players/${localStorage.getItem("playerName")}/money`,
+    fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/money`,
         'POST',
         selectedBankCoins)
         .then(function () {
-
             getGameDetails();
         });
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+
+    fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
             setBankCoins(response);
         });
@@ -50,7 +50,6 @@ function setBankCoins(response) {
     const bank = document.querySelector("#MoneyStacks");
     bank.innerHTML = "";
     let counter = 1;
-
     let coinsOnBoard = response["bank"]["coinsOnBoard"];
 
     Object.keys(coinsOnBoard).forEach(coin => {
@@ -62,20 +61,20 @@ function setBankCoins(response) {
 }
 
 function selectHandCoin(e) {
-    let selectedCardHTML = (e.target.closest('div'));
+    let selectedCoinHTML = (e.target.closest('div'));
 
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+    fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
             let playerCoins = getHandCoins(response);
-            let selectedCoin = playerCoins[selectedCardHTML.id];
-            processSelectedHandCoin(selectedCardHTML, selectedCoin);
+            let selectedCoin = playerCoins[selectedCoinHTML.id];
+            processSelectedHandCoin(selectedCoinHTML, selectedCoin);
 
         });
 }
 
 function selectBankCoin(e) {
     let selectedCoinHTML = (e.target.closest('div'));
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+    fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
             let bankCoins = response["bank"]["coinsOnBoard"];
             let coinIndex = selectedCoinHTML.id.slice(4);
@@ -85,14 +84,14 @@ function selectBankCoin(e) {
         });
 }
 
-function isIllegalCardSelection(selectedCard) {
-    let res = false;
-    selectedCoins.forEach(card => {
-        if (selectedCard.currency !== card.currency) {
-            res = true;
+function isIllegalCoinSelection(selectedCoin) {
+    let illegal = false;
+    selectedCoins.forEach(coin => {
+        if (selectedCoin.currency !== coin.currency) {
+            illegal = true;
         }
     });
-    return res;
+    return illegal;
 }
 
 function findCoinIndex(selectedCoin, coinsList) {
@@ -107,23 +106,21 @@ function findCoinIndex(selectedCoin, coinsList) {
     return index;
 }
 
-function processSelectedHandCoin(selectedCardHTML, selectedCoin) {
+function processSelectedHandCoin(selectedCoinHTML, selectedCoin) {
 
-    if (!selectedCardHTML.classList.contains('selectedCard')) {
-        if (!isIllegalCardSelection(selectedCoin)) {
-            selectedCardHTML.classList.add('selectedCard');
+    if (!selectedCoinHTML.classList.contains('selectedCard')) {
+        if (!isIllegalCoinSelection(selectedCoin)) {
+            selectedCoinHTML.classList.add('selectedCard');
 
             let coin = {
                 currency: selectedCoin.currency,
                 amount: selectedCoin.amount
             };
 
-
             selectedCoins.push(coin);
-
         }
     } else {
-        selectedCardHTML.classList.remove('selectedCard');
+        selectedCoinHTML.classList.remove('selectedCard');
 
         selectedCoins.splice(findCoinIndex(selectedCoin, selectedCoins), 1);
     }
