@@ -49,7 +49,7 @@ function loadFinalScoring(response) {
                             <p>${player['buildingTypesInCity']['garden']}</p>
                             <p>${player['buildingTypesInCity']['tower']}</p>
                         </div>`;
-
+        
         let place;
         if (player['name'] === players[0]['name']){
             place = `<div class="place"><p>1st</p></div></div>`;
@@ -77,16 +77,4 @@ function loadFinalScoring(response) {
 
         scoreBoard.innerHTML += roundCard + buildings + place;
     });
-
 }
-
-
-
-
-
-
-
-
-
-
-

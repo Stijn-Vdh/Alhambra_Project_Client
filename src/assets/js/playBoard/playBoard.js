@@ -1,5 +1,8 @@
 "use strict";
+
 document.addEventListener('DOMContentLoaded', init);
+
+const confirmButtonClass = ".confirmButton";
 
 function init() {
     setMyAvatar();
@@ -7,7 +10,7 @@ function init() {
     loadCity();
 
 
-    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+    document.querySelector(confirmButtonClass).addEventListener('click', addCoinsToHand);
 
     document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
     document.querySelector(".ownPlayerReserveTiles").addEventListener('click', selectedReserveBuilding);
@@ -25,14 +28,14 @@ function getGameDetails() {
             getMarketBuildings(response);
             focusActivePlayer(response['currentPlayer']);
 
-            let amountOfCoins = getAmountOfCoinsRemaining(response);
-            let amountOfBuildings = getAmountOfBuildingsRemaining(response);
+            const amountOfCoins = getAmountOfCoinsRemaining(response);
+            const amountOfBuildings = getAmountOfBuildingsRemaining(response);
 
             document.querySelector('#RemainingBuildings').innerHTML = amountOfBuildings + " buildings remaining";
             document.querySelector('#RemainingCards').innerHTML = amountOfCoins + " coins remaining";
 
             if (!response.ended){
-                if (!(response['currentPlayer'] === getPlayerName())) {
+                if ((response['currentPlayer'] !== getPlayerName())) {
                     removeEventsIfNotCurrentPlayer();
                     setTimeout(function () {
                         getGameDetails();
@@ -66,17 +69,17 @@ function leaveGame(){
 }
 
 function loadScoringRound(response) {
-    let popup = document.querySelector('.Popup');
-    let popupBody = popup.querySelector('.popup-body');
+    const popup = document.querySelector('.Popup');
+    const popupBody = popup.querySelector('.popup-body');
     popupBody.innerHTML = "";
-    let players = response['players'];
+    const players = response['players'];
     players.forEach(player => {
-        let roundCard = `<div class="scoringCard">
+        const roundCard = `<div class="scoringCard">
                             <h3>${player['name']}</h3><br>
                             <p>scored ${player['virtualScore']} points</p><br>
                             <p class="popupContentLine">current score : ${player['score']}</p><br>`;
 
-        let buildings = `
+        const buildings = `
                         <p>Buildings bought:</p>
                          <div id="buildTypes">
                             <p>Pavilion:</p>
@@ -106,7 +109,7 @@ function addEventsForCurrentPlayer(){
     document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', selectHandCoin);
     });
-    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+    document.querySelector(confirmButtonClass).addEventListener('click', addCoinsToHand);
     document.querySelectorAll('#MoneyStacks div').forEach(coin =>{
         coin.addEventListener('click', selectBankCoin);
     });
@@ -118,7 +121,7 @@ function removeEventsIfNotCurrentPlayer() {
     document.querySelectorAll('.card').forEach(card => {
         card.removeEventListener('click', selectHandCoin);
     });
-    document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
+    document.querySelector(confirmButtonClass).removeEventListener('click', addCoinsToHand);
     document.querySelectorAll('#MoneyStacks div').forEach(coin =>{
         coin.removeEventListener('click', selectBankCoin);
     });
