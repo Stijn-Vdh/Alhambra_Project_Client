@@ -66,7 +66,9 @@ function loadOpponentAlhambra(player){
     for (let row = 0; row < city.length; row++){
         for (let col = 0; col < city[row].length; col++){
             if (city[row][col] !== null){
-                document.querySelector(`.${player['name']}grid${row+((sizeBoard-city.length)/2)}${col+((sizeBoard-city.length)/2)}`).setAttribute('class', `${getColorFromImage(city[row][col])}`);
+                let buildingGridHtml = document.querySelector(`.${player['name']}grid${row+((sizeBoard-city.length)/2)}${col+((sizeBoard-city.length)/2)}`);
+                buildingGridHtml.setAttribute('class', `${getColorFromImage(city[row][col])}`);
+                loadOpponentWalls(buildingGridHtml,city[row][col]);
             }
         }
     }
@@ -89,4 +91,21 @@ function getColorFromImage(image){
         default:
             return 'grey';
     }
+}
+
+function loadOpponentWalls(html, building){
+    let walls = building['walls'];
+    if (walls['north']){
+        html.classList.add('opponentNorth');
+    }
+    if (walls['south']){
+        html.classList.add('opponentSouth');
+    }
+    if (walls['east']){
+        html.classList.add('opponentEast');
+    }
+    if (walls['west']){
+        html.classList.add('opponentWest');
+    }
+    return html;
 }

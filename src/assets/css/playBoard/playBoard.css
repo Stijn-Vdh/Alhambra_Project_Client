@@ -626,3 +626,20 @@ figcaption {
     border-left: 5px black solid;
 }
 
+.opponentNorth {
+    border-top: 2px black solid;
+
+}
+
+.opponentEast {
+    border-right: 2px black solid;
+}
+
+.opponentSouth {
+    border-bottom: 2px black solid;
+}
+
+.opponentWest {
+    border-left: 2px black solid;
+}
+
