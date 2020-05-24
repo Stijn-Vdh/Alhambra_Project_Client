@@ -6,9 +6,9 @@ function init() {
     getGameDetails();
     loadCity();
 
-    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+
     document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
-    document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
+
     document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
     document.querySelector(".ownPlayerReserveTiles").addEventListener('click', selectedReserveBuilding);
     document.querySelector("#exitButton").addEventListener('click', leaveGame);
@@ -33,12 +33,13 @@ function getGameDetails() {
 
             if (!response.ended){
                 if (!(response['currentPlayer'] === getPlayerName())) {
-                    addEventsForCurrentPlayer();
+                    removeEventsIfNotCurrentPlayer();
                     setTimeout(function () {
                         getGameDetails();
                     }, 1500);
                 } else {
-                    removeEventsIfNotCurrentPlayer();
+                    addEventsForCurrentPlayer();
+
                 }
             }else{
                 window.location.href = "endScreen.html";
@@ -103,16 +104,23 @@ function loadScoringRound(response) {
 
 function addEventsForCurrentPlayer(){
     document.querySelectorAll('.card').forEach(card => {
-        card.removeEventListener('click', selectHandCoin);
+        card.addEventListener('click', selectHandCoin);
     });
-    document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
-    document.querySelector('#MoneyStacks').removeEventListener('click', selectBankCoin);
+    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+    document.querySelectorAll('#MoneyStacks div').forEach(coin =>{
+        coin.addEventListener('click', selectBankCoin);
+    });
+    document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
+
 }
 
 function removeEventsIfNotCurrentPlayer() {
     document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', selectHandCoin);
+        card.removeEventListener('click', selectHandCoin);
     });
-    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
-    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+    document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
+    document.querySelectorAll('#MoneyStacks div').forEach(coin =>{
+        coin.removeEventListener('click', selectBankCoin);
+    });
+    document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
 }
