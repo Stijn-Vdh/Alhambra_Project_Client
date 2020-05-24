@@ -3,10 +3,10 @@
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    serverList();
+    getLobbyList();
 }
 
-function serverList() {
+function getLobbyList() {
     let games = [];
     fetchFromServer(`${config.root}games`, `GET`)
         .then(function (response) {
@@ -21,7 +21,7 @@ function serverList() {
         });
     document.querySelector('table').addEventListener('click', joinLobby);
     setTimeout(function () {
-        serverList();
+        getLobbyList();
     }, 1000);
 }
 
