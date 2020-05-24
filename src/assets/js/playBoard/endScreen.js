@@ -22,16 +22,16 @@ function sortPlayers(players){
 
 function loadFinalScoring(response) {
 
-    let scoreBoard = document.querySelector('.scoreboard');
+    const scoreBoard = document.querySelector('.scoreboard');
     scoreBoard.innerHTML = "";
     let players = response['players'];
     players = sortPlayers(players);
     players.forEach(player => {
-        let roundCard = `<div class="scoringCard">
+        const roundCard = `<div class="scoringCard">
                             <h3>${player['name']}</h3><br>
                             <p class="popupContentLine">final score : ${player['score']}</p><br>`;
 
-        let buildings = `
+        const buildings = `
                         <p>Buildings on board:</p><br>
                          <div id="buildTypes">
                             <p>Pavilion:</p>
@@ -48,9 +48,8 @@ function loadFinalScoring(response) {
                             <p>${player['buildingTypesInCity']['chambers']}</p>
                             <p>${player['buildingTypesInCity']['garden']}</p>
                             <p>${player['buildingTypesInCity']['tower']}</p>
-                        </div>
-                       
-`;
+                        </div>`;
+
         let place;
         if (player['name'] === players[0]['name']){
             place = `<div class="place"><p>1st</p></div></div>`;
@@ -64,14 +63,16 @@ function loadFinalScoring(response) {
             place = `</div>`;
         }
 
+        const endOfGameTextId = '#endOfGameText';
+        
         if (players[0]['name'] === getPlayerName()){
-            document.querySelector('#endOfGameText').innerHTML = "Winner winner camel dinner";
+            document.querySelector(endOfGameTextId).innerHTML = "Winner winner camel dinner";
         }else if (players[1]['name'] === getPlayerName()){
-            document.querySelector('#endOfGameText').innerHTML = "Winner winner almost camel dinner";
+            document.querySelector(endOfGameTextId).innerHTML = "Winner winner almost camel dinner";
         }else if (players[2]['name'] === getPlayerName()){
-            document.querySelector('#endOfGameText').innerHTML = "Winner winner smell the camel dinner";
+            document.querySelector(endOfGameTextId).innerHTML = "Winner winner smell the camel dinner";
         }else{
-            document.querySelector('#endOfGameText').innerHTML = "You're the camel dinner";
+            document.querySelector(endOfGameTextId).innerHTML = "You're the camel dinner";
         }
 
         scoreBoard.innerHTML += roundCard + buildings + place;
