@@ -49,7 +49,6 @@ function loadFinalScoring(response) {
                             <p>${player['buildingTypesInCity']['garden']}</p>
                             <p>${player['buildingTypesInCity']['tower']}</p>
                         </div>`;
-        
         let place;
         if (player['name'] === players[0]['name']){
             place = `<div class="place"><p>1st</p></div></div>`;
@@ -64,7 +63,6 @@ function loadFinalScoring(response) {
         }
 
         const endOfGameTextId = '#endOfGameText';
-        
         if (players[0]['name'] === getPlayerName()){
             document.querySelector(endOfGameTextId).innerHTML = "Winner winner camel dinner";
         }else if (players[1]['name'] === getPlayerName()){
