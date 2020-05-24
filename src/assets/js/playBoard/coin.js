@@ -1,5 +1,5 @@
 "use strict";
-const selectedCoins = [];
+let selectedCoins = [];
 let selectedBankCoins = [];
 
 function setHandCoins(response) {
