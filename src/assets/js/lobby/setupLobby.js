@@ -7,14 +7,13 @@ const readyButton = document.querySelector('#readyButton');
 
 
 function init() {
-
-    readyButton.addEventListener('click', readyUp);
+    readyButton.addEventListener('click', setReadyState);
     document.querySelector('#quitButton').addEventListener('click', quitLobby);
 
     loadLobby();
 }
 
-function readyUp() {
+function setReadyState() {
     if (readyButton.innerHTML === 'Ready') {
         readyUpPlayer();
     } else {
@@ -52,7 +51,6 @@ function loadLobby() {
     fetchFromServer(`${config.root}games/${__gameId}`, 'GET')
         .then(function (response) {
             players = response['players'];
-            console.log(players);
             table.innerHTML = '';
 
             players.forEach(player => {
@@ -62,6 +60,7 @@ function loadLobby() {
                             </tr>`;
             });
             document.querySelector('#playerCount').innerHTML = players.length + "/" + maxPlayers;
+            document.querySelector('#waiting h3').innerHTML = `gameID: ${getGameID()}` ;
 
             if (!response['started']) {
                 setTimeout(() => loadLobby(), timeoutMilliseconds);
