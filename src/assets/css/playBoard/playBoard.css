@@ -187,15 +187,15 @@ body {
 }
 
 .orange, #orange {
-    background-color: darkorange;
+    background-color: orange;
 }
 
 .green, #green {
-    background-color: darkseagreen;
+    background-color: green;
 }
 
 .purple {
-    background-color: rebeccapurple;
+    background-color: mediumpurple;
 }
 
 .brown {
@@ -203,15 +203,15 @@ body {
 }
 
 .white {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .grey {
-    background-color: slategrey;
+    background-color: gray;
 }
 
 .red {
-    background-color: darkred;
+    background-color: red;
 }
 
 #ReserveDropUp {
