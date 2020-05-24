@@ -37,9 +37,9 @@ function unReadyPlayer() {
 
 function getReadyState(player) {
     if (player['ready']) {
-        return 'Ready'
+        return 'Ready';
     } else {
-        return 'Not ready'
+        return 'Not ready';
     }
 }
 
