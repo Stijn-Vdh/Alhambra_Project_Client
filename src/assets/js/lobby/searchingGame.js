@@ -3,10 +3,10 @@
 document.addEventListener('DOMContentLoaded', init);
 
 function init() {
-    getOpenLobby();
+    quickJoinLobby();
 }
 
-function getOpenLobby() {
+function quickJoinLobby() {
     const openGameIDs = [];
     const timeoutMilliseconds = 3000;
     fetchFromServer(`${config.root}games`, 'GET')
@@ -16,7 +16,7 @@ function getOpenLobby() {
 
             });
             if (openGameIDs.length === 0) {
-                setTimeout(getOpenLobby, timeoutMilliseconds) ;
+                setTimeout(quickJoinLobby, timeoutMilliseconds) ;
             } else {
                 joinOpenLobby(openGameIDs);
                 setTimeout(goToLobby, timeoutMilliseconds);

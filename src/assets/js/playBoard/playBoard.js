@@ -1,77 +1,62 @@
 "use strict";
-
 document.addEventListener('DOMContentLoaded', init);
-let scoringRoundOnePassed = false;
-let scoringRoundTwoPassed = false;
 
 function init() {
-    document.querySelector('span.close').addEventListener('click',closePopup);
     setMyAvatar();
     getGameDetails();
     loadCity();
-    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+
+
     document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
-    document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
+
     document.querySelector(".ownPlayerReserveButton").addEventListener('click', showReserveOwnPlayer);
     document.querySelector(".ownPlayerReserveTiles").addEventListener('click', selectedReserveBuilding);
     document.querySelector("#exitButton").addEventListener('click', leaveGame);
+    document.querySelector('span.close').addEventListener('click',closePopup);
 }
 
 function getGameDetails() {
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+    fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
 
-            console.log(response);
             setHandCoins(response);
-            loadOpponents(response.players);
-            setBankCoins();
+            loadOpponents(response['players']);
+            setBankCoins(response);
             getMarketBuildings(response);
-            focusActivePlayer(response.currentPlayer);
+            focusActivePlayer(response['currentPlayer']);
 
             let amountOfCoins = getAmountOfCoinsRemaining(response);
             let amountOfBuildings = getAmountOfBuildingsRemaining(response);
+
             document.querySelector('#RemainingBuildings').innerHTML = amountOfBuildings + " buildings remaining";
             document.querySelector('#RemainingCards').innerHTML = amountOfCoins + " coins remaining";
 
             if (!response.ended){
-                if (!(response.currentPlayer === getPlayerName())) {
-                    document.querySelectorAll('.card').forEach(card => {
-                        card.removeEventListener('click', selectHandCoin);
-                    });
-                    document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
-                    document.querySelector('#MoneyStacks').removeEventListener('click', selectBankCoin);
+                if (!(response['currentPlayer'] === getPlayerName())) {
+                    removeEventsIfNotCurrentPlayer();
                     setTimeout(function () {
                         getGameDetails();
                     }, 1500);
                 } else {
-                    document.querySelectorAll('.card').forEach(card => {
-                        card.addEventListener('click', selectHandCoin);
-                    });
-                    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
-                    document.querySelector('#MoneyStacks').addEventListener('click', selectBankCoin);
+                    addEventsForCurrentPlayer();
+
                 }
             }else{
                 window.location.href = "endScreen.html";
             }
 
-            if (response.scoringRound1 && !scoringRoundOnePassed){
-                scoringRoundOnePassed = true;
-                document.querySelector('.Popup').classList.remove('hidden');
-                loadScoringRound(response);
-            }
-            if (response.scoringRound2 && !scoringRoundTwoPassed){
-                scoringRoundTwoPassed = true;
+            if (response['scoringRound1'] || response['scoringRound2']){
                 document.querySelector('.Popup').classList.remove('hidden');
                 loadScoringRound(response);
             }
         });
 }
+
 function closePopup() {
     document.querySelector('.Popup').classList.add('hidden');
-
 }
 
-function leaveGame() {
+function leaveGame(){
     fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}`, `DELETE`)
         .then(function () {
             removeGameID();
@@ -87,7 +72,7 @@ function loadScoringRound(response) {
     let players = response['players'];
     players.forEach(player => {
         let roundCard = `<div class="scoringCard">
-                            <h3>${player.name}</h3><br>
+                            <h3>${player['name']}</h3><br>
                             <p>scored ${player['virtualScore']} points</p><br>
                             <p class="popupContentLine">current score : ${player['score']}</p><br>`;
 
@@ -115,4 +100,27 @@ function loadScoringRound(response) {
         popupBody.innerHTML += roundCard + buildings;
     });
 
+}
+
+function addEventsForCurrentPlayer(){
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', selectHandCoin);
+    });
+    document.querySelector(".confirmButton").addEventListener('click', addCoinsToHand);
+    document.querySelectorAll('#MoneyStacks div').forEach(coin =>{
+        coin.addEventListener('click', selectBankCoin);
+    });
+    document.querySelector("#PlayBoard").addEventListener('click', removeCardFromCity);
+
+}
+
+function removeEventsIfNotCurrentPlayer() {
+    document.querySelectorAll('.card').forEach(card => {
+        card.removeEventListener('click', selectHandCoin);
+    });
+    document.querySelector(".confirmButton").removeEventListener('click', addCoinsToHand);
+    document.querySelectorAll('#MoneyStacks div').forEach(coin =>{
+        coin.removeEventListener('click', selectBankCoin);
+    });
+    document.querySelector("#PlayBoard").removeEventListener('click', removeCardFromCity);
 }

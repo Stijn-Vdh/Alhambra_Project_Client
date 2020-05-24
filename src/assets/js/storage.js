@@ -29,16 +29,17 @@ function getAvatarFromStorage(){
 function getGameID() {
     return localStorage.getItem("gameID");
 }
+
 function setGameID(gameID) {
     return localStorage.setItem("gameID",gameID);
 }
+
 function removeGameID() {
     return localStorage.removeItem("gameID");
 }
 
 function setSelectedReserveInStorage(selectedReserve){
     localStorage.setItem("selectedReserve", JSON.stringify(selectedReserve));
-    //window.history.back();
 }
 
 function getSelectedReserveFromStorage(){

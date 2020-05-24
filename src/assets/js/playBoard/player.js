@@ -11,12 +11,12 @@ function loadOpponents(players) {
     let enemyPlayersHtml = document.querySelector('.EnemyPlayers');
     enemyPlayersHtml.innerHTML = "";
     players.forEach(player => {
-        if (player.name !== getPlayerName()) {
-            let EnemyCard = `<div class="EnemyCard" id="${player.name}">
-                                <div class="EnemyBoard" id="alhambra${player.name}"></div>
-                                <p class="nameTag">${player.name}</p>
+        if (player['name'] !== getPlayerName()) {
+            let EnemyCard = `<div class="EnemyCard" id="${player['name']}">
+                                <div class="EnemyBoard" id="alhambra${player['name']}"></div>
+                                <p class="nameTag">${player['name']}</p>
                                 <div class="EnemyScore">
-                                    <p id="Score${player.name}">${player['score']}</p>
+                                    <p id="Score${player['name']}">${player['score']}</p>
                                 </div>
                             </div>`;
             enemyPlayersHtml.innerHTML += EnemyCard;
@@ -50,25 +50,25 @@ function addCurrentPlayerTag(playerCard) {
 }
 
 function loadOpponentAlhambra(player){
-    let alhambra = document.querySelector(`#alhambra${player.name}`);
+    let alhambra = document.querySelector(`#alhambra${player['name']}`);
     let sizeBoard = 7;
     let city = player["city"]["board"];
 
-
     alhambra.innerHTML = "";
 
-    for(let r = 0; r < sizeBoard; r++){
-        for (let  c= 0; c < sizeBoard; c++){
-            let html = `<div class="plateBuilding ${player.name}grid${r}${c}"></div>`;
+    for(let row = 0; row < sizeBoard; row++){
+        for (let col = 0; col < sizeBoard; col++){
+            let html = `<div class="plateBuilding ${player['name']}grid${row}${col}"></div>`;
             alhambra.innerHTML += html;
         }
     }
 
-
-    for (let i = 0; i<city.length; i++){
-        for (let j = 0; j < city[i].length;j++){
-            if (city[i][j] !== null){
-                document.querySelector(`.${player.name}grid${i+((sizeBoard-city.length)/2)}${j+((sizeBoard-city.length)/2)}`).setAttribute('class', `${getColorFromImage(city[i][j])}`);
+    for (let row = 0; row < city.length; row++){
+        for (let col = 0; col < city[row].length; col++){
+            if (city[row][col] !== null){
+                let buildingGridHtml = document.querySelector(`.${player['name']}grid${row+((sizeBoard-city.length)/2)}${col+((sizeBoard-city.length)/2)}`);
+                buildingGridHtml.setAttribute('class', `${getColorFromImage(city[row][col])}`);
+                loadOpponentWalls(buildingGridHtml,city[row][col]);
             }
         }
     }
@@ -91,4 +91,21 @@ function getColorFromImage(image){
         default:
             return 'grey';
     }
+}
+
+function loadOpponentWalls(html, building){
+    let walls = building['walls'];
+    if (walls['north']){
+        html.classList.add('opponentNorth');
+    }
+    if (walls['south']){
+        html.classList.add('opponentSouth');
+    }
+    if (walls['east']){
+        html.classList.add('opponentEast');
+    }
+    if (walls['west']){
+        html.classList.add('opponentWest');
+    }
+    return html;
 }

@@ -175,7 +175,7 @@ body {
 
 .selectedBankCoin {
     transform: scale(1.05);
-    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+    box-shadow: 0 0 5px 5px black;
 }
 
 .blue, #blue {
@@ -187,15 +187,15 @@ body {
 }
 
 .orange, #orange {
-    background-color: darkorange;
+    background-color: orange;
 }
 
 .green, #green {
-    background-color: darkseagreen;
+    background-color: green;
 }
 
 .purple {
-    background-color: rebeccapurple;
+    background-color: mediumpurple;
 }
 
 .brown {
@@ -203,15 +203,15 @@ body {
 }
 
 .white {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 .grey {
-    background-color: slategrey;
+    background-color: gray;
 }
 
 .red {
-    background-color: darkred;
+    background-color: red;
 }
 
 #ReserveDropUp {
@@ -265,7 +265,7 @@ body {
 }
 
 #Coin1:hover, #Coin2:hover, #Coin3:hover, #Coin4:hover {
-    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+    box-shadow: 0 0 5px 5px black;
 }
 
 #Coin1 p, #Coin2 p, #Coin3 p, #Coin4 p {
@@ -282,7 +282,7 @@ body {
 }
 
 .buildingStackMarket:hover {
-    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+    box-shadow: 0 0 5px 5px black;
 }
 
 #buildingStack {
@@ -501,7 +501,7 @@ h1 {
 }
 
 .highlight {
-    box-shadow: 0 0 5px 5px rgba(255, 210, 94, 0.5);
+    box-shadow: 0 0 5px 5px gray;
 }
 
 .Popup {
@@ -624,5 +624,22 @@ figcaption {
 
 .west {
     border-left: 5px black solid;
+}
+
+.opponentNorth {
+    border-top: 2px black solid;
+
+}
+
+.opponentEast {
+    border-right: 2px black solid;
+}
+
+.opponentSouth {
+    border-bottom: 2px black solid;
+}
+
+.opponentWest {
+    border-left: 2px black solid;
 }
 
