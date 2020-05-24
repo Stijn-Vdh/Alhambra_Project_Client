@@ -7,20 +7,19 @@ function init(){
 }
 
 function loadScoreBoard(){
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+    fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
-
             loadFinalScoring(response);
         });
 }
 
-
 function sortPlayers(players){
     players.sort(function(p1, p2){
-        return p2.score - p1.score;
+        return p2['score'] - p1['score'];
     });
     return players;
 }
+
 function loadFinalScoring(response) {
 
     let scoreBoard = document.querySelector('.scoreboard');
@@ -29,7 +28,7 @@ function loadFinalScoring(response) {
     players = sortPlayers(players);
     players.forEach(player => {
         let roundCard = `<div class="scoringCard">
-                            <h3>${player.name}</h3><br>
+                            <h3>${player['name']}</h3><br>
                             <p class="popupContentLine">final score : ${player['score']}</p><br>`;
 
         let buildings = `
@@ -53,23 +52,23 @@ function loadFinalScoring(response) {
                        
 `;
         let place;
-        if (player.name === players[0].name){
+        if (player['name'] === players[0]['name']){
             place = `<div class="place"><p>1st</p></div></div>`;
 
-        }else if (player.name === players[1].name){
+        }else if (player['name'] === players[1]['name']){
             place = `<div class="place"><p>2nd</p></div></div>`;
 
-        }else if (player.name === players[2].name){
+        }else if (player['name'] === players[2]['name']){
             place = `<div class="place"><p>3rd</p></div></div>`;
         }else{
             place = `</div>`;
         }
 
-        if (players[0].name === getPlayerName()){
+        if (players[0]['name'] === getPlayerName()){
             document.querySelector('#endOfGameText').innerHTML = "Winner winner camel dinner";
-        }else if (players[1].name === getPlayerName()){
+        }else if (players[1]['name'] === getPlayerName()){
             document.querySelector('#endOfGameText').innerHTML = "Winner winner almost camel dinner";
-        }else if (players[2].name === getPlayerName()){
+        }else if (players[2]['name'] === getPlayerName()){
             document.querySelector('#endOfGameText').innerHTML = "Winner winner smell the camel dinner";
         }else{
             document.querySelector('#endOfGameText').innerHTML = "You're the camel dinner";
