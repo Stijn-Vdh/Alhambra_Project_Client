@@ -15,7 +15,7 @@ function createNewGame(e){
     fetchFromServer(
         `${config.root}games`,
         'POST',
-        {prefix: `group${config.groupnumber}` })
+        {prefix: `group${config.groupNumber}` })
         .then(function(response){
             console.log(response);
             // The reply here is the game ID, keep it secret, keep it safe!
