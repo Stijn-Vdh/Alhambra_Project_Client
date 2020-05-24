@@ -63,9 +63,9 @@ function loadLobby() {
             });
             document.querySelector('#playerCount').innerHTML = players.length + "/" + maxPlayers;
 
-            if (!response.started) {
+            if (!response['started']) {
                 setTimeout(() => loadLobby(), timeoutMilliseconds);
-            } else if (response.started) {
+            } else if (response['started']) {
                 window.location.href = "../playBoard/playBoard.html";
             }
 

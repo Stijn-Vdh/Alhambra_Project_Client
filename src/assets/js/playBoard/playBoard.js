@@ -24,7 +24,7 @@ function getGameDetails() {
             console.log(response);
             setHandCoins(response);
             loadOpponents(response.players);
-            setBankCoins();
+            setBankCoins(response);
             getMarketBuildings(response);
             focusActivePlayer(response.currentPlayer);
 

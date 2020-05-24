@@ -34,25 +34,31 @@ function addCoinsToHand() {
         'POST',
         selectedBankCoins)
         .then(function () {
-            setBankCoins();
+
             getGameDetails();
         });
-    selectedBankCoins=[];
+    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
+        .then(function (response) {
+            setBankCoins(response);
+        });
+    selectedBankCoins = [];
 
 }
 
-function setBankCoins() {
+function setBankCoins(response) {
 
     const bank = document.querySelector("#MoneyStacks");
     bank.innerHTML = "";
     let counter = 1;
-    fetchFromServer(`${config.root}games/${localStorage.getItem("gameID")}`, 'GET')
-        .then(function (response) {
-            for (let i = 0; i < response["bank"]["coinsOnBoard"].length; i++) {
-                bank.innerHTML += `<div class="${response["bank"]["coinsOnBoard"][i]["currency"]}" id="Coin${counter}"><p>${response["bank"]["coinsOnBoard"][i]["amount"]}</p></div>`;
-                counter++;
-            }
-        });
+
+    let coinsOnBoard = response["bank"]["coinsOnBoard"];
+
+    Object.keys(coinsOnBoard).forEach(coin => {
+        let coinContent = `<div class="${coinsOnBoard[coin]["currency"]}" id="Coin${counter}"><p>${coinsOnBoard[coin]["amount"]}</p></div>`;
+        counter++;
+        bank.innerHTML += coinContent;
+    });
+
 }
 
 function selectHandCoin(e) {
@@ -140,6 +146,6 @@ function processSelectedBankCoin(selectedCoinHTML, selectedCoin) {
 
 }
 
-function getAmountOfCoinsRemaining(response){
+function getAmountOfCoinsRemaining(response) {
     return response["bank"]["amountOfCoins"];
 }
