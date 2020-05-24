@@ -85,11 +85,7 @@ function selectedReserveBuilding(e) {
                 }
             }
 
-            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations
-            ?north=${walls['north'] === true ? 'true' : 'false'}
-            &east=${walls['east'] === true ? 'true' : 'false'}
-            &south=${walls['south'] === true ? 'true' : 'false'}
-            &west=${walls['west'] === true ? 'true' : 'false'}`,
+            fetchFromServer(`${config.root}games/${getGameID()}/players/${getPlayerName()}/city/locations?north=${walls['north'] === true ? 'true' : 'false'}&east=${walls['east'] === true ? 'true' : 'false'}&south=${walls['south'] === true ? 'true' : 'false'}&west=${walls['west'] === true ? 'true' : 'false'}`,
                 'GET')
                 .then(function (response) {
                     for (let i = 0; i < response.length; i++) {
