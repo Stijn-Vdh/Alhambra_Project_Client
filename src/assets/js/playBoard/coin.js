@@ -1,5 +1,5 @@
 "use strict";
-let selectedCoins = [];
+const selectedCoins = [];
 let selectedBankCoins = [];
 
 function setHandCoins(response) {
@@ -50,10 +50,10 @@ function setBankCoins(response) {
     const bank = document.querySelector("#MoneyStacks");
     bank.innerHTML = "";
     let counter = 1;
-    let coinsOnBoard = response["bank"]["coinsOnBoard"];
+    const coinsOnBoard = response["bank"]["coinsOnBoard"];
 
     Object.keys(coinsOnBoard).forEach(coin => {
-        let coinContent = `<div class="${coinsOnBoard[coin]["currency"]}" id="Coin${counter}"><p>${coinsOnBoard[coin]["amount"]}</p></div>`;
+        const coinContent = `<div class="${coinsOnBoard[coin]["currency"]}" id="Coin${counter}"><p>${coinsOnBoard[coin]["amount"]}</p></div>`;
         counter++;
         bank.innerHTML += coinContent;
     });
@@ -61,24 +61,24 @@ function setBankCoins(response) {
 }
 
 function selectHandCoin(e) {
-    let selectedCoinHTML = (e.target.closest('div'));
+    const selectedCoinHTML = (e.target.closest('div'));
 
     fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
-            let playerCoins = getHandCoins(response);
-            let selectedCoin = playerCoins[selectedCoinHTML.id];
+            const playerCoins = getHandCoins(response);
+            const selectedCoin = playerCoins[selectedCoinHTML.id];
             processSelectedHandCoin(selectedCoinHTML, selectedCoin);
 
         });
 }
 
 function selectBankCoin(e) {
-    let selectedCoinHTML = (e.target.closest('div'));
+    const selectedCoinHTML = (e.target.closest('div'));
     fetchFromServer(`${config.root}games/${getGameID()}`, 'GET')
         .then(function (response) {
-            let bankCoins = response["bank"]["coinsOnBoard"];
-            let coinIndex = selectedCoinHTML.id.slice(4);
-            let selectedCoin = bankCoins[coinIndex - 1];
+            const bankCoins = response["bank"]["coinsOnBoard"];
+            const coinIndex = selectedCoinHTML.id.slice(4);
+            const selectedCoin = bankCoins[coinIndex - 1];
 
             processSelectedBankCoin(selectedCoinHTML, selectedCoin);
         });
@@ -112,7 +112,7 @@ function processSelectedHandCoin(selectedCoinHTML, selectedCoin) {
         if (!isIllegalCoinSelection(selectedCoin)) {
             selectedCoinHTML.classList.add('selectedCard');
 
-            let coin = {
+            const coin = {
                 currency: selectedCoin.currency,
                 amount: selectedCoin.amount
             };
@@ -131,11 +131,11 @@ function processSelectedBankCoin(selectedCoinHTML, selectedCoin) {
     if (!selectedCoinHTML.classList.contains('selectedBankCoin')) {
         selectedCoinHTML.classList.add('selectedBankCoin');
 
-        let bankCoin = {
+        const bankCoin = {
             currency: selectedCoin.currency,
             amount: selectedCoin.amount
         };
-        selectedBankCoins.push(bankCoin)
+        selectedBankCoins.push(bankCoin);
     } else {
         selectedCoinHTML.classList.remove('selectedBankCoin');
         selectedBankCoins.splice(findCoinIndex(selectedCoin, selectedBankCoins), 1);
