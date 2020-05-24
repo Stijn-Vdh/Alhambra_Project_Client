@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', init);
 
 const confirmButtonClass = ".confirmButton";
 
+let scoringRoundOnePassed = false;
+let scoringRoundTwoPassed = false;
+
 function init() {
     setMyAvatar();
     getGameDetails();
@@ -48,7 +51,13 @@ function getGameDetails() {
                 window.location.href = "endScreen.html";
             }
 
-            if (response['scoringRound1'] || response['scoringRound2']){
+            if (response['scoringRound1'] && !scoringRoundOnePassed){
+                scoringRoundOnePassed = true;
+                document.querySelector('.Popup').classList.remove('hidden');
+                loadScoringRound(response);
+            }
+            if (response['scoringRound2'] && !scoringRoundTwoPassed){
+                scoringRoundTwoPassed = true;
                 document.querySelector('.Popup').classList.remove('hidden');
                 loadScoringRound(response);
             }
